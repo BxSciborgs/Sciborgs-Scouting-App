@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0938EEF01C45FE7A004F89EC"
-               BuildableName = "ScoutingApp.app"
-               BlueprintName = "ScoutingApp"
-               ReferencedContainer = "container:ScoutingApp.xcodeproj">
+               BlueprintIdentifier = "09C5675D1C46F82200873387"
+               BuildableName = "ScoutingApp2016.app"
+               BlueprintName = "ScoutingApp2016"
+               ReferencedContainer = "container:ScoutingApp2016.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,34 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0938EF041C45FE7A004F89EC"
-               BuildableName = "ScoutingAppTests.xctest"
-               BlueprintName = "ScoutingAppTests"
-               ReferencedContainer = "container:ScoutingApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0938EF0F1C45FE7A004F89EC"
-               BuildableName = "ScoutingAppUITests.xctest"
-               BlueprintName = "ScoutingAppUITests"
-               ReferencedContainer = "container:ScoutingApp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0938EEF01C45FE7A004F89EC"
-            BuildableName = "ScoutingApp.app"
-            BlueprintName = "ScoutingApp"
-            ReferencedContainer = "container:ScoutingApp.xcodeproj">
+            BlueprintIdentifier = "09C5675D1C46F82200873387"
+            BuildableName = "ScoutingApp2016.app"
+            BlueprintName = "ScoutingApp2016"
+            ReferencedContainer = "container:ScoutingApp2016.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0938EEF01C45FE7A004F89EC"
-            BuildableName = "ScoutingApp.app"
-            BlueprintName = "ScoutingApp"
-            ReferencedContainer = "container:ScoutingApp.xcodeproj">
+            BlueprintIdentifier = "09C5675D1C46F82200873387"
+            BuildableName = "ScoutingApp2016.app"
+            BlueprintName = "ScoutingApp2016"
+            ReferencedContainer = "container:ScoutingApp2016.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0938EEF01C45FE7A004F89EC"
-            BuildableName = "ScoutingApp.app"
-            BlueprintName = "ScoutingApp"
-            ReferencedContainer = "container:ScoutingApp.xcodeproj">
+            BlueprintIdentifier = "09C5675D1C46F82200873387"
+            BuildableName = "ScoutingApp2016.app"
+            BlueprintName = "ScoutingApp2016"
+            ReferencedContainer = "container:ScoutingApp2016.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

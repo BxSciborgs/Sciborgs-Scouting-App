@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  ScoutingApp
+//  ScoutingApp2016
 //
-//  Created by Oran Luzon on 1/12/16.
-//  Copyright © 2016 Oran Luzon. All rights reserved.
+//  Created by Oran Luzon on 1/13/16.
+//  Copyright © 2016 Sciborgs. All rights reserved.
 //
 
 import UIKit

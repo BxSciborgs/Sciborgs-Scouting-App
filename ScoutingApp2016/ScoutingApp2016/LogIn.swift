@@ -11,8 +11,4 @@ import UIKit
 class LogIn: NSObject{
     var user: String!
     var pass: String!
-    
-    init(){
-        
-    }
 }

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ScoutingApp.xcscheme</key>
+		<key>ScoutingApp2016.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0938EEF01C45FE7A004F89EC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0938EF041C45FE7A004F89EC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0938EF0F1C45FE7A004F89EC</key>
+		<key>09C5675D1C46F82200873387</key>
 		<dict>
 			<key>primary</key>
 			<true/>
