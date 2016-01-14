@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		095CDB0B1C47DDCF00ED33C8 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 095CDB091C47DDCF00ED33C8 /* GoogleSignIn.bundle */; };
-		095CDB0C1C47DDCF00ED33C8 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0A1C47DDCF00ED33C8 /* GoogleSignIn.framework */; };
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
 		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
@@ -21,11 +19,21 @@
 		09C567741C46F83B00873387 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567731C46F83B00873387 /* Obstacle.swift */; };
 		09C567761C46F84800873387 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567751C46F84800873387 /* LogIn.swift */; };
 		09C567781C47002600873387 /* Matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567771C47002600873387 /* Matches.swift */; };
+		86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC971C484F2B0006DD22 /* Bolts.framework */; };
+		86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC991C484F340006DD22 /* Parse.framework */; };
+		86A7CC9E1C484FBF0006DD22 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */; };
+		86A7CC9F1C484FBF0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
+		86A7CCA31C4850470006DD22 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA21C4850470006DD22 /* AudioToolbox.framework */; };
+		86A7CCA51C48504D0006DD22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA41C48504D0006DD22 /* CFNetwork.framework */; };
+		86A7CCA71C4850540006DD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA61C4850540006DD22 /* CoreGraphics.framework */; };
+		86A7CCA91C48505B0006DD22 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA81C48505B0006DD22 /* CoreLocation.framework */; };
+		86A7CCAB1C4850610006DD22 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAA1C4850610006DD22 /* QuartzCore.framework */; };
+		86A7CCAD1C4850650006DD22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAC1C4850650006DD22 /* Security.framework */; };
+		86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAE1C48507E0006DD22 /* libz.tbd */; };
+		86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCB01C4850870006DD22 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		095CDB091C47DDCF00ED33C8 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
-		095CDB0A1C47DDCF00ED33C8 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
 		095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -40,6 +48,18 @@
 		09C567731C46F83B00873387 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		09C567751C46F84800873387 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		09C567771C47002600873387 /* Matches.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matches.swift; sourceTree = "<group>"; };
+		86A7CC971C484F2B0006DD22 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		86A7CC991C484F340006DD22 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		86A7CCA21C4850470006DD22 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		86A7CCA41C48504D0006DD22 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		86A7CCA61C4850540006DD22 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		86A7CCA81C48505B0006DD22 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		86A7CCAA1C4850610006DD22 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		86A7CCAC1C4850650006DD22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		86A7CCAE1C48507E0006DD22 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		86A7CCB01C4850870006DD22 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,10 +67,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */,
+				86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */,
 				095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */,
 				095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */,
+				86A7CCAD1C4850650006DD22 /* Security.framework in Frameworks */,
+				86A7CCAB1C4850610006DD22 /* QuartzCore.framework in Frameworks */,
+				86A7CCA91C48505B0006DD22 /* CoreLocation.framework in Frameworks */,
+				86A7CCA71C4850540006DD22 /* CoreGraphics.framework in Frameworks */,
+				86A7CCA51C48504D0006DD22 /* CFNetwork.framework in Frameworks */,
+				86A7CCA31C4850470006DD22 /* AudioToolbox.framework in Frameworks */,
+				86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */,
+				86A7CC9E1C484FBF0006DD22 /* GoogleSignIn.framework in Frameworks */,
 				095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */,
-				095CDB0C1C47DDCF00ED33C8 /* GoogleSignIn.framework in Frameworks */,
+				86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,11 +90,7 @@
 		09C567551C46F82100873387 = {
 			isa = PBXGroup;
 			children = (
-				095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */,
-				095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */,
-				095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */,
-				095CDB091C47DDCF00ED33C8 /* GoogleSignIn.bundle */,
-				095CDB0A1C47DDCF00ED33C8 /* GoogleSignIn.framework */,
+				86A7CCA11C484FD70006DD22 /* Frameworks */,
 				09C567601C46F82200873387 /* ScoutingApp2016 */,
 				09C5675F1C46F82200873387 /* Products */,
 			);
@@ -93,6 +119,28 @@
 				09C5676D1C46F82200873387 /* Info.plist */,
 			);
 			path = ScoutingApp2016;
+			sourceTree = "<group>";
+		};
+		86A7CCA11C484FD70006DD22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */,
+				86A7CCB01C4850870006DD22 /* libsqlite3.tbd */,
+				86A7CCAE1C48507E0006DD22 /* libz.tbd */,
+				86A7CCAC1C4850650006DD22 /* Security.framework */,
+				86A7CCAA1C4850610006DD22 /* QuartzCore.framework */,
+				86A7CCA81C48505B0006DD22 /* CoreLocation.framework */,
+				86A7CCA61C4850540006DD22 /* CoreGraphics.framework */,
+				86A7CCA41C48504D0006DD22 /* CFNetwork.framework */,
+				86A7CCA21C4850470006DD22 /* AudioToolbox.framework */,
+				86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */,
+				86A7CC991C484F340006DD22 /* Parse.framework */,
+				86A7CC971C484F2B0006DD22 /* Bolts.framework */,
+				095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */,
+				095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */,
+				095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +202,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				095CDB0B1C47DDCF00ED33C8 /* GoogleSignIn.bundle in Resources */,
 				09C5676C1C46F82200873387 /* LaunchScreen.storyboard in Resources */,
+				86A7CC9F1C484FBF0006DD22 /* GoogleSignIn.bundle in Resources */,
 				09AAAC9E1C481C1D0039168A /* GoogleService-Info.plist in Resources */,
 				09C567691C46F82200873387 /* Assets.xcassets in Resources */,
 				09C567671C46F82200873387 /* Main.storyboard in Resources */,
