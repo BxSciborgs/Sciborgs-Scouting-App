@@ -7,24 +7,37 @@
 //
 
 import UIKit
+import Bolts
+import Parse
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Initialize sign-in
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         
+        Parse.enableLocalDatastore()
+        
+        Parse.setApplicationId("KBqIB66cUvbVxjCLMQw1ug3AiTdldkjoDKlhpGuo",
+            clientKey: "EmsYKeBWl79WGbAdhtjWUUYCyJuL7iABao5lbzcM")
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        GIDSignIn.sharedInstance().clientID = "1008849373609-v4eaemodfnc4sku53c8fonjtka7fugn2.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         
         return true
     }
 
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
+        //do something
+    }
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        //do something
+    }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
