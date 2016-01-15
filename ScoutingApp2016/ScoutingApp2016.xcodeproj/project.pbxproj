@@ -10,7 +10,6 @@
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
 		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
-		09AAAC9E1C481C1D0039168A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */; };
 		09C567621C46F82200873387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567611C46F82200873387 /* AppDelegate.swift */; };
 		09C567641C46F82200873387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567631C46F82200873387 /* ViewController.swift */; };
 		09C567671C46F82200873387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C567651C46F82200873387 /* Main.storyboard */; };
@@ -22,7 +21,6 @@
 		86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC971C484F2B0006DD22 /* Bolts.framework */; };
 		86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC991C484F340006DD22 /* Parse.framework */; };
 		86A7CC9E1C484FBF0006DD22 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */; };
-		86A7CC9F1C484FBF0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
 		86A7CCA31C4850470006DD22 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA21C4850470006DD22 /* AudioToolbox.framework */; };
 		86A7CCA51C48504D0006DD22 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA41C48504D0006DD22 /* CFNetwork.framework */; };
 		86A7CCA71C4850540006DD22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCA61C4850540006DD22 /* CoreGraphics.framework */; };
@@ -31,6 +29,7 @@
 		86A7CCAD1C4850650006DD22 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAC1C4850650006DD22 /* Security.framework */; };
 		86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAE1C48507E0006DD22 /* libz.tbd */; };
 		86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCB01C4850870006DD22 /* libsqlite3.tbd */; };
+		86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +59,7 @@
 		86A7CCAC1C4850650006DD22 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86A7CCAE1C48507E0006DD22 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		86A7CCB01C4850870006DD22 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoutingApp2016-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +117,7 @@
 				09C567681C46F82200873387 /* Assets.xcassets */,
 				09C5676A1C46F82200873387 /* LaunchScreen.storyboard */,
 				09C5676D1C46F82200873387 /* Info.plist */,
+				86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */,
 			);
 			path = ScoutingApp2016;
 			sourceTree = "<group>";
@@ -202,9 +203,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */,
 				09C5676C1C46F82200873387 /* LaunchScreen.storyboard in Resources */,
-				86A7CC9F1C484FBF0006DD22 /* GoogleSignIn.bundle in Resources */,
-				09AAAC9E1C481C1D0039168A /* GoogleService-Info.plist in Resources */,
 				09C567691C46F82200873387 /* Assets.xcassets in Resources */,
 				09C567671C46F82200873387 /* Main.storyboard in Resources */,
 			);
@@ -342,16 +342,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ScoutingApp2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MilkyShakeMobile.ScoutingApp2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "ScoutingApp2016/ScoutingApp2016-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -361,16 +366,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ScoutingApp2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = MilkyShakeMobile.ScoutingApp2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "ScoutingApp2016/ScoutingApp2016-Bridging-Header.h";
 			};
 			name = Release;
 		};
