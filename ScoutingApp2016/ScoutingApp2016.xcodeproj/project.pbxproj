@@ -115,16 +115,13 @@
 		09C567601C46F82200873387 /* ScoutingApp2016 */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				86DF2AC71C49926F009500A1 /* Code */,
-=======
 				09C567631C46F82200873387 /* ViewController.swift */,
 				09C567751C46F84800873387 /* LogIn.swift */,
 				09C567771C47002600873387 /* Matches.swift */,
 				09C567731C46F83B00873387 /* Obstacle.swift */,
 				09C567611C46F82200873387 /* AppDelegate.swift */,
 				09A09D041C499FA000B7BD60 /* Extensions.swift */,
->>>>>>> origin/master
 				09C567651C46F82200873387 /* Main.storyboard */,
 				09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */,
 				09C5676A1C46F82200873387 /* LaunchScreen.storyboard */,
@@ -247,11 +244,8 @@
 			files = (
 				09C567641C46F82200873387 /* ViewController.swift in Sources */,
 				09C567621C46F82200873387 /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
 				86DF2AC61C49925F009500A1 /* Team.swift in Sources */,
-=======
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
->>>>>>> origin/master
 				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
 				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
 				09C567781C47002600873387 /* Matches.swift in Sources */,
