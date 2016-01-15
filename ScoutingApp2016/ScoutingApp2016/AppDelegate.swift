@@ -27,36 +27,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = "1008849373609-v4eaemodfnc4sku53c8fonjtka7fugn2.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
-        
+ 
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool {
-        let orch = options as! [String: String]
-        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication:
-            orch[UIApplicationOpenURLOptionsSourceApplicationKey],
-            annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-        
-        //return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey],annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+    func application(application: UIApplication,
+        openURL url: NSURL, options options: [String: AnyObject]) -> Bool {
+            return GIDSignIn.sharedInstance().handleURL(url,
+                sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+                annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
     }
-
+    
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {
         //do something
     }
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        print("Sign In")
         //do something
-
         if (error == nil) {
             // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let name = user.profile.name
+            //let userId = user.userID                  // For client-side use only!
+            //let idToken = user.authentication.idToken // Safe to send to the server
+            //let name = user.profile.name
             let email = user.profile.email
+            print("Email: " + email)
+            
+            
+            if (email.substring(email.characters.count - "bxscience.edu".characters.count, end: email.characters.count) != "bxscience.edu"){
+                print("Signed out")
+                GIDSignIn.sharedInstance().signOut()
+            }
+            else{
+                print("Successful Sign in")
+            }
             // ...
         } else {
-            print("\(error.localizedDescription)")
+            print("error \(error.localizedDescription)")
         }
+        print("1")
 
     }
     func applicationWillResignActive(application: UIApplication) {

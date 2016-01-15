@@ -45,6 +45,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
         
+        
     }
 
     override func didReceiveMemoryWarning() {
