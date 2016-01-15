@@ -34,9 +34,18 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         view.addSubview(button)
         //view.addSubview(pickMode)
         print("done")
+        
+        let testTeam = Team(teamNumber: 1155, roundNumber: 1)
+        
+        //Information for testTeam round 1
+        testTeam.crossedDefence(Defences.SallyPort)
+        testTeam.crossedDefence(Defences.Drawbridge)
+        testTeam.addComment("ThisTeamIsAmazing")
+        //testTeam.finalizeJSON()
+        
+        let testTeamProfile = TeamProfile(teamNumber: 1155)
+        testTeamProfile.queryAllRounds()
     }
-    
-    
     
     func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
         
