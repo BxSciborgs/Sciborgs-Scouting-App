@@ -14,7 +14,7 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     var window: UIWindow?
-
+    var adminAccounts: [String]!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Initialize sign-in
@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = "1008849373609-v4eaemodfnc4sku53c8fonjtka7fugn2.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
  
+        adminAccounts = ["oran.luzon@gmail.com"]
+        
         return true
     }
     
@@ -54,7 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             print("Email: " + email)
             
             
-            if (email.substring(email.characters.count - "bxscience.edu".characters.count, end: email.characters.count) != "bxscience.edu"){
+            if (adminAccounts.contains(email)){
+                print("Admin Login")
+            }
+            else if (email.substring(email.characters.count - "bxscience.edu".characters.count, end: email.characters.count) != "bxscience.edu"){
                 print("Signed out")
                 GIDSignIn.sharedInstance().signOut()
             }

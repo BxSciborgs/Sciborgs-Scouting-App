@@ -127,11 +127,8 @@
 		09C567601C46F82200873387 /* ScoutingApp2016 */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				091337821C49ADB2004A38B7 /* UITemplates */,
-=======
 				86DF2AC71C49926F009500A1 /* Code */,
->>>>>>> b93d113f95a3729ce84c3428874b0b992af3a3b6
 				09C567631C46F82200873387 /* ViewController.swift */,
 				09A09D061C49A0E400B7BD60 /* PickMode.swift */,
 				09C567751C46F84800873387 /* LogIn.swift */,
@@ -261,12 +258,9 @@
 			files = (
 				09C567641C46F82200873387 /* ViewController.swift in Sources */,
 				09C567621C46F82200873387 /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
 				09A09D071C49A0E400B7BD60 /* PickMode.swift in Sources */,
-=======
 				86DF2AC61C49925F009500A1 /* Team.swift in Sources */,
->>>>>>> b93d113f95a3729ce84c3428874b0b992af3a3b6
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
 				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
