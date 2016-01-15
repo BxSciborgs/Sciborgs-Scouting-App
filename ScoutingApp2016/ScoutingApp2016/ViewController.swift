@@ -27,6 +27,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         // Uncomment to automatically sign in the user.
         //GIDSignIn.sharedInstance().signInSilently()
         
+        button.enabled = true
+        
         view.addSubview(button)
         print("done")
     }
