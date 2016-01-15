@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(application: UIApplication,
-        openURL url: NSURL, options options: [String: AnyObject]) -> Bool {
+        openURL url: NSURL,  options: [String: AnyObject]) -> Bool {
             return GIDSignIn.sharedInstance().handleURL(url,
                 sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
                 annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
@@ -65,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         } else {
             print("error \(error.localizedDescription)")
         }
-        print("1")
 
     }
     func applicationWillResignActive(application: UIApplication) {

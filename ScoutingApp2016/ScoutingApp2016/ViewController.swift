@@ -12,7 +12,7 @@ import UIKit
 class ViewController: UIViewController, GIDSignInUIDelegate {
 
     var button: GIDSignInButton!
-    
+    var pickMode: PickMode!
     override func viewDidLoad() {
         super.viewDidLoad()     
         
@@ -23,13 +23,16 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
         button = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
         button.center = CGPoint(x: width/2, y: height/2)
-        
-        // Uncomment to automatically sign in the user.
-        //GIDSignIn.sharedInstance().signInSilently()
-        
         button.enabled = true
         
+        // Uncomment to automatically sign in the user.
+        GIDSignIn.sharedInstance().signInSilently()
+        
+        pickMode = PickMode(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        
         view.addSubview(button)
+        //view.addSubview(pickMode)
         print("done")
     }
     
@@ -44,7 +47,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        
+        view.addSubview(pickMode)
         
     }
 
