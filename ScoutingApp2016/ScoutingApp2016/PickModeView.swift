@@ -9,7 +9,7 @@
 
 import UIKit
 
-class PickMode: UIView{
+class PickModeView: UIView{
  
     var scoutButton: UIButton!
     var viewTeamsButton: UIButton!
@@ -34,7 +34,8 @@ class PickMode: UIView{
     }
 
     func goToScout(){
-        
+        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.addSubview(ScoutView())
+        self.removeFromSuperview()
     }
     
     func goToViewTeams(){

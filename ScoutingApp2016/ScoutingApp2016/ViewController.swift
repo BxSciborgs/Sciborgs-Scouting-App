@@ -9,10 +9,15 @@
 import UIKit
 //import GoogleSignIn/GoogleSignIn.h
 
+public struct Screen{
+    static let width = UIScreen.mainScreen().bounds.width
+    static let height = UIScreen.mainScreen().bounds.height
+}
+
 class ViewController: UIViewController, GIDSignInUIDelegate {
 
     var button: GIDSignInButton!
-    var pickMode: PickMode!
+    var pickMode: PickModeView!
     override func viewDidLoad() {
         super.viewDidLoad()     
         
@@ -28,7 +33,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         // Uncomment to automatically sign in the user.
         GIDSignIn.sharedInstance().signInSilently()
         
-        pickMode = PickMode(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         
         
         view.addSubview(button)

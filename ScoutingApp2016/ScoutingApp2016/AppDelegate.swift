@@ -57,14 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             
             
             if (adminAccounts.contains(email)){
-                print("Admin Login")
+                //print("Admin Login")
             }
             else if (email.substring(email.characters.count - "bxscience.edu".characters.count, end: email.characters.count) != "bxscience.edu"){
-                print("Signed out")
+                print("Signed out, Non-BronxScience email account")
                 GIDSignIn.sharedInstance().signOut()
             }
             else{
-                print("Successful Sign in")
+                //print("Successful Sign in")
             }
             // ...
         } else {

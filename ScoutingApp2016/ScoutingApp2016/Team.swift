@@ -52,7 +52,7 @@ class Team {
         comment = ""
     }
     
-    public func crossedDefence(defence: Defences) {
+    func crossedDefence(defence: Defences) {
         switch(defence) {
         case Defences.Portcullis:
             numTimesCrossedPortcullis++
@@ -84,11 +84,11 @@ class Team {
         }
     }
     
-    public func addComment(comment: String!) {
+    func addComment(comment: String!) {
         self.comment = comment
     }
     
-    public func finalizeJSON() {
+    func finalizeJSON() {
         
         jsonObject["crossedPortcullis"] = self.numTimesCrossedPortcullis
         jsonObject["crossedChevalDeFrise"] = self.numTimesCrossedChevalDeFrise
@@ -116,7 +116,7 @@ class Team {
         }
     }
     
-    public func resetData() {
+    func resetData() {
         numTimesCrossedPortcullis = 0
         numTimesCrossedChevalDeFrise = 0
         numTimesCrossedMoat = 0

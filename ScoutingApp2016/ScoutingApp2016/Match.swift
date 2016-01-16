@@ -18,11 +18,11 @@ class Match {
         self.matchNum = matchNum
     }
     
-    public func getTeams() -> [Team] {
+    func getTeams() -> [Team] {
         return teams
     }
     
-    public func getMatchNum() -> Int {
+    func getMatchNum() -> Int {
         return matchNum
     }
     
