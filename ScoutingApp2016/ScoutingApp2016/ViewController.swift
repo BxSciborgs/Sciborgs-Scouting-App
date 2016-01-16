@@ -37,12 +37,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         //view.addSubview(pickMode)
         print("done")
         
-        let testTeam = Team(teamNumber: 1155, roundNumber: 1)
+        let testTeam = Team(teamNumber: 1155, roundNumber: 2)
         
         //Information for testTeam round 1
-        testTeam.crossedDefence(Defences.SallyPort)
+        testTeam.crossedDefence(Defences.ChevalDeFrise)
         testTeam.crossedDefence(Defences.Drawbridge)
-        testTeam.addComment("ThisTeamIsAmazing")
+        testTeam.addComment("ThisIsRound2")
         //testTeam.finalizeJSON()
         
         let testTeamProfile = TeamProfile(teamNumber: 1155)

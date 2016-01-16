@@ -48,9 +48,11 @@ class Team {
     
     init(teamNumber: Int!, roundNumber: Int!) {
         self.teamNumber = teamNumber
+        self.roundNumber = roundNumber
         
         jsonObject = ["teamNumber": self.teamNumber!]
-        self.roundNumber = roundNumber
+        jsonObject = ["roundNumber": self.roundNumber!]
+        
         comment = ""
         
         pfObject = PFObject(className: "Team\(self.teamNumber!)")

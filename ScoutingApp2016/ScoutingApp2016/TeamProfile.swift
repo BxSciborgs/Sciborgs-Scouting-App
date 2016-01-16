@@ -24,10 +24,10 @@ public class TeamProfile {
     }
     
     public func queryAllRounds() {
-        self.queryRound(1)
+        self.queryRound(1, allRounds: true)
     }
     
-    public func queryRound(roundNum: Int!) {
+    public func queryRound(roundNum: Int!, allRounds: Bool!) {
         let parseObject = PFObject(className: "Team\(self.teamNumber)")
         
         teamQuery = PFQuery(className: "Team\(self.teamNumber)")
@@ -38,10 +38,12 @@ public class TeamProfile {
                 print("Found Round\(roundNum)")
                 
                 self.teamJSONS.append(round!.objectForKey("Round\(roundNum)"))
-                print(self.teamJSONS)
+                print(round!.objectForKey("Round\(roundNum)"))
                 
                 let nextRound = roundNum + 1
-                self.queryRound(nextRound)
+                if(allRounds == true) {
+                    self.queryRound(nextRound, allRounds: true)
+                }
             } else {
                 print("Round \(roundNum) not played yet")
             }
