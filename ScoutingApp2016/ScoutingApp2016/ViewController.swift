@@ -19,21 +19,18 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     var button: GIDSignInButton!
     var pickMode: PickModeView!
     override func viewDidLoad() {
-        super.viewDidLoad()     
-        
-        let width = UIScreen.mainScreen().bounds.width
-        let height = UIScreen.mainScreen().bounds.height
+        super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
         
         button = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        button.center = CGPoint(x: width/2, y: height/2)
+        button.center = CGPoint(x: Screen.width/2, y: Screen.height/2)
         button.enabled = true
         
         // Uncomment to automatically sign in the user.
         GIDSignIn.sharedInstance().signInSilently()
         
-        pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         
         view.addSubview(button)
