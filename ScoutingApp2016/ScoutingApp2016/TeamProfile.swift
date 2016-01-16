@@ -31,9 +31,10 @@ public class TeamProfile {
         let parseObject = PFObject(className: "Team\(self.teamNumber)")
         
         teamQuery = PFQuery(className: "Team\(self.teamNumber)")
-        teamQuery.getObjectInBackgroundWithId("JWzUYHy8DZ") {
+        teamQuery.whereKeyExists("Round\(roundNum)")
+        teamQuery.getFirstObjectInBackgroundWithBlock {
             (round: PFObject?, error: NSError?) -> Void in
-            if error == nil && round?.objectForKey("Round\(roundNum)") != nil {
+            if error == nil {
                 print("Found Round\(roundNum)")
                 
                 self.teamJSONS.append(round!.objectForKey("Round\(roundNum)"))
