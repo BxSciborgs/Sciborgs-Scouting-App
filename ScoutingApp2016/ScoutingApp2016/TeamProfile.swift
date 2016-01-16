@@ -15,12 +15,12 @@ public class TeamProfile {
     var teamNumber: Int!
     
     var teamQuery: PFQuery!
-    var teamPFObjects: [PFObject!]
+    var teamJSONS: [AnyObject!]
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
         
-        teamPFObjects = [nil]
+        teamJSONS = []
     }
     
     public func queryAllRounds() {
@@ -28,30 +28,26 @@ public class TeamProfile {
     }
     
     public func queryRound(roundNum: Int!) {
+        let parseObject = PFObject(className: "Team\(self.teamNumber)")
+        
         teamQuery = PFQuery(className: "Team\(self.teamNumber)")
-        teamQuery.getObjectInBackgroundWithId("Round\(roundNum)") {
+        teamQuery.getObjectInBackgroundWithId("JWzUYHy8DZ") {
             (round: PFObject?, error: NSError?) -> Void in
-            if error == nil && round != nil {
+            if error == nil && round?.objectForKey("Round\(roundNum)") != nil {
                 print("Found Round\(roundNum)")
-                self.teamPFObjects.append(round)
-
+                
+                self.teamJSONS.append(round!.objectForKey("Round\(roundNum)"))
+                print(self.teamJSONS)
+                
                 let nextRound = roundNum + 1
                 self.queryRound(nextRound)
             } else {
-                print("Round not played yet")
+                print("Round \(roundNum) not played yet")
             }
         }
     }
     
-    public func getPFObjects() -> [PFObject!] {
-        return teamPFObjects
-    }
-    public func getJSONS() -> [String] {
-        var jsons: [String] = [""]
-        
-        for pfObject in getPFObjects() {
-            jsons.append(pfObject!.description)
-        }
-        return jsons
+    public func getJSONS() -> [AnyObject!] {
+        return self.teamJSONS
     }
 }

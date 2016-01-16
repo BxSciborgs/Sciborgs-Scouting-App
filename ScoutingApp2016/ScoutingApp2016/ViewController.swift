@@ -28,7 +28,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         button.enabled = true
         
         // Uncomment to automatically sign in the user.
-        GIDSignIn.sharedInstance().signInSilently()
+        //GIDSignIn.sharedInstance().signInSilently()
         
         pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         

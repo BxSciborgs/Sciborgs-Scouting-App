@@ -44,12 +44,16 @@ class Team {
     
     var comment: String?
     
+    var pfObject: PFObject?
+    
     init(teamNumber: Int!, roundNumber: Int!) {
         self.teamNumber = teamNumber
         
         jsonObject = ["teamNumber": self.teamNumber!]
         self.roundNumber = roundNumber
         comment = ""
+        
+        pfObject = PFObject(className: "Team\(self.teamNumber!)")
     }
     
     func crossedDefence(defence: Defences) {
@@ -104,9 +108,8 @@ class Team {
 
         let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
         if(valid) {
-            let parseObject = PFObject(className: "Team\(self.teamNumber!)")
-            parseObject.addObject(jsonObject, forKey: "Round\(self.roundNumber!)")
-            parseObject.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+            pfObject!.addObject(jsonObject, forKey: "Round\(self.roundNumber!)")
+            pfObject!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
                 if(succeeded) {
                     print("Sent JSON")
                 }else {
@@ -114,6 +117,10 @@ class Team {
                 }
             }
         }
+    }
+    
+    func getPFObject() -> PFObject {
+        return pfObject!
     }
     
     func resetData() {
