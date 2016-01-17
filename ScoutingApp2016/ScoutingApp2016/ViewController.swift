@@ -36,18 +36,19 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         //view.addSubview(pickMode)
         print("done")
         
-        
+        //Creates a TeamRound to store data for a SPECIFIC ROUND
         let testTeam = TeamRound(teamNumber: 1155, roundNumber: 1)
         
         //Information for testTeam round 1
-        testTeam.crossedDefence(Defences.ChevalDeFrise)
-        testTeam.crossedDefence(Defences.Portcullis)
-        testTeam.addComment("ThisIsRound1")
+        testTeam.crossedDefence(Defences.ChevalDeFrise) //example defence data
+        testTeam.crossedDefence(Defences.Portcullis) //example defence data
+        testTeam.addComment("ThisIsRound1") //example comment
         //testTeam.finalizeJSON()
         
+        //creates a TeamProfile to store data for ALL ROUNDS
         let testTeamProfile = TeamProfile(teamNumber: 1155)
-        testTeamProfile.queryAllRounds()
-        testTeamProfile.getJSONS()
+        testTeamProfile.queryAllRounds() //gets data from Parse
+        testTeamProfile.getJSONS() //returns array full of JSON objects
     }
     
     func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
