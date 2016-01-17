@@ -22,6 +22,7 @@
 		09C5676C1C46F82200873387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
 		09C567741C46F83B00873387 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567731C46F83B00873387 /* Obstacle.swift */; };
 		09C567761C46F84800873387 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567751C46F84800873387 /* LogIn.swift */; };
+		866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */; };
 		86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC971C484F2B0006DD22 /* Bolts.framework */; };
 		86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC991C484F340006DD22 /* Parse.framework */; };
 		86A7CC9E1C484FBF0006DD22 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */; };
@@ -58,6 +59,7 @@
 		09C5676D1C46F82200873387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09C567731C46F83B00873387 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		09C567751C46F84800873387 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		86A7CC971C484F2B0006DD22 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		86A7CC991C484F340006DD22 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		86A7CC9B1C484FBF0006DD22 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -139,22 +141,26 @@
 		09C567601C46F82200873387 /* ScoutingApp2016 */ = {
 			isa = PBXGroup;
 			children = (
+				86DF2AC71C49926F009500A1 /* Code */,
 				095045DF1C49BE8D00852B8E /* Views */,
 				091337821C49ADB2004A38B7 /* UITemplates */,
-				86DF2AC71C49926F009500A1 /* Code */,
-				09C567631C46F82200873387 /* ViewController.swift */,
-				09C567751C46F84800873387 /* LogIn.swift */,
-				09C567731C46F83B00873387 /* Obstacle.swift */,
-				09C567611C46F82200873387 /* AppDelegate.swift */,
-				09A09D041C499FA000B7BD60 /* Extensions.swift */,
+				866DC1F41C4B1B0F0073BED7 /* Extras */,
+			);
+			path = ScoutingApp2016;
+			sourceTree = "<group>";
+		};
+		866DC1F41C4B1B0F0073BED7 /* Extras */ = {
+			isa = PBXGroup;
+			children = (
 				09C567651C46F82200873387 /* Main.storyboard */,
 				09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */,
 				09C5676A1C46F82200873387 /* LaunchScreen.storyboard */,
 				09C567681C46F82200873387 /* Assets.xcassets */,
 				09C5676D1C46F82200873387 /* Info.plist */,
 				86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */,
+				866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */,
 			);
-			path = ScoutingApp2016;
+			name = Extras;
 			sourceTree = "<group>";
 		};
 		86A7CCA11C484FD70006DD22 /* Frameworks */ = {
@@ -182,6 +188,11 @@
 		86DF2AC71C49926F009500A1 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				09C567631C46F82200873387 /* ViewController.swift */,
+				09C567751C46F84800873387 /* LogIn.swift */,
+				09C567731C46F83B00873387 /* Obstacle.swift */,
+				09C567611C46F82200873387 /* AppDelegate.swift */,
+				09A09D041C499FA000B7BD60 /* Extensions.swift */,
 				86DF2AC31C499259009500A1 /* Match.swift */,
 				86DF2AC51C49925F009500A1 /* Team.swift */,
 				86DF2AC81C49A446009500A1 /* TeamProfile.swift */,
@@ -273,6 +284,7 @@
 				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
 				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
 				09C567761C46F84800873387 /* LogIn.swift in Sources */,
+				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
 				86DF2AC41C499259009500A1 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

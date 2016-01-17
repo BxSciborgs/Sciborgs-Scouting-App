@@ -15,7 +15,7 @@ public class TeamProfile {
     var teamNumber: Int!
     
     var teamQuery: PFQuery!
-    var teamJSONS: [AnyObject!]
+    var teamJSONS: [JSON!]
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
@@ -37,8 +37,9 @@ public class TeamProfile {
             if error == nil {
                 print("Found Round\(roundNum)")
                 
-                self.teamJSONS.append(round!.objectForKey("Round\(roundNum)"))
-                print(round!.objectForKey("Round\(roundNum)"))
+                let roundInfo = round!.objectForKey("Round\(roundNum)")
+                let roundJSON = JSON(roundInfo!)
+                print(roundJSON)
                 
                 let nextRound = roundNum + 1
                 if(allRounds == true) {
@@ -50,7 +51,7 @@ public class TeamProfile {
         }
     }
     
-    public func getJSONS() -> [AnyObject!] {
+    public func getJSONS() -> [JSON!] {
         return self.teamJSONS
     }
 }
