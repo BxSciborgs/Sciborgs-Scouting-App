@@ -22,16 +22,15 @@ public enum Defences {
     case LowBar
 }
 
-//Represents data for a SPECIFIC ROUND
-
-class Team {
+//Information for a SPECIFIC ROUND
+class TeamRound {
     
-    var matches: [Int]?
     var teamNumber: Int?
     var roundNumber: Int?
     
     var jsonObject: [String: AnyObject]
     
+    //scouting info for defences
     var numTimesCrossedPortcullis: Int = 0
     var numTimesCrossedChevalDeFrise: Int = 0
     var numTimesCrossedMoat: Int = 0
@@ -42,6 +41,7 @@ class Team {
     var numTimesCrossedRoughTerrain: Int = 0
     var numTimesCrossedLowBar: Int = 0
     
+    //scouting comment
     var comment: String?
     
     var pfObject: PFObject?
@@ -50,6 +50,7 @@ class Team {
         self.teamNumber = teamNumber
         self.roundNumber = roundNumber
         
+        //gives the JSON object initial values - these won't change
         jsonObject = ["teamNumber": self.teamNumber!]
         jsonObject = ["roundNumber": self.roundNumber!]
         
@@ -58,6 +59,7 @@ class Team {
         pfObject = PFObject(className: "Team\(self.teamNumber!)")
     }
     
+    //changes the number of times a defence has been crossed
     func crossedDefence(defence: Defences) {
         switch(defence) {
         case Defences.Portcullis:
@@ -90,10 +92,12 @@ class Team {
         }
     }
     
+    //changes comment
     func addComment(comment: String!) {
         self.comment = comment
     }
     
+    //finalizes the JSON by setting all the values and keys and sends it up to Parse
     func finalizeJSON() {
         
         jsonObject["crossedPortcullis"] = self.numTimesCrossedPortcullis
@@ -108,6 +112,7 @@ class Team {
         
         jsonObject["Comment"] = self.comment
 
+        //checks if data stored is in valid JSON format
         let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
         if(valid) {
             pfObject!.addObject(jsonObject, forKey: "Round\(self.roundNumber!)")
@@ -121,6 +126,7 @@ class Team {
         }
     }
     
+    //methods not used, but may be useful in the future
     func getPFObject() -> PFObject {
         return pfObject!
     }

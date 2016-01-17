@@ -8,17 +8,17 @@
 
 import Foundation
 
-class Match {
+class Round {
     
-    var teams: [Team]
+    var teams: [TeamRound]
     var matchNum: Int!
     
-    init(matchNum: Int!, teams: [Team]) {
+    init(matchNum: Int!, teams: [TeamRound]) {
         self.teams = teams
         self.matchNum = matchNum
     }
     
-    func getTeams() -> [Team] {
+    func getTeams() -> [TeamRound] {
         return teams
     }
     

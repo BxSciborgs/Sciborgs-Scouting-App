@@ -35,8 +35,8 @@
 		86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCAE1C48507E0006DD22 /* libz.tbd */; };
 		86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCB01C4850870006DD22 /* libsqlite3.tbd */; };
 		86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
-		86DF2AC41C499259009500A1 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC31C499259009500A1 /* Match.swift */; };
-		86DF2AC61C49925F009500A1 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC51C49925F009500A1 /* Team.swift */; };
+		86DF2AC41C499259009500A1 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC31C499259009500A1 /* Round.swift */; };
+		86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC51C49925F009500A1 /* TeamRound.swift */; };
 		86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC81C49A446009500A1 /* TeamProfile.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,8 +73,8 @@
 		86A7CCAE1C48507E0006DD22 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		86A7CCB01C4850870006DD22 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoutingApp2016-Bridging-Header.h"; sourceTree = "<group>"; };
-		86DF2AC31C499259009500A1 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
-		86DF2AC51C49925F009500A1 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		86DF2AC31C499259009500A1 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		86DF2AC51C49925F009500A1 /* TeamRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamRound.swift; sourceTree = "<group>"; };
 		86DF2AC81C49A446009500A1 /* TeamProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,8 +193,8 @@
 				09C567731C46F83B00873387 /* Obstacle.swift */,
 				09C567611C46F82200873387 /* AppDelegate.swift */,
 				09A09D041C499FA000B7BD60 /* Extensions.swift */,
-				86DF2AC31C499259009500A1 /* Match.swift */,
-				86DF2AC51C49925F009500A1 /* Team.swift */,
+				86DF2AC31C499259009500A1 /* Round.swift */,
+				86DF2AC51C49925F009500A1 /* TeamRound.swift */,
 				86DF2AC81C49A446009500A1 /* TeamProfile.swift */,
 			);
 			name = Code;
@@ -278,14 +278,14 @@
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
 				09A09D071C49A0E400B7BD60 /* PickModeView.swift in Sources */,
-				86DF2AC61C49925F009500A1 /* Team.swift in Sources */,
+				86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
 				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
 				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
 				09C567761C46F84800873387 /* LogIn.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
-				86DF2AC41C499259009500A1 /* Match.swift in Sources */,
+				86DF2AC41C499259009500A1 /* Round.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
