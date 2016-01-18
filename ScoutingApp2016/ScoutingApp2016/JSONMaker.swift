@@ -71,6 +71,7 @@ class JSONMaker {
             i++
         }
         
+        
         for index in 0..<keyArray.count{
             jsonObject[keyArray[index]] = valueArray[index]
         }
@@ -80,6 +81,17 @@ class JSONMaker {
         
         print("Took", String(end - start), "seconds to make JSON")
         return jsonObject
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
 }
 

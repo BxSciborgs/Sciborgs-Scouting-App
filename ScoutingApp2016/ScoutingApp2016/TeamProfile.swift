@@ -42,20 +42,18 @@ public class TeamProfile {
                 
                 let roundJSON = JSON(roundInfo!) //info converted to JSON
    
-                let jason: String = String(roundJSON)
+                var jsonString: String = String(roundJSON)
+                jsonString.trim("[")
+                jsonString.trim("]")
                 
-                let jasonMaker = JSONMaker(str: jason)
+                let fixedJSON = self.convertStringToDictionary(jsonString)
                 
-                
-                let json = jasonMaker.make()
-                
-                print("json: ", json, "\n")
-                print("Comment", json["Comment"])
+                print("JSON: ", fixedJSON!, "\n")
+                print("Comment: ", fixedJSON!["Comment"]!)
                 
                 self.teamJSONS.append(roundJSON) //adds JSON to array
 
                 let nextRound = roundNum + 1
-
                 
                 if(allRounds == true) {
                     self.queryRound(nextRound, allRounds: true) //recursively searching if next round exists
@@ -67,6 +65,17 @@ public class TeamProfile {
                 print("\nRound \(roundNum) not played yet")
             }
         }
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
     
     //returns array full of round JSONS

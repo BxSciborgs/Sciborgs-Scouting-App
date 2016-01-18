@@ -28,6 +28,14 @@ extension String{
         }
     }
     
+    mutating func trim(char: Character){
+        for ltr in characters{
+            if (ltr == char){
+                removeAtIndex(characters.indexOf(ltr)!)
+            }
+        }
+    }
+    
     // Counts the appearances of a string in another
     func countRepetitions(substring: String) -> Int{
         var repetitions = 0
