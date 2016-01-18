@@ -18,11 +18,13 @@ public class TeamProfile {
     
     var teamQuery: PFQuery!
     var teamJSONS: [JSON!]
+    var allRoundsJSON: [String: AnyObject!]
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
         
         teamJSONS = []
+        allRoundsJSON = ["Team" : teamNumber]
     }
     
     //Will recursively search for all rounds
@@ -47,18 +49,16 @@ public class TeamProfile {
                 jsonString.trim("]")
                 
                 let fixedJSON = self.convertStringToDictionary(jsonString)
+                self.allRoundsJSON["Round\(roundNum)"] = fixedJSON
+                print("Full JSON \(self.allRoundsJSON["Round\(roundNum)"]!)")//full json
+                print("Comment: \(self.allRoundsJSON["Round\(roundNum)"]!["Comment"]!) \n") //example element of json
                 
-                print("JSON: ", fixedJSON!, "\n")
-                print("Comment: ", fixedJSON!["Comment"]!)
-                
-                self.teamJSONS.append(roundJSON) //adds JSON to array
-
                 let nextRound = roundNum + 1
                 
                 if(allRounds == true) {
                     self.queryRound(nextRound, allRounds: true) //recursively searching if next round exists
                 }else {
-                    self.teamJSONS.removeAll() //ensures that only the specific JSON is in the array when getJSONS() is called
+                    self.allRoundsJSON = ["Team" : self.teamNumber] //ensures that only the specific JSON is in the array when getAllRound() is called
                 }
 
             } else {
@@ -78,8 +78,11 @@ public class TeamProfile {
         return nil
     }
     
-    //returns array full of round JSONS
-    public func getJSONS() -> [JSON!] {
-        return self.teamJSONS
+    public func getAllRounds() -> [String: AnyObject!] {
+        return allRoundsJSON
+    }
+    
+    public func getRound(round: Int!) -> [String: AnyObject!] {
+        return allRoundsJSON["Round\(round)"]! as! [String : AnyObject!]
     }
 }
