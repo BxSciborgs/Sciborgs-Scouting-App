@@ -38,7 +38,7 @@ public class TeamProfile {
         teamQuery.whereKeyExists("Round\(roundNum)")
         teamQuery.getFirstObjectInBackgroundWithBlock {(round: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                print("Found Round\(roundNum)")
+                print("Found Round\(roundNum) \n")
                 
                 let roundInfo = round!.objectForKey("Round\(roundNum)") //info retrieved from databse
                 
@@ -50,8 +50,8 @@ public class TeamProfile {
                 
                 let fixedJSON = self.convertStringToDictionary(jsonString)
                 self.allRoundsJSON["Round\(roundNum)"] = fixedJSON
-                print("Full JSON \(self.allRoundsJSON["Round\(roundNum)"]!)")//full json
-                print("Comment: \(self.allRoundsJSON["Round\(roundNum)"]!["Comment"]!) \n") //example element of json
+                print("Round \(roundNum): \(self.getRound(roundNum))")
+                print("Round \(roundNum) Comment: \(self.getRound(roundNum)["Comment"]!) \n")
                 
                 let nextRound = roundNum + 1
                 
