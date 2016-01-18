@@ -111,7 +111,7 @@ class TeamRound {
         jsonObject["crossedLowBar"] = self.numTimesCrossedLowBar
         
         jsonObject["Comment"] = self.comment
-
+                
         //checks if data stored is in valid JSON format
         let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
         if(valid) {

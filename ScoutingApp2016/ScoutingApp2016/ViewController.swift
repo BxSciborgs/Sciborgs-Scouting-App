@@ -18,6 +18,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
     var button: GIDSignInButton!
     var pickMode: PickModeView!
+    var testTeamProfile: TeamProfile!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,21 +36,22 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
         view.addSubview(button)
         //view.addSubview(pickMode)
-        print("done")
         
         //Creates a TeamRound to store data for a SPECIFIC ROUND
-        let testTeam = TeamRound(teamNumber: 1155, roundNumber: 1)
+        let testTeam = TeamRound(teamNumber: 1155, roundNumber: 2)
         
         //Information for testTeam round 1
         testTeam.crossedDefence(Defences.ChevalDeFrise) //example defence data
         testTeam.crossedDefence(Defences.Portcullis) //example defence data
-        testTeam.addComment("ThisIsRound1") //example comment
+        testTeam.addComment("ThisIsRound3") //example comment
         //testTeam.finalizeJSON()
         
         //creates a TeamProfile to store data for ALL ROUNDS
-        let testTeamProfile = TeamProfile(teamNumber: 1155)
-        testTeamProfile.queryAllRounds() //gets data from Parse
-        testTeamProfile.getJSONS() //returns array full of JSON objects
+        testTeamProfile = TeamProfile(teamNumber: 1155)
+        testTeamProfile.queryAllRounds()//gets data from Parse
+        //print("arr: " + String(testTeamProfile.getJSONS())) //returns array full of JSON objects
+        print("done")
+
     }
     
     func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {

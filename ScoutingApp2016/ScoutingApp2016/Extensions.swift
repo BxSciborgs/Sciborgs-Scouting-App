@@ -14,6 +14,20 @@ extension String{
         return self.substringWithRange(self.startIndex.advancedBy(start)..<self.startIndex.advancedBy(end))
     }
     
+//    func indexRange(start: Int, end: Int) -> Range<Index>{
+//        return self.startIndex.advancedBy(start)..<self.startIndex.advancedBy(end)
+//    }
+    
+    mutating func trim(){
+        let trimLetters: [Character] = [" ", "\n", "\t", "\"", "}"]
+        
+        for ltr in characters{
+            if (trimLetters.contains(ltr)){
+                removeAtIndex(characters.indexOf(ltr)!)
+            }
+        }
+    }
+    
     // Counts the appearances of a string in another
     func countRepetitions(substring: String) -> Int{
         var repetitions = 0

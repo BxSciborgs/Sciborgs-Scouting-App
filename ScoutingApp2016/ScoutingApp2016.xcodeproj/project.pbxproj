@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091337801C49A9C6004A38B7 /* BasicButton.swift */; };
 		095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* ViewTeamView.swift */; };
+		095045E71C4C08CD00852B8E /* JSONMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E61C4C08CD00852B8E /* JSONMaker.swift */; };
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
 		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		091337801C49A9C6004A38B7 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		095045E01C49BEB500852B8E /* ViewTeamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamView.swift; sourceTree = "<group>"; };
+		095045E61C4C08CD00852B8E /* JSONMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONMaker.swift; sourceTree = "<group>"; };
 		095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -196,6 +198,7 @@
 				86DF2AC31C499259009500A1 /* Round.swift */,
 				86DF2AC51C49925F009500A1 /* TeamRound.swift */,
 				86DF2AC81C49A446009500A1 /* TeamProfile.swift */,
+				095045E61C4C08CD00852B8E /* JSONMaker.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				09C567621C46F82200873387 /* AppDelegate.swift in Sources */,
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
+				095045E71C4C08CD00852B8E /* JSONMaker.swift in Sources */,
 				09A09D071C49A0E400B7BD60 /* PickModeView.swift in Sources */,
 				86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,

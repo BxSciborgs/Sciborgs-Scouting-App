@@ -31,27 +31,40 @@ public class TeamProfile {
     }
     
     //Searches database for a specific round
-    public func queryRound(roundNum: Int!, allRounds: Bool!) {        
+    public func queryRound(roundNum: Int!, allRounds: Bool!) {
         teamQuery = PFQuery(className: "Team\(teamNumber)")
         teamQuery.whereKeyExists("Round\(roundNum)")
-        teamQuery.getFirstObjectInBackgroundWithBlock {
-            (round: PFObject?, error: NSError?) -> Void in
+        teamQuery.getFirstObjectInBackgroundWithBlock {(round: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 print("Found Round\(roundNum)")
                 
                 let roundInfo = round!.objectForKey("Round\(roundNum)") //info retrieved from databse
-                let roundJSON = JSON(roundInfo!) //info converted to JSON
-                print(roundJSON)
                 
+                let roundJSON = JSON(roundInfo!) //info converted to JSON
+   
+                let jason: String = String(roundJSON)
+                
+                let jasonMaker = JSONMaker(str: jason)
+                
+                
+                let json = jasonMaker.make()
+                
+                print("json: ", json, "\n")
+                print("Comment", json["Comment"])
+                
+                self.teamJSONS.append(roundJSON) //adds JSON to array
+
                 let nextRound = roundNum + 1
+
+                
                 if(allRounds == true) {
                     self.queryRound(nextRound, allRounds: true) //recursively searching if next round exists
                 }else {
                     self.teamJSONS.removeAll() //ensures that only the specific JSON is in the array when getJSONS() is called
                 }
-                self.teamJSONS.append(roundJSON) //adds JSON to array
+
             } else {
-                print("Round \(roundNum) not played yet")
+                print("\nRound \(roundNum) not played yet")
             }
         }
     }
