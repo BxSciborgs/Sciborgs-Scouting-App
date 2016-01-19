@@ -52,11 +52,10 @@ class TeamRound {
         
         //gives the JSON object initial values - these won't change
         jsonObject = ["teamNumber": self.teamNumber!]
-        jsonObject = ["roundNumber": self.roundNumber!]
         
         comment = ""
         
-        pfObject = PFObject(className: "Team\(self.teamNumber!)")
+        pfObject = PFObject(className: "Teams")
     }
     
     //changes the number of times a defence has been crossed
@@ -112,10 +111,36 @@ class TeamRound {
         
         jsonObject["Comment"] = self.comment
                 
+        var dictionaryJSON: [String: AnyObject] = [:]
+        var stringJSON = ""
+        let teamQuery = PFQuery(className: "Teams")
+        teamQuery.whereKeyExists("Team\(teamNumber!)")
+        
+        teamQuery.getFirstObjectInBackgroundWithBlock {(team: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                let team = team!.objectForKey("Team\(self.teamNumber!)") //info retrieved from databse
+                let teamJSON = JSON(team!) //info converted to JSON
+                
+                var jsonString: String = String(teamJSON)
+                jsonString.trim("[")
+                jsonString.trim("]")
+                
+                dictionaryJSON = self.convertStringToDictionary(jsonString)!
+                dictionaryJSON["Round\(self.roundNumber!)"] = self.jsonObject
+                stringJSON = String(dictionaryJSON)
+                stringJSON.trim("[")
+                stringJSON.trim("]")
+                stringJSON = "[{\(String(stringJSON))}]"
+                print(stringJSON)
+            } else {
+                
+            }
+        }
+        
         //checks if data stored is in valid JSON format
         let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
         if(valid) {
-            pfObject!.addObject(jsonObject, forKey: "Round\(self.roundNumber!)")
+            pfObject!.addObject(stringJSON, forKey: "Team\(teamNumber!)")
             pfObject!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
                 if(succeeded) {
                     print("Sent JSON")
@@ -124,6 +149,7 @@ class TeamRound {
                 }
             }
         }
+
     }
     
     //methods not used, but may be useful in the future
@@ -144,6 +170,17 @@ class TeamRound {
         
         comment = ""
         roundNumber = 0
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
 }
 

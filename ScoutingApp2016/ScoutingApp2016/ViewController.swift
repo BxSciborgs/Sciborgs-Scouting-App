@@ -44,11 +44,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         testTeam.crossedDefence(Defences.ChevalDeFrise) //example defence data
         testTeam.crossedDefence(Defences.Portcullis) //example defence data
         testTeam.addComment("ThisIsRound3") //example comment
-        //testTeam.finalizeJSON()
+        testTeam.finalizeJSON()
         
         //creates a TeamProfile to store data for ALL ROUNDS
         testTeamProfile = TeamProfile(teamNumber: 1155)
-        testTeamProfile.queryAllRounds()//gets data from Parse
+        //testTeamProfile.queryAllRounds()//gets data from Parse
         //print("arr: " + String(testTeamProfile.getJSONS())) //returns array full of JSON objects
         print("done")
 
