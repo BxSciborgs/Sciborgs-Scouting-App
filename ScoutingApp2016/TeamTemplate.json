@@ -1,0 +1,8 @@
+{ //json
+	"number" : null,
+	"rounds" : [],
+	"stats" : {
+		"avgRoundScore" : null,
+		"avgDefenseScore" : null
+	}
+}

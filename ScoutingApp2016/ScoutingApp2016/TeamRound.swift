@@ -28,7 +28,9 @@ class TeamRound {
     var teamNumber: Int?
     var roundNumber: Int?
     
-    var jsonObject: [String: AnyObject]
+    var teamObject: [String : AnyObject]
+    var round: [String : AnyObject]
+    var stats: [String : AnyObject]
     
     //scouting info for defences
     var numTimesCrossedPortcullis: Int = 0
@@ -41,6 +43,12 @@ class TeamRound {
     var numTimesCrossedRoughTerrain: Int = 0
     var numTimesCrossedLowBar: Int = 0
     
+    //auto
+    var movedToDefence: Bool! = false
+    var crossedDefence: Bool! = false
+    var lowGoal: Bool! = false
+    var highGoal: Bool! = false
+    
     //scouting comment
     var comment: String?
     
@@ -51,43 +59,80 @@ class TeamRound {
         self.roundNumber = roundNumber
         
         //gives the JSON object initial values - these won't change
-        jsonObject = ["teamNumber": self.teamNumber!]
-        
         comment = ""
         
+        teamObject = [:]
+        round = [:]
+        stats = [:]
+    }
+    
+    //should be called only once, when the team is first created on Parse
+    func createParseSkeleton() {
+        teamObject = ["teamNumber" : teamNumber!] //just a vaue
+        teamObject["rounds"] = [round] //array of jsons
+        teamObject["stats"] = stats //just a json
+        
         pfObject = PFObject(className: "Teams")
+        pfObject!.addObject(teamObject, forKey: "Team\(teamNumber!)")
+        pfObject!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
+            if(succeeded) {
+                print("Sent JSON")
+            }else {
+                print("Didnt send: \(error?.description)")
+            }
+        }
+    }
+    
+    func newRound(roundNum: Int!) {
+        var autoPoints: [String: AnyObject] = [:]
+        var telePoints: [String: AnyObject] = [:]
+        var defences: [String: AnyObject] = [:]
+        var goals: [String: AnyObject] = [:]
+        
+        telePoints["defences"] = defences
+        telePoints["goals"] = goals
+        
+        round["roundNumber"] = roundNum
+        round["autoPoints"] = autoPoints
+        round["telePoints"] = telePoints
     }
     
     //changes the number of times a defence has been crossed
-    func crossedDefence(defence: Defences) {
-        switch(defence) {
-        case Defences.Portcullis:
-            numTimesCrossedPortcullis++
-            break
-        case Defences.ChevalDeFrise:
-            numTimesCrossedChevalDeFrise++
-            break
-        case Defences.Moat:
-            numTimesCrossedMoat++
-            break
-        case Defences.Ramparts:
-            numTimesCrossedRamparts++
-            break
-        case Defences.Drawbridge:
-            numTimesCrossedDrawbridge++
-            break
-        case Defences.SallyPort:
-            numTimesCrossedSallyPort++
-            break
-        case Defences.RockWall:
-            numTimesCrossedRockWall++
-            break
-        case Defences.RoughtTerrain:
-            numTimesCrossedRoughTerrain++
-            break
-        case Defences.LowBar:
-            numTimesCrossedLowBar++
-            break
+    func crossedDefence(defence: Defences, autonomous: Bool!) {
+        if(autonomous == true) {
+            self.crossedDefence = true
+        }else {
+            switch(defence) {
+            case Defences.Portcullis:
+                numTimesCrossedPortcullis++
+                break
+            case Defences.ChevalDeFrise:
+                numTimesCrossedChevalDeFrise++
+                break
+            case Defences.Moat:
+                numTimesCrossedMoat++
+                break
+            case Defences.Ramparts:
+                numTimesCrossedRamparts++
+                break
+            case Defences.Drawbridge:
+                numTimesCrossedDrawbridge++
+                break
+            case Defences.SallyPort:
+                numTimesCrossedSallyPort++
+                break
+            case Defences.RockWall:
+                numTimesCrossedRockWall++
+                break
+            case Defences.RoughtTerrain:
+                numTimesCrossedRoughTerrain++
+                break
+            case Defences.LowBar:
+                numTimesCrossedLowBar++
+                break
+            default:
+                break
+            }
         }
     }
     
@@ -99,17 +144,17 @@ class TeamRound {
     //finalizes the JSON by setting all the values and keys and sends it up to Parse
     func finalizeJSON() {
         
-        jsonObject["crossedPortcullis"] = self.numTimesCrossedPortcullis
-        jsonObject["crossedChevalDeFrise"] = self.numTimesCrossedChevalDeFrise
-        jsonObject["crossedMoat"] = self.numTimesCrossedMoat
-        jsonObject["crossedRamparts"] = self.numTimesCrossedRamparts
-        jsonObject["crossedDrawbridge"] = self.numTimesCrossedDrawbridge
-        jsonObject["crossedSallyPort"] = self.numTimesCrossedSallyPort
-        jsonObject["crossedRockWall"] = self.numTimesCrossedRockWall
-        jsonObject["crossedRoughTerrain"] = self.numTimesCrossedRoughTerrain
-        jsonObject["crossedLowBar"] = self.numTimesCrossedLowBar
+        round["crossedPortcullis"] = self.numTimesCrossedPortcullis
+        round["crossedChevalDeFrise"] = self.numTimesCrossedChevalDeFrise
+        round["crossedMoat"] = self.numTimesCrossedMoat
+        round["crossedRamparts"] = self.numTimesCrossedRamparts
+        round["crossedDrawbridge"] = self.numTimesCrossedDrawbridge
+        round["crossedSallyPort"] = self.numTimesCrossedSallyPort
+        round["crossedRockWall"] = self.numTimesCrossedRockWall
+        round["crossedRoughTerrain"] = self.numTimesCrossedRoughTerrain
+        round["crossedLowBar"] = self.numTimesCrossedLowBar
         
-        jsonObject["Comment"] = self.comment
+        round["Comment"] = self.comment
                 
         var dictionaryJSON: [String: AnyObject] = [:]
         var stringJSON = ""
@@ -119,14 +164,14 @@ class TeamRound {
         teamQuery.getFirstObjectInBackgroundWithBlock {(team: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 let team = team!.objectForKey("Team\(self.teamNumber!)") //info retrieved from databse
-                let teamJSON = JSON(team!) //info converted to JSON
-                
+                let teamJSON = JSON(team!) //info converted to JSO
+
                 var jsonString: String = String(teamJSON)
                 jsonString.trim("[")
                 jsonString.trim("]")
                 
                 dictionaryJSON = self.convertStringToDictionary(jsonString)!
-                dictionaryJSON["Round\(self.roundNumber!)"] = self.jsonObject
+                dictionaryJSON["Round\(self.roundNumber!)"] = self.round
                 stringJSON = String(dictionaryJSON)
                 stringJSON.trim("[")
                 stringJSON.trim("]")
@@ -138,7 +183,7 @@ class TeamRound {
         }
         
         //checks if data stored is in valid JSON format
-        let valid = NSJSONSerialization.isValidJSONObject(jsonObject)
+        let valid = NSJSONSerialization.isValidJSONObject(round)
         if(valid) {
             pfObject!.addObject(stringJSON, forKey: "Team\(teamNumber!)")
             pfObject!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
