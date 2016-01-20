@@ -23,6 +23,9 @@
 		09C5676C1C46F82200873387 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
 		09C567741C46F83B00873387 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567731C46F83B00873387 /* Obstacle.swift */; };
 		09C567761C46F84800873387 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567751C46F84800873387 /* LogIn.swift */; };
+		09D9C7541C5035CB00BEB145 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09D9C74D1C50352F00BEB145 /* SwiftHTTP.framework */; };
+		09D9C7551C5035CB00BEB145 /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 09D9C74D1C50352F00BEB145 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* GetTeams.swift */; };
 		866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */; };
 		86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC971C484F2B0006DD22 /* Bolts.framework */; };
 		86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC991C484F340006DD22 /* Parse.framework */; };
@@ -40,6 +43,58 @@
 		86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC51C49925F009500A1 /* TeamRound.swift */; };
 		86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC81C49A446009500A1 /* TeamProfile.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		09D9C74C1C50352F00BEB145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
+			remoteInfo = SwiftHTTP;
+		};
+		09D9C74E1C50352F00BEB145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
+			remoteInfo = SwiftHTTPTests;
+		};
+		09D9C7501C50352F00BEB145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958025919E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSX;
+		};
+		09D9C7521C50352F00BEB145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958026319E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSXTests;
+		};
+		09D9C7561C5035CB00BEB145 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BFD901519C8D8B500DD99B6;
+			remoteInfo = SwiftHTTP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09D9C7581C5035CC00BEB145 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09D9C7551C5035CB00BEB145 /* SwiftHTTP.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		091337801C49A9C6004A38B7 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
@@ -61,6 +116,8 @@
 		09C5676D1C46F82200873387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09C567731C46F83B00873387 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
 		09C567751C46F84800873387 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
+		09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
+		09DBFA3F1C50316C00511FA4 /* GetTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTeams.swift; sourceTree = "<group>"; };
 		866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		86A7CC971C484F2B0006DD22 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		86A7CC991C484F340006DD22 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -85,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D9C7541C5035CB00BEB145 /* SwiftHTTP.framework in Frameworks */,
 				86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */,
 				86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */,
 				095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */,
@@ -126,6 +184,7 @@
 		09C567551C46F82100873387 = {
 			isa = PBXGroup;
 			children = (
+				09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */,
 				86A7CCA11C484FD70006DD22 /* Frameworks */,
 				09C567601C46F82200873387 /* ScoutingApp2016 */,
 				09C5675F1C46F82200873387 /* Products */,
@@ -149,6 +208,17 @@
 				866DC1F41C4B1B0F0073BED7 /* Extras */,
 			);
 			path = ScoutingApp2016;
+			sourceTree = "<group>";
+		};
+		09D9C7461C50352F00BEB145 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09D9C74D1C50352F00BEB145 /* SwiftHTTP.framework */,
+				09D9C74F1C50352F00BEB145 /* SwiftHTTPTests.xctest */,
+				09D9C7511C50352F00BEB145 /* SwiftHTTP.framework */,
+				09D9C7531C50352F00BEB145 /* SwiftHTTPOSXTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		866DC1F41C4B1B0F0073BED7 /* Extras */ = {
@@ -199,6 +269,7 @@
 				86DF2AC51C49925F009500A1 /* TeamRound.swift */,
 				86DF2AC81C49A446009500A1 /* TeamProfile.swift */,
 				095045E61C4C08CD00852B8E /* JSONMaker.swift */,
+				09DBFA3F1C50316C00511FA4 /* GetTeams.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -213,10 +284,12 @@
 				09C5675A1C46F82200873387 /* Sources */,
 				09C5675B1C46F82200873387 /* Frameworks */,
 				09C5675C1C46F82200873387 /* Resources */,
+				09D9C7581C5035CC00BEB145 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				09D9C7571C5035CB00BEB145 /* PBXTargetDependency */,
 			);
 			name = ScoutingApp2016;
 			productName = ScoutingApp2016;
@@ -250,12 +323,49 @@
 			mainGroup = 09C567551C46F82100873387;
 			productRefGroup = 09C5675F1C46F82200873387 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 09D9C7461C50352F00BEB145 /* Products */;
+					ProjectRef = 09D9C7451C50352F00BEB145 /* SwiftHTTP.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				09C5675D1C46F82200873387 /* ScoutingApp2016 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		09D9C74D1C50352F00BEB145 /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09D9C74C1C50352F00BEB145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09D9C74F1C50352F00BEB145 /* SwiftHTTPTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPTests.xctest;
+			remoteRef = 09D9C74E1C50352F00BEB145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09D9C7511C50352F00BEB145 /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09D9C7501C50352F00BEB145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09D9C7531C50352F00BEB145 /* SwiftHTTPOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPOSXTests.xctest;
+			remoteRef = 09D9C7521C50352F00BEB145 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		09C5675C1C46F82200873387 /* Resources */ = {
@@ -286,6 +396,7 @@
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
 				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
+				09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */,
 				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
 				09C567761C46F84800873387 /* LogIn.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
@@ -294,6 +405,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		09D9C7571C5035CB00BEB145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftHTTP;
+			targetProxy = 09D9C7561C5035CB00BEB145 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		09C567651C46F82200873387 /* Main.storyboard */ = {
@@ -410,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -434,6 +554,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
