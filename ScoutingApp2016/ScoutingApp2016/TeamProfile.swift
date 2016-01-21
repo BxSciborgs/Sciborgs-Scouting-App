@@ -40,7 +40,8 @@ public class TeamProfile {
             if error == nil {
                 print("Found Round\(roundNum) \n")
                 
-                let roundInfo = round!.objectForKey("Round\(roundNum)") //info retrieved from databse
+                let roundInfo = round!.objectForKey("Round\(roundNum)")
+                //info retrieved from databse
                 
                 let roundJSON = JSON(roundInfo!) //info converted to JSON
    

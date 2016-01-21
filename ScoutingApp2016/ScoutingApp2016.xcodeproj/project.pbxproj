@@ -25,11 +25,11 @@
 		09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* GetTeams.swift */; };
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
-		86565CE01C503DBF00660B44 /* RoundTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDB1C503CDF00660B44 /* RoundTemplate.json */; };
-		86565CE11C503DC200660B44 /* TeamTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDC1C503CDF00660B44 /* TeamTemplate.json */; };
 		865FD6461C517EC700C83D4A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; };
 		865FD6471C517ED600C83D4A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; };
 		865FD6481C517ED600C83D4A /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		865FD64B1C5181CF00C83D4A /* RoundTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDB1C503CDF00660B44 /* RoundTemplate.json */; };
+		865FD64C1C5181D200C83D4A /* TeamTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDC1C503CDF00660B44 /* TeamTemplate.json */; };
 		866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */; };
 		86A7CC981C484F2B0006DD22 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC971C484F2B0006DD22 /* Bolts.framework */; };
 		86A7CC9A1C484F340006DD22 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CC991C484F340006DD22 /* Parse.framework */; };
@@ -428,8 +428,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86565CE11C503DC200660B44 /* TeamTemplate.json in Resources */,
-				86565CE01C503DBF00660B44 /* RoundTemplate.json in Resources */,
+				865FD64C1C5181D200C83D4A /* TeamTemplate.json in Resources */,
+				865FD64B1C5181CF00C83D4A /* RoundTemplate.json in Resources */,
 				86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */,
 				86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */,
 				09C567691C46F82200873387 /* Assets.xcassets in Resources */,

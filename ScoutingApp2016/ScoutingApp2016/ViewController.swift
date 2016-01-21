@@ -50,13 +50,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         //testTeamProfile = TeamProfile(teamNumber: 1155)
         //testTeamProfile.queryAllRounds()//gets data from Parse
         //print("arr: " + String(testTeamProfile.getJSONS())) //returns array full of JSON objects
-<<<<<<< HEAD
         //print("done")
-=======
         
         //let getTeams = GetTeams()
-        print("done")
->>>>>>> origin/master
 
     }
     
