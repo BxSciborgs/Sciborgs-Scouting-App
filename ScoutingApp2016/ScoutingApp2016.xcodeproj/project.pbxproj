@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091337801C49A9C6004A38B7 /* BasicButton.swift */; };
 		095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* ViewTeamView.swift */; };
-		095045E71C4C08CD00852B8E /* JSONMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E61C4C08CD00852B8E /* JSONMaker.swift */; };
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
 		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
@@ -20,9 +19,8 @@
 		09C567641C46F82200873387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567631C46F82200873387 /* ViewController.swift */; };
 		09C567671C46F82200873387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C567651C46F82200873387 /* Main.storyboard */; };
 		09C567691C46F82200873387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C567681C46F82200873387 /* Assets.xcassets */; };
-		09C567741C46F83B00873387 /* Obstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567731C46F83B00873387 /* Obstacle.swift */; };
-		09C567761C46F84800873387 /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567751C46F84800873387 /* LogIn.swift */; };
 		09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* GetTeams.swift */; };
+		860B50DC1C52E96100D3641A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B50DB1C52E96100D3641A /* DBManager.swift */; };
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
 		865FD6461C517EC700C83D4A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; };
@@ -44,8 +42,6 @@
 		86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A7CCB01C4850870006DD22 /* libsqlite3.tbd */; };
 		86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
 		86DF2AC41C499259009500A1 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC31C499259009500A1 /* Round.swift */; };
-		86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC51C49925F009500A1 /* TeamRound.swift */; };
-		86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC81C49A446009500A1 /* TeamProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +120,6 @@
 /* Begin PBXFileReference section */
 		091337801C49A9C6004A38B7 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		095045E01C49BEB500852B8E /* ViewTeamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamView.swift; sourceTree = "<group>"; };
-		095045E61C4C08CD00852B8E /* JSONMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONMaker.swift; sourceTree = "<group>"; };
 		095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -139,9 +134,8 @@
 		09C567681C46F82200873387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C5676B1C46F82200873387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09C5676D1C46F82200873387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		09C567731C46F83B00873387 /* Obstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obstacle.swift; sourceTree = "<group>"; };
-		09C567751C46F84800873387 /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		09DBFA3F1C50316C00511FA4 /* GetTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTeams.swift; sourceTree = "<group>"; };
+		860B50DB1C52E96100D3641A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		86565CD51C50392300660B44 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		86565CDB1C503CDF00660B44 /* RoundTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoundTemplate.json; sourceTree = "<group>"; };
 		86565CDC1C503CDF00660B44 /* TeamTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TeamTemplate.json; sourceTree = "<group>"; };
@@ -161,8 +155,6 @@
 		86A7CCB01C4850870006DD22 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoutingApp2016-Bridging-Header.h"; sourceTree = "<group>"; };
 		86DF2AC31C499259009500A1 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
-		86DF2AC51C49925F009500A1 /* TeamRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamRound.swift; sourceTree = "<group>"; };
-		86DF2AC81C49A446009500A1 /* TeamProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,15 +287,11 @@
 			isa = PBXGroup;
 			children = (
 				09C567631C46F82200873387 /* ViewController.swift */,
-				09C567751C46F84800873387 /* LogIn.swift */,
-				09C567731C46F83B00873387 /* Obstacle.swift */,
 				09C567611C46F82200873387 /* AppDelegate.swift */,
 				09A09D041C499FA000B7BD60 /* Extensions.swift */,
 				86DF2AC31C499259009500A1 /* Round.swift */,
-				86DF2AC51C49925F009500A1 /* TeamRound.swift */,
-				86DF2AC81C49A446009500A1 /* TeamProfile.swift */,
-				095045E61C4C08CD00852B8E /* JSONMaker.swift */,
 				86565CD51C50392300660B44 /* Team.swift */,
+				860B50DB1C52E96100D3641A /* DBManager.swift */,
 				09DBFA3F1C50316C00511FA4 /* GetTeams.swift */,
 			);
 			name = Code;
@@ -449,15 +437,11 @@
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
 				86565CD61C50392300660B44 /* Team.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
-				095045E71C4C08CD00852B8E /* JSONMaker.swift in Sources */,
 				09A09D071C49A0E400B7BD60 /* PickModeView.swift in Sources */,
-				86DF2AC61C49925F009500A1 /* TeamRound.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
-				09C567741C46F83B00873387 /* Obstacle.swift in Sources */,
+				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
 				09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */,
-				86DF2AC91C49A446009500A1 /* TeamProfile.swift in Sources */,
-				09C567761C46F84800873387 /* LogIn.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
 				86DF2AC41C499259009500A1 /* Round.swift in Sources */,
 			);

@@ -7,23 +7,14 @@
 //
 
 import Foundation
+import Parse
+import Bolts
 
 class Round {
-    
-    var teams: [TeamRound]
-    var matchNum: Int!
-    
-    init(matchNum: Int!, teams: [TeamRound]) {
-        self.teams = teams
-        self.matchNum = matchNum
+    init(teamNumber: Int!) {
+        
     }
     
-    func getTeams() -> [TeamRound] {
-        return teams
-    }
     
-    func getMatchNum() -> Int {
-        return matchNum
-    }
     
 }
