@@ -1,6 +1,10 @@
 {
 	"number" : null,
-	"rounds" : [],
+	"rounds" : [
+            "asdf1",
+            "asdf2",
+            "asdf3"
+    ],
 	"stats" : {
 		"avgRoundScore" : null,
 		"avgDefenseScore" : null
