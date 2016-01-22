@@ -13,52 +13,45 @@ import Bolts
 class Team {
     
     var teamNumber: Int!
-    var teamTemplate: [String:AnyObject]!
-    var roundTemplate: [String:AnyObject]!
+    var teamTemplate: JSON?
+    var roundTemplate: JSON?
     
     var pfObject: PFObject!
     var pfQuery: PFQuery!
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
-        teamTemplate = getJSON("TeamTemplate")
-        roundTemplate = getJSON("RoundTemplate")
         
-        //teamTemplate[0]["number"] = 10
-        //print(teamTemplate)
-//        pfObject = PFObject(className: "Templates")
-//        pfObject.addObject(teamTemplate!, forKey: "TeamTemplate")
-//        pfObject.addObject(roundTemplate!, forKey: "RoundTemplate")
-//        pfObject!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
-//            if(succeeded) {
-//                print("Sent JSON")
-//            }else {
-//                print("Didnt send: \(error?.description)")
-//            }
-//        }
+        teamTemplate = nil
+        roundTemplate = nil
         
-        print(getTeamTemplate())
-        print(getRoundTemplate())
+        queryRoundTemplate()
+        queryTeamTemplate()
     }
     
-    func getTeamTemplate() -> JSON {
-        var jsonObject: JSON = nil
-        
+    func queryTeamTemplate() {
         pfQuery = PFQuery(className: "Templates")
         pfQuery.whereKeyExists("TeamTemplate")
+        
+        var pfObject: AnyObject! = nil
+        
         pfQuery.getFirstObjectInBackgroundWithBlock {(object: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                let pfObject = object!.objectForKey("TeamTemplate")! //info retrieved from databse
+                pfObject = object!.objectForKey("TeamTemplate")! //info retrieved from databse
 
-                jsonObject = JSON(pfObject[0])
-                } else {
+                let jsonObject = JSON(pfObject[0])
+                self.teamTemplate = jsonObject
+            } else {
                 print("Didn't find anything")
             }
         }
-        return jsonObject
     }
     
-    func getRoundTemplate() -> JSON {
+    func printTemplate(template: JSON) {
+        print(template)
+    }
+    
+    func queryRoundTemplate() {
         var jsonObject: JSON = nil
         
         pfQuery = PFQuery(className: "Templates")
@@ -68,11 +61,11 @@ class Team {
                 let pfObject = object!.objectForKey("RoundTemplate")! //info retrieved from databse
                 
                 jsonObject = JSON(pfObject[0])
+                self.roundTemplate = jsonObject
             } else {
                 print("Didn't find anything")
             }
         }
-        return jsonObject
     }
     
     func getJSON(fileName: String!) -> [String:AnyObject] {
