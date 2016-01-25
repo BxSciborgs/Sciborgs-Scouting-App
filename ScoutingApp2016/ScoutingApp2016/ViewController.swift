@@ -18,7 +18,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
 
     var button: GIDSignInButton!
     var pickMode: PickModeView!
-    var testTeamProfile: TeamProfile!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         //print("arr: " + String(testTeamProfile.getJSONS())) //returns array full of JSON objects
         //print("done")
         
-        //let getTeams = GetTeams()
+        GetTeams.sendRequest("nyny", completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+            
+                print(teamNames)
+                print(teamNumbers)
+        })
 
     }
     

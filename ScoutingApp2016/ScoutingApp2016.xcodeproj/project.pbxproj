@@ -45,6 +45,55 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		09F1863F1C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
+			remoteInfo = SwiftHTTP;
+		};
+		09F186411C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
+			remoteInfo = SwiftHTTPTests;
+		};
+		09F186431C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958025919E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSX;
+		};
+		09F186451C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958026319E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSXTests;
+		};
+		09F186471C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C135EC11C4733CD00AA3A01;
+			remoteInfo = SwiftHTTPtvOS;
+		};
+		09F186491C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C135ECA1C4733CE00AA3A01;
+			remoteInfo = SwiftHTTPtvOSTests;
+		};
+		09F1864B1C5311020004952D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5C135FA91C4737E200AA3A01;
+			remoteInfo = SwiftHTTPWatchOS;
+		};
 		865FD6381C517E9900C83D4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 865FD62E1C517E9900C83D4A /* SwiftHTTP.xcodeproj */;
@@ -135,6 +184,7 @@
 		09C5676B1C46F82200873387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09C5676D1C46F82200873387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09DBFA3F1C50316C00511FA4 /* GetTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTeams.swift; sourceTree = "<group>"; };
+		09F186351C5311010004952D /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master (1)/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 		860B50DB1C52E96100D3641A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		86565CD51C50392300660B44 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		86565CDB1C503CDF00660B44 /* RoundTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoundTemplate.json; sourceTree = "<group>"; };
@@ -208,6 +258,7 @@
 				86565CDB1C503CDF00660B44 /* RoundTemplate.json */,
 				86565CDC1C503CDF00660B44 /* TeamTemplate.json */,
 				865FD62E1C517E9900C83D4A /* SwiftHTTP.xcodeproj */,
+				09F186351C5311010004952D /* SwiftHTTP.xcodeproj */,
 				86A7CCA11C484FD70006DD22 /* Frameworks */,
 				09C567601C46F82200873387 /* ScoutingApp2016 */,
 				09C5675F1C46F82200873387 /* Products */,
@@ -231,6 +282,20 @@
 				866DC1F41C4B1B0F0073BED7 /* Extras */,
 			);
 			path = ScoutingApp2016;
+			sourceTree = "<group>";
+		};
+		09F186361C5311010004952D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				09F186401C5311020004952D /* SwiftHTTP.framework */,
+				09F186421C5311020004952D /* SwiftHTTPTests.xctest */,
+				09F186441C5311020004952D /* SwiftHTTP.framework */,
+				09F186461C5311020004952D /* SwiftHTTPOSXTests.xctest */,
+				09F186481C5311020004952D /* SwiftHTTP.framework */,
+				09F1864A1C5311020004952D /* SwiftHTTPtvOSTests.xctest */,
+				09F1864C1C5311020004952D /* SwiftHTTP.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		865FD62F1C517E9900C83D4A /* Products */ = {
@@ -348,6 +413,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 09F186361C5311010004952D /* Products */;
+					ProjectRef = 09F186351C5311010004952D /* SwiftHTTP.xcodeproj */;
+				},
+				{
 					ProductGroup = 865FD62F1C517E9900C83D4A /* Products */;
 					ProjectRef = 865FD62E1C517E9900C83D4A /* SwiftHTTP.xcodeproj */;
 				},
@@ -360,6 +429,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		09F186401C5311020004952D /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09F1863F1C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F186421C5311020004952D /* SwiftHTTPTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPTests.xctest;
+			remoteRef = 09F186411C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F186441C5311020004952D /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09F186431C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F186461C5311020004952D /* SwiftHTTPOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPOSXTests.xctest;
+			remoteRef = 09F186451C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F186481C5311020004952D /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09F186471C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F1864A1C5311020004952D /* SwiftHTTPtvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPtvOSTests.xctest;
+			remoteRef = 09F186491C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		09F1864C1C5311020004952D /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 09F1864B1C5311020004952D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		865FD6391C517E9900C83D4A /* SwiftHTTP.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
