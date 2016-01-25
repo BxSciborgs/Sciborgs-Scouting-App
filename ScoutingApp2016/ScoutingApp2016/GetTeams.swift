@@ -51,13 +51,4 @@ class GetTeams{
             print("couldn't serialize the paraemeters: \(error)")
         }
     }
-    
-    func getTeamNumbers() -> [Int]
-    {
-        return allTeamsNumbers
-    }
-    
-    func getTeamNames() -> [String]{
-        return allTeamNames
-    }
 }

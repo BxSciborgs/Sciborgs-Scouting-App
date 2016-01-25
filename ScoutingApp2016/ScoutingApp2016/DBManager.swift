@@ -14,7 +14,10 @@ class DBManager {
     
     static func query(className: String, key: String, completion:(result:JSON)->Void) {
         let query = PFQuery(className: className)
+        
         query.orderByDescending("createdAt")
+        query.whereKeyExists(key)
+        
         query.getFirstObjectInBackgroundWithBlock {(obj: PFObject?, error: NSError?) -> Void in
             if error == nil {
                 print("Found \(key)")
@@ -36,6 +39,15 @@ class DBManager {
         let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
         jsonData = NSData(contentsOfFile: filePath!)
         return JSON(data: jsonData).dictionaryObject!
+    }
+    
+    static func addAllTeams() {
+        GetTeams.sendRequest("nyny", completion: {(teamNames: [String], teamNumbers: [Int])->Void in
+            for teamNum in teamNumbers {
+                let teamProfile = Team(teamNumber: teamNum)
+                teamProfile.sendSkeleton()
+            }
+        })
     }
     
 }
