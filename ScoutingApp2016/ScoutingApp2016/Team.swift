@@ -18,10 +18,28 @@ class Team {
     var roundTemplate: JSON?
     var teamJSON: JSON?
     
-    var currentRound: JSON!
+    public var currentRound: Round!
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
         
+    }
+    
+    func sendSkeleton() { //sends empty teamtemplate (must be done initially when creating each team)
+        DBManager.query("Templates", key: "TeamTemplate", completion: {(result)->Void in
+            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: result.dictionaryObject!)
+        })
+    }
+    
+    func createRound(roundNum: Int) {
+        currentRound = Round(roundNumber: roundNum)
+    }
+    
+    func submitCurrentRound() {
+        DBManager.query("Teams", key: "Team\(teamNumber)", completion: {(result)->Void in
+            var teamJSON = result
+            teamJSON["rounds"].arrayObject?.append(self.currentRound.getRound()) //appends current round being edited
+            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: teamJSON.dictionaryObject!)
+        })
     }
 }

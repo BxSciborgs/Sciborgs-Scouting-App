@@ -250,6 +250,7 @@
 		866DC1F41C4B1B0F0073BED7 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				09A09D041C499FA000B7BD60 /* Extensions.swift */,
 				09C567651C46F82200873387 /* Main.storyboard */,
 				09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */,
 				09C5676A1C46F82200873387 /* LaunchScreen.storyboard */,
@@ -288,7 +289,6 @@
 			children = (
 				09C567631C46F82200873387 /* ViewController.swift */,
 				09C567611C46F82200873387 /* AppDelegate.swift */,
-				09A09D041C499FA000B7BD60 /* Extensions.swift */,
 				86DF2AC31C499259009500A1 /* Round.swift */,
 				86565CD51C50392300660B44 /* Team.swift */,
 				860B50DB1C52E96100D3641A /* DBManager.swift */,

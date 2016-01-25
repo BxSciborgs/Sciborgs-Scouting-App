@@ -30,12 +30,12 @@ class DBManager {
         pfObject[key] = object
         pfObject.saveInBackground()
     }
-    
-//    static func getJSON(fileName: String!) -> [String:AnyObject] {
-//        var jsonData: NSData!
-//        let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
-//        jsonData = NSData(contentsOfFile: filePath!)
-//        return JSON(data: jsonData).dictionaryObject!
-//    }
+        
+    static func getJSON(fileName: String!) -> [String:AnyObject] {
+        var jsonData: NSData!
+        let filePath = NSBundle.mainBundle().pathForResource(fileName, ofType: "json")
+        jsonData = NSData(contentsOfFile: filePath!)
+        return JSON(data: jsonData).dictionaryObject!
+    }
     
 }

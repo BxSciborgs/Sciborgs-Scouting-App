@@ -45,7 +45,8 @@ class GetTeams{
         }
     }
     
-    func getTeamNumbers() -> [Int]{
+    func getTeamNumbers() -> [Int]
+    {
         return allTeamsNumbers
     }
     
