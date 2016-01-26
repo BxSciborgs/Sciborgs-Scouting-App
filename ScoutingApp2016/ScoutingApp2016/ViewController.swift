@@ -17,7 +17,7 @@ public struct Screen{
 class ViewController: UIViewController, GIDSignInUIDelegate {
 
     var button: GIDSignInButton!
-    var pickMode: PickModeView!
+    //var pickMode: PickModeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +31,16 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         // Uncomment to automatically sign in the user.
         GIDSignIn.sharedInstance().signInSilently()
         
+<<<<<<< HEAD
         pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         view.addSubview(pickMode)
+=======
+        //pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
+>>>>>>> ac53b00bbf15a7601c55c11de5746ed7667dfb44
         
-        view.addSubview(button)
+        //view.addSubview(button)
+        ///view.addSubview(HomeView(frame: self.view.frame))
+        view.addSubview(TeamPickerView(frame: self.view.frame, blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]))
 
         //view.addSubview(pickMode)        
     }
@@ -48,7 +54,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        view.addSubview(pickMode)
+        //view.addSubview(pickMode)
         
     }
 

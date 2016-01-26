@@ -27,7 +27,9 @@ class Team {
     
     func sendSkeleton() { //sends empty teamtemplate (must be done initially when creating each team)
         DBManager.query("Templates", key: "TeamTemplate", completion: {(result)->Void in
-            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: result.dictionaryObject!)
+            var teamJSON = result
+            teamJSON["number"].int = self.teamNumber
+            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: teamJSON.dictionaryObject!)
         })
     }
     
