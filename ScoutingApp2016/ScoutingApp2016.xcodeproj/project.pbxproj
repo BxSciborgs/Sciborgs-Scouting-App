@@ -17,6 +17,7 @@
 		09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A09D041C499FA000B7BD60 /* Extensions.swift */; };
 		09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D041C57FF2400FA56D1 /* RoundsView.swift */; };
 		09BA4D0D1C57FF9400FA56D1 /* TableViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */; };
+		09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */; };
 		09C567621C46F82200873387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567611C46F82200873387 /* AppDelegate.swift */; };
 		09C567641C46F82200873387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567631C46F82200873387 /* ViewController.swift */; };
 		09C567671C46F82200873387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C567651C46F82200873387 /* Main.storyboard */; };
@@ -180,6 +181,7 @@
 		09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09BA4D041C57FF2400FA56D1 /* RoundsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
 		09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewMaker.swift; sourceTree = "<group>"; };
+		09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		09C5675E1C46F82200873387 /* ScoutingApp2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoutingApp2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C567611C46F82200873387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09C567631C46F82200873387 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				095045E01C49BEB500852B8E /* ViewTeamView.swift */,
 				09BA4D041C57FF2400FA56D1 /* RoundsView.swift */,
 				09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */,
+				09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
 				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
+				09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */,
 				09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */,
 				09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,

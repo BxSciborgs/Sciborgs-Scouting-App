@@ -12,6 +12,7 @@ import UIKit
 public struct Screen{
     static let width = UIScreen.mainScreen().bounds.width
     static let height = UIScreen.mainScreen().bounds.height
+    static let frame = CGRect(x: 0, y: 0, width: width, height: height)
 }
 
 class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDelegate {

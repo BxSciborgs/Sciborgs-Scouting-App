@@ -13,9 +13,11 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
     var title: BasicLabel!
     var tableView: UITableView!
     var cells: [UITableViewCell!]!
-    
+    var teamNumbersArray: [Int]!
     
     init(){
+        
+        print("type created")
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
@@ -46,6 +48,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         //Create list of teams
         GetTeams.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
+                self.teamNumbersArray = teamNumbers
                 for x in 0..<teamNumbers.count{
                     self.makeCell(teamNames[x], number: teamNumbers[x])
                 }
@@ -96,7 +99,13 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
-        print(indexPath.row)
+        print("Team\(teamNumbersArray[indexPath.row])")
+        DBManager.query("Teams", key: "Team\(teamNumbersArray[indexPath.row])", completion: {(result: JSON) -> Void in
+            //print(result)
+            UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamProfileView(teamName: "Team\(self.teamNumbersArray[indexPath.row])", json: result), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+            self.removeFromSuperview()
+        })
+        
         
     }
     
@@ -113,4 +122,8 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension UITableViewCell{
+    
 }
