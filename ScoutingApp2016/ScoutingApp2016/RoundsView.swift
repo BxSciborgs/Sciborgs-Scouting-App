@@ -22,10 +22,12 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         cells = []
         
-        title = UILabel(frame:  CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/8))
-        title.text = "Matches"
-        title.textAlignment = NSTextAlignment.Center
-        title.center = CGPoint(x: Screen.width/2, y: Screen.height/8)
+//        title = UILabel(frame:  CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/8))
+//        title.text = "Matches"
+//        title.textAlignment = NSTextAlignment.Center
+//        title.center = CGPoint(x: Screen.width/2, y: Screen.height/8)
+        
+        title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "Matches", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
         
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/4), style: UITableViewStyle.Plain)
         

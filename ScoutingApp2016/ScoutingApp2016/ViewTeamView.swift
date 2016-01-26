@@ -19,6 +19,19 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
+        
+        // Create a navigation item with a title
+        let navigationItem = UINavigationItem()
+        
+        // Create left and right button for navigation item
+        let leftButton =  UIBarButtonItem(title: "Back", style:   UIBarButtonItemStyle.Done, target: self, action: "back")
+        
+        // Create two buttons for the navigation item
+        navigationItem.leftBarButtonItem = leftButton
+        navigationItem.rightBarButtonItem = nil
+        
+        // Assign the navigation item to the navigation bar
+        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = [navigationItem]
     
         cells = []
         
@@ -75,6 +88,11 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.insertSubview(cell, atIndex: cells.count - 1)
     }
     
+    func back(){
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.addSubview(HomeView())
+        self.removeFromSuperview()
+        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile

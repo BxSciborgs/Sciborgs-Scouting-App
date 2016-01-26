@@ -14,32 +14,47 @@ public struct Screen{
     static let height = UIScreen.mainScreen().bounds.height
 }
 
-class ViewController: UIViewController, GIDSignInUIDelegate {
+class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDelegate {
 
     var button: GIDSignInButton!
     //var pickMode: PickModeView!
+    var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        button = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: 200, height: 21))
-        button.center = CGPoint(x: Screen.width/2, y: Screen.height/2)
+        button = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: Screen.width/*200*/, height: 21))
+        button.center = CGPoint(x: Screen.width/2, y: Screen.height - button.frame.height/2)
         button.enabled = true
         
         // Uncomment to automatically sign in the user.
         GIDSignIn.sharedInstance().signInSilently()
         
-//        pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
-//        view.addSubview(pickMode)
-        //pickMode = PickModeView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
+        
+        
         
         //view.addSubview(button)
-        view.addSubview(HomeView(frame: self.view.frame))
+        view.addSubview(HomeView())
         //view.addSubview(TeamPickerView(frame: self.view.frame, blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]))
 
-        //view.addSubview(pickMode)        
+        navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: Screen.width, height: 44))
+        navBar.delegate = self;
+        
+        
+        if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){
+            view.addSubview(button)
+        }
+        
+        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.translucent = true
+        view.addSubview(navBar)
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
@@ -47,12 +62,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     func signIn(signIn: GIDSignIn!, presentViewController viewController: UIViewController!) {
-        
+
     }
     
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        //view.addSubview(pickMode)
-        
+
     }
 
     override func didReceiveMemoryWarning() {
