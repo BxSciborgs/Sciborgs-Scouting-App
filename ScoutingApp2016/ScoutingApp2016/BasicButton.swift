@@ -12,7 +12,7 @@ class BasicButton: UIButton{
 
     var button: UIButton!
     
-    init(type: UIButtonType, color: UIColor, size: CGRect, location: CGPoint, title: String){
+    init(type: UIButtonType, color: UIColor, size: CGRect, location: CGPoint, title: String, titleSize: Int){
         //super.init(type: UIButtonType.RoundedRect)
         super.init(frame: size)
         button = UIButton(type: UIButtonType.RoundedRect)
@@ -20,17 +20,21 @@ class BasicButton: UIButton{
         //let width = UIScreen.mainScreen().bounds.width
         //let height = UIScreen.mainScreen().bounds.height
         
-        frame = size
-        center = location
-        setTitle(title, forState: UIControlState.Normal)
-        layer.cornerRadius = 10
-        backgroundColor = UIColor(red: 238/255, green: 238/255, blue: 34/255, alpha: 1)
-        setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        
-        let scalingFactor = min(self.frame.width / frame.width, self.frame.height / frame.height)/0.8
-        titleLabel!.font = UIFont(name: "DINCondensed-Bold", size: titleLabel!.font.pointSize * CGFloat(scalingFactor))
-        titleLabel!.textAlignment = NSTextAlignment.Center
-        contentEdgeInsets = UIEdgeInsets(top: frame.height/5, left: 0, bottom: 0, right: 0)
+        let yellowColor = UIColor(red: 0.98, green: 0.95, blue: 0.55, alpha: 1)
+
+        self.frame = size
+        self.center = location
+        self.setTitle(title, forState: UIControlState.Normal)
+        self.layer.cornerRadius = 10
+        self.backgroundColor = UIColor.clearColor()
+        self.layer.borderColor = color.CGColor
+        self.layer.borderWidth = 3
+        self.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+    
+        self.titleLabel!.font = UIFont(name: "DINCondensed-Bold", size: CGFloat(titleSize) * ScreenRatios.screenWidthRatio)
+        self.titleLabel!.textAlignment = NSTextAlignment.Center
+        self.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        self.contentEdgeInsets = UIEdgeInsets(top: self.titleLabel!.intrinsicContentSize().height/4, left: 0, bottom: 0, right: 0)
     }
 
     required init?(coder aDecoder: NSCoder) {
