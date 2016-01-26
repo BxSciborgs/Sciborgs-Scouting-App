@@ -39,7 +39,8 @@ class PickModeView: UIView{
     }
     
     func goToViewTeams(){
-        
+        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.addSubview(ViewTeamView())
+        self.removeFromSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -1,14 +1,14 @@
 //
-//  ViewTeamView.swift
+//  File.swift
 //  ScoutingApp2016
 //
-//  Created by Oran Luzon on 1/15/16.
+//  Created by Oran Luzon on 1/26/16.
 //  Copyright © 2016 Sciborgs. All rights reserved.
 //
 
 import UIKit
 
-class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
+class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var title: UILabel!
     var tableView: UITableView!
@@ -19,62 +19,57 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
-    
+        
         cells = []
         
         title = UILabel(frame:  CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/8))
-        title.text = "Teams"
+        title.text = "Matches"
         title.textAlignment = NSTextAlignment.Center
         title.center = CGPoint(x: Screen.width/2, y: Screen.height/8)
-    
+        
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/4), style: UITableViewStyle.Plain)
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
         
         //Create list of teams
-        GetTeams.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+        GetTeams.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: Int) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                for x in 0..<teamNumbers.count{
-                    self.makeCell(teamNames[x], number: teamNumbers[x])
+                for number in 0..<matches{
+                    self.makeCell(number + 1)
                 }
                 self.tableView.reloadData()
             })
         })
         
+        
+//        , completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+//            dispatch_async(dispatch_get_main_queue(), {
+//                for x in 0..<teamNumbers.count{
+//                    self.makeCell(teamNames[x], number: teamNumbers[x])
+//                }
+//                self.tableView.reloadData()
+//            })
+//        })
+        
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
-
+        
         self.addSubview(tableView)
         self.addSubview(title)
     }
     
-    func makeCell(name: String , number: Int){
+    func makeCell(number: Int){
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
-        let nameText = UILabel(frame: cell.frame)
+        let matchText = UILabel(frame: cell.frame)
         
-        let maxLength = 30
+        matchText.textAlignment = NSTextAlignment.Center
+       
+        matchText.text = "Match " + String(number)
         
-        //checks to make sure the name isnt too long
-        if (name.characters.count >= maxLength){
-            nameText.text = name.substring(0, end: maxLength-3) + "..."
-        }
-        else{
-            nameText.text = name
-        }
+        cell.contentView.addSubview(matchText)
         
-        nameText.textAlignment = NSTextAlignment.Left
-        nameText.center = CGPoint(x: nameText.center.x + Screen.width * 0.05, y: nameText.center.y)
-        
-        let numberText = UILabel(frame: cell.frame)
-        numberText.text = String(number)
-        numberText.textAlignment = NSTextAlignment.Right
-        numberText.center = CGPoint(x: numberText.center.x - Screen.width * 0.05, y: numberText.center.y)
-        
-        cell.contentView.addSubview(nameText)
-        cell.contentView.addSubview(numberText)
         cells.append(cell)
-        
         tableView.insertSubview(cell, atIndex: cells.count - 1)
     }
     

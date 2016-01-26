@@ -42,7 +42,7 @@ class DBManager {
     }
     
     static func addAllTeams() {
-        GetTeams.sendRequest("nyny", completion: {(teamNames: [String], teamNumbers: [Int])->Void in
+        GetTeams.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int])->Void in
             for teamNum in teamNumbers {
                 let teamProfile = Team(teamNumber: teamNum)
                 teamProfile.sendSkeleton()
