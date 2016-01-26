@@ -22,9 +22,6 @@ public struct ScreenRatios {
 
 class HomeView: UIView {
     
-    var sciborgsLabelTop: BasicLabel!
-    var sciborgsLabelBottom: BasicLabel!
-    
     var banner: UIImageView!
 
     var viewButton: BasicButton!
@@ -33,12 +30,11 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        sciborgsLabelTop = BasicLabel(frame: frame, text: "SCIBORGS", fontSize: 75, color: UIColor.darkGrayColor(), position: CGPoint(x: frame.width/2, y: frame.height/15))
-        sciborgsLabelBottom = BasicLabel(frame: frame, text: "SCOUTING APP", fontSize: 70, color: UIColor.darkGrayColor(), position: CGPoint(x: frame.width/2, y: frame.height/5.5))
-        
         viewButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: frame.height/2), title: "VIEW", titleSize: 80)
+        viewButton.addTarget(self, action: "viewTeams", forControlEvents: UIControlEvents.TouchUpInside)
         
         scoutButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: 3*frame.height/4), title: "SCOUT", titleSize: 80)
+        scoutButton.addTarget(self, action: "scoutView", forControlEvents: UIControlEvents.TouchUpInside)
         
         banner = UIImageView(image: UIImage(named: "Banner"))
         let newImage = banner.image!.scaleUIImageToSize(banner.image!, size: CGSize(width: self.frame.width,height: self.frame.height/3.5))
@@ -53,16 +49,15 @@ class HomeView: UIView {
         //self.addSubview(sciborgsLabelBottom)
     }
     
-    func addLabel(frame: CGRect, text: String, fontSize: Int!, color: UIColor, center: CGPoint) {
-        let myLabel = UILabel(frame: CGRectMake(0,0,0,0))
-        myLabel.text = text
-        myLabel.textAlignment = NSTextAlignment.Center
-        myLabel.textColor = color
-        myLabel.font = UIFont(name: "DINCondensed-Bold", size: CGFloat(fontSize) * ScreenRatios.screenWidthRatio)
-        myLabel.center = CGPoint(x: center.x - (myLabel.intrinsicContentSize().width/2), y: center.y)
-        myLabel.sizeToFit()
-        
-        self.addSubview(myLabel)
+    func viewTeams(){
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.addSubview(ViewTeamView())
+        self.removeFromSuperview()
+    }
+    
+    func scoutView(){
+        // team picker
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.addSubview(TeamPickerView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]))
+        self.removeFromSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {

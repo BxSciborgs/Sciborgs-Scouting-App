@@ -15,7 +15,6 @@
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
 		0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967FAD81C49BCC800093700 /* ScoutView.swift */; };
 		09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A09D041C499FA000B7BD60 /* Extensions.swift */; };
-		09A09D071C49A0E400B7BD60 /* PickModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A09D061C49A0E400B7BD60 /* PickModeView.swift */; };
 		09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D041C57FF2400FA56D1 /* RoundsView.swift */; };
 		09BA4D0D1C57FF9400FA56D1 /* TableViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */; };
 		09C567621C46F82200873387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567611C46F82200873387 /* AppDelegate.swift */; };
@@ -26,15 +25,9 @@
 		860B50DC1C52E96100D3641A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B50DB1C52E96100D3641A /* DBManager.swift */; };
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
-<<<<<<< HEAD
-=======
 		8659E5AA1C57DB6C0070F6BB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5A91C57DB6C0070F6BB /* HomeView.swift */; };
 		8659E5AE1C57FB830070F6BB /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */; };
 		8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5B51C57FC330070F6BB /* BasicLabel.swift */; };
-		865FD6461C517EC700C83D4A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; };
-		865FD6471C517ED600C83D4A /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; };
-		865FD6481C517ED600C83D4A /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 865FD6391C517E9900C83D4A /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
->>>>>>> ac53b00bbf15a7601c55c11de5746ed7667dfb44
 		865FD64B1C5181CF00C83D4A /* RoundTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDB1C503CDF00660B44 /* RoundTemplate.json */; };
 		865FD64C1C5181D200C83D4A /* TeamTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDC1C503CDF00660B44 /* TeamTemplate.json */; };
 		866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */; };
@@ -184,7 +177,6 @@
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0967FAD81C49BCC800093700 /* ScoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutView.swift; sourceTree = "<group>"; };
 		09A09D041C499FA000B7BD60 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		09A09D061C49A0E400B7BD60 /* PickModeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickModeView.swift; sourceTree = "<group>"; };
 		09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		09BA4D041C57FF2400FA56D1 /* RoundsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
 		09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewMaker.swift; sourceTree = "<group>"; };
@@ -272,7 +264,8 @@
 		095045DF1C49BE8D00852B8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				09A09D061C49A0E400B7BD60 /* PickModeView.swift */,
+				8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */,
+				8659E5A91C57DB6C0070F6BB /* HomeView.swift */,
 				0967FAD81C49BCC800093700 /* ScoutView.swift */,
 				095045E01C49BEB500852B8E /* ViewTeamView.swift */,
 				09BA4D041C57FF2400FA56D1 /* RoundsView.swift */,
@@ -373,8 +366,6 @@
 				86565CD51C50392300660B44 /* Team.swift */,
 				860B50DB1C52E96100D3641A /* DBManager.swift */,
 				09DBFA3F1C50316C00511FA4 /* GetTeams.swift */,
-				8659E5A91C57DB6C0070F6BB /* HomeView.swift */,
-				8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -574,7 +565,6 @@
 				8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */,
 				86565CD61C50392300660B44 /* Team.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
-				09A09D071C49A0E400B7BD60 /* PickModeView.swift in Sources */,
 				8659E5AE1C57FB830070F6BB /* TeamPickerView.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
