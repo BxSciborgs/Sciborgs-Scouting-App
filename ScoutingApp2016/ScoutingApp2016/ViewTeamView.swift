@@ -46,7 +46,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.reloadData()
         
         //Create list of teams
-        GetTeams.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+        BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 self.teamNumbersArray = teamNumbers
                 for x in 0..<teamNumbers.count{
@@ -82,7 +82,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         let numberText = UILabel(frame: cell.frame)
         numberText.text = String(number)
         numberText.textAlignment = NSTextAlignment.Right
-        numberText.center = CGPoint(x: numberText.center.x - Screen.width * 0.05, y: numberText.center.y)
+        numberText.center = CGPoint(x: numberText.center.x + Screen.width * 0.08, y: numberText.center.y)
         
         cell.contentView.addSubview(nameText)
         cell.contentView.addSubview(numberText)

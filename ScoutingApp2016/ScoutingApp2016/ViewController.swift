@@ -33,9 +33,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         // Uncomment to automatically sign in the user.
         GIDSignIn.sharedInstance().signInSilently()
         
-        
-        
-        
         //view.addSubview(button)
         view.addSubview(HomeView())
         //view.addSubview(TeamPickerView(frame: self.view.frame, blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]))

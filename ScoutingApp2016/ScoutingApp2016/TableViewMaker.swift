@@ -34,7 +34,7 @@ class TableViewMaker: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.reloadData()
         
 //        //Create list of teams
-//        GetTeams.sendRequest(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+//        BlueAlliance.sendRequest(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
 //            dispatch_async(dispatch_get_main_queue(), {
 //                for x in 0..<teamNumbers.count{
 //                    self.makeCell(teamNames[x], number: teamNumbers[x])

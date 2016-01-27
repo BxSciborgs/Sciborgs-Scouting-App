@@ -23,7 +23,10 @@ class DBManager {
                 print("Found \(key)")
                 completion(result: JSON(obj!.objectForKey(key)!))
             } else {
-                print("\(key) not found")
+                print("\(key) not found, adding team to Parse")
+                let teamNumber = key.stringByReplacingOccurrencesOfString("Team", withString: "")
+                let teamProfile = Team(teamNumber: Int(teamNumber))
+                teamProfile.sendSkeleton()
             }
         }
     }
@@ -42,7 +45,7 @@ class DBManager {
     }
     
     static func addAllTeams() {
-        GetTeams.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int])->Void in
+        BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int])->Void in
             for teamNum in teamNumbers {
                 let teamProfile = Team(teamNumber: teamNum)
                 teamProfile.sendSkeleton()

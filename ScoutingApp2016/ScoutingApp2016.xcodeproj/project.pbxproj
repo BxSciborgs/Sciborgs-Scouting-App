@@ -22,7 +22,7 @@
 		09C567641C46F82200873387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567631C46F82200873387 /* ViewController.swift */; };
 		09C567671C46F82200873387 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C567651C46F82200873387 /* Main.storyboard */; };
 		09C567691C46F82200873387 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09C567681C46F82200873387 /* Assets.xcassets */; };
-		09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* GetTeams.swift */; };
+		09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* BlueAlliance.swift */; };
 		860B50DC1C52E96100D3641A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B50DB1C52E96100D3641A /* DBManager.swift */; };
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
@@ -189,7 +189,7 @@
 		09C567681C46F82200873387 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09C5676B1C46F82200873387 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09C5676D1C46F82200873387 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		09DBFA3F1C50316C00511FA4 /* GetTeams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetTeams.swift; sourceTree = "<group>"; };
+		09DBFA3F1C50316C00511FA4 /* BlueAlliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueAlliance.swift; sourceTree = "<group>"; };
 		860B50DB1C52E96100D3641A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		86565CD51C50392300660B44 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		86565CDB1C503CDF00660B44 /* RoundTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoundTemplate.json; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 				86DF2AC31C499259009500A1 /* Round.swift */,
 				86565CD51C50392300660B44 /* Team.swift */,
 				860B50DB1C52E96100D3641A /* DBManager.swift */,
-				09DBFA3F1C50316C00511FA4 /* GetTeams.swift */,
+				09DBFA3F1C50316C00511FA4 /* BlueAlliance.swift */,
 			);
 			name = Code;
 			sourceTree = "<group>";
@@ -573,7 +573,7 @@
 				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
 				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
 				09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */,
-				09DBFA401C50316C00511FA4 /* GetTeams.swift in Sources */,
+				09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */,
 				09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
 				09BA4D0D1C57FF9400FA56D1 /* TableViewMaker.swift in Sources */,

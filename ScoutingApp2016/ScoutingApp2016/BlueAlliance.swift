@@ -1,5 +1,5 @@
 //
-//  GetTeams.swift
+//  BlueAlliance.swift
 //  ScoutingApp2016
 //
 //  Created by Oran Luzon on 1/20/16.
@@ -9,25 +9,48 @@
 import Foundation
 import SwiftHTTP
 
-enum CompetitionCode: String{
+enum CompetitionCode: String {
     case Javits = "nyny"
     case Rochester = "nyro"
 }
 
-class GetTeams{
-    
-    init(){
-            
-        
-    }
-    
-    static func sendRequestMatches(competitionCode: CompetitionCode,  completion:(matches: Int)->Void){
+class BlueAlliance{
+    static func sendRequestMatches(competitionCode: CompetitionCode,  completion:(matches: [JSON])->Void){
         do {
             let opt = try HTTP.GET("http://www.thebluealliance.com/api/v2/event/2015\(competitionCode.rawValue)/matches", parameters: ["X-TBA-App-Id": "frc1155:scouting-app:v1"])
             
             opt.start { response in
-                //do stuff
-                //DO THIS A BETTER WAY
+                if let err = response.error {
+                    if (err.localizedDescription == "The Internet connection appears to be offline."){
+                        print("No Wifi")
+                        return
+                    }
+                    print("error: \(err.localizedDescription)")
+                    return //also notify app of failure as needed
+                }
+                
+                print("Request Recieved")
+                
+                let matchesJSON: JSON = JSON(data: response.data)
+                var matches: [JSON] = []
+
+                for i in 0..<matchesJSON.count {
+                    matches.append(matchesJSON[i])
+                }
+    
+                completion(matches: matches)
+            }
+        } catch let error {
+            print("couldn't serialize the paraemeters: \(error)")
+        }
+        
+    }
+    
+    static func getMatch(competitionCode: CompetitionCode, match: Int!, completion:(match: JSON)->Void){
+        do {
+            let opt = try HTTP.GET("http://www.thebluealliance.com/api/v2/event/2015\(competitionCode.rawValue)/matches", parameters: ["X-TBA-App-Id": "frc1155:scouting-app:v1"])
+            
+            opt.start { response in
                 if let err = response.error {
                     if (err.localizedDescription == "The Internet connection appears to be offline."){
                         print("No Wifi")
@@ -40,22 +63,11 @@ class GetTeams{
                 print("Request Recieved")
                 
                 let json = JSON(data: response.data)
-                //print(json)
-                
-//                var i = 0
-//                while (i < json.count){
-//                    print(json[i]["key"])
-//                    i++
-//                }
-                
-                completion(matches: json.count)
-                
-                //completion(teamNames: allTeamNames, teamNumbers: allTeamNumbers)
+                completion(match: json[match-1])
             }
         } catch let error {
             print("couldn't serialize the paraemeters: \(error)")
         }
-    
     }
     
     static func sendRequestTeams(competitionCode: CompetitionCode, completion:(teamNames: [String], teamNumbers: [Int])->Void){
@@ -98,5 +110,17 @@ class GetTeams{
         } catch let error {
             print("couldn't serialize the paraemeters: \(error)")
         }
+    }
+    
+    static func getTeamsFromMatch(match: JSON, color: String) -> [Int] {
+        let teamArray = match["alliances"][color]["teams"].array
+        
+        var teamNumbers: [Int] = []
+        for team in teamArray! {
+            var teamNumber: String = String(team)
+            teamNumber = teamNumber.stringByReplacingOccurrencesOfString("frc", withString: "")
+            teamNumbers.append(Int(teamNumber)!)
+        }
+        return teamNumbers
     }
 }

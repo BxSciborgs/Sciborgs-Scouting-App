@@ -57,7 +57,9 @@ class HomeView: UIView {
     
     func scoutView(){
         // team picker
-        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamPickerView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamPickerView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundsView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+
         self.removeFromSuperview()
     }
 

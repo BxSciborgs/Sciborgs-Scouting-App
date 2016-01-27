@@ -14,18 +14,12 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
     var tableView: UITableView!
     var cells: [UITableViewCell!]!
     
-    
     init(){
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
         
         cells = []
-        
-//        title = UILabel(frame:  CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/8))
-//        title.text = "Matches"
-//        title.textAlignment = NSTextAlignment.Center
-//        title.center = CGPoint(x: Screen.width/2, y: Screen.height/8)
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "Matches", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
         
@@ -35,25 +29,15 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.dataSource = self
         tableView.reloadData()
         
-        //Create list of teams
-        GetTeams.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: Int) -> Void in
+        BlueAlliance.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: [JSON]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                for number in 0..<matches{
-                    self.makeCell(number + 1)
+                for match in matches {
+                    let info = self.getCellInfo(match)
+                    self.makeCell(info.type, matchNumber: info.matchNum)
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
             })
         })
-        
-        
-//        , completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
-//            dispatch_async(dispatch_get_main_queue(), {
-//                for x in 0..<teamNumbers.count{
-//                    self.makeCell(teamNames[x], number: teamNumbers[x])
-//                }
-//                self.tableView.reloadData()
-//            })
-//        })
         
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
         
@@ -61,25 +45,52 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         self.addSubview(title)
     }
     
-    func makeCell(number: Int){
+    func makeCell(type: String, matchNumber: String){
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
-        let matchText = UILabel(frame: cell.frame)
+        let matchType = UILabel(frame: cell.frame)
+        let matchNum = UILabel(frame: cell.frame)
         
-        matchText.textAlignment = NSTextAlignment.Center
-       
-        matchText.text = "Match " + String(number)
+        matchType.text = type
+        matchNum.text = matchNumber
         
-        cell.contentView.addSubview(matchText)
+        matchType.textAlignment = NSTextAlignment.Left
+        matchType.center = CGPoint(x: matchType.center.x + Screen.width * 0.05, y: matchType.center.y)
+        
+        matchNum.textAlignment = NSTextAlignment.Right
+        matchNum.center = CGPoint(x: matchNum.center.x + Screen.width * 0.08, y: matchNum.center.y)
+
+        cell.contentView.addSubview(matchType)
+        cell.contentView.addSubview(matchNum)
         
         cells.append(cell)
-        tableView.insertSubview(cell, atIndex: cells.count - 1)
+        tableView.insertSubview(cell, atIndex: cells.count-1)
     }
     
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Link to team profile
-        print(indexPath.row)
+    func getCellInfo(match: JSON) -> (type: String, matchNum: String)  {
+        var type: String!
         
+        switch(match["comp_level"]) {
+            case "qf":
+                type = "Quarter Final"
+                break
+            case "f":
+                type = "Final"
+                break
+            case "qm":
+                type = "Qualifying"
+                break
+            case "sf":
+                type = "Semi Final"
+                break
+            default:
+                type = "Unrecognized"
+                break
+        }
+        var matchNum = String(match["match_number"].int!)
+        if(matchNum.characters.count != 2) {
+            matchNum = "0\(matchNum)"
+        }
+        return (type, matchNum)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,6 +101,22 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         return cells[indexPath.row]
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // Link to team profile
+        print(indexPath.row)
+        BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(
+                    TeamPickerView(
+                        blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
+                        redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
+                    ), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+                self.removeFromSuperview()
+            })
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {

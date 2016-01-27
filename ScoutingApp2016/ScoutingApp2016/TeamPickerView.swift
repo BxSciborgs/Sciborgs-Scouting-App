@@ -17,8 +17,8 @@ class TeamPickerView: UIView {
     var blueTeamsLabel: UILabel!
     var redTeamsLabel: UILabel!
     
-    init(frame: CGRect, blueTeams: [Int], redTeams: [Int]) {
-        super.init(frame: frame)
+    init(blueTeams: [Int], redTeams: [Int]) {
+        super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.blueTeams = blueTeams
         self.redTeams = redTeams
@@ -48,7 +48,6 @@ class TeamPickerView: UIView {
             let teamButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1.0), size: CGRect(x: 0,y: 0,width: self.frame.width/CGFloat(3), height:self.frame.width/CGFloat(3)), location: CGPoint(x: (frame.width/2) + (frame.width/5), y: CGFloat(redTeams.indexOf(team)! + 1) * (self.frame.height/4) + CGFloat(self.frame.height/15)), title: "\(team)", titleSize: 50)
             self.addSubview(teamButton)
         }
-        
         
         self.addSubview(blueTeamsLabel)
         self.addSubview(redTeamsLabel)
