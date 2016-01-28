@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().clientID = "1008849373609-v4eaemodfnc4sku53c8fonjtka7fugn2.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
  
+        // creating list of admin accounts should be done on parse
         adminAccounts = ["oran.luzon@gmail.com"]
         
         return true
@@ -49,13 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //do something
         if (error == nil) {
             // Perform any operations on signed in user here.
-            //let userId = user.userID                  // For client-side use only!
-            //let idToken = user.authentication.idToken // Safe to send to the server
-            //let name = user.profile.name
             let email = user.profile.email
             print("Email: " + email)
             
-            
+            // checking whether the account is admin or bxscience
             if (adminAccounts.contains(email)){
                 //print("Admin Login")
             }

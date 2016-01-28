@@ -50,17 +50,19 @@ class HomeView: UIView {
         //self.addSubview(sciborgsLabelBottom)
     }
     
+    // Adds the ViewTeams View
     func viewTeams(){
-        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(ViewTeamView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-        self.removeFromSuperview()
+        self.launchViewOnTop(ViewTeamView())
+//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(ViewTeamView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+//        self.removeFromSuperview()
     }
     
+    // Adds the Scouting View
     func scoutView(){
-        // team picker
-//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamPickerView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), blueTeams: [1155,2265,3342], redTeams: [1342,2534,2343]), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundsView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-
-        self.removeFromSuperview()
+        self.launchViewOnTop(RoundsView())
+//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundsView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+//
+//        self.removeFromSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {

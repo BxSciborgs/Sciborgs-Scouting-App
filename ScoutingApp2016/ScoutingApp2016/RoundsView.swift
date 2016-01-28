@@ -19,6 +19,8 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         self.backgroundColor = UIColor.whiteColor()
         
+        self.addBackButton()
+        
         cells = []
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "Matches", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
@@ -45,6 +47,11 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         self.addSubview(title)
     }
     
+    func back(){
+        removeFromSuperview()
+        //self.launchViewOnTop(HomeView())
+    }
+    
     func makeCell(type: String, matchNumber: String){
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
         let matchType = UILabel(frame: cell.frame)
@@ -57,7 +64,7 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         matchType.center = CGPoint(x: matchType.center.x + Screen.width * 0.05, y: matchType.center.y)
         
         matchNum.textAlignment = NSTextAlignment.Right
-        matchNum.center = CGPoint(x: matchNum.center.x + Screen.width * 0.08, y: matchNum.center.y)
+        matchNum.center = CGPoint(x: matchNum.center.x - Screen.width * 0.05, y: matchNum.center.y)
 
         cell.contentView.addSubview(matchType)
         cell.contentView.addSubview(matchNum)
@@ -109,12 +116,16 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         print(indexPath.row)
         BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(
-                    TeamPickerView(
-                        blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
-                        redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
-                    ), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-                self.removeFromSuperview()
+                self.launchViewOnTop(TeamPickerView(
+                    blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
+                    redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
+                    ))
+//                UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(
+//                    TeamPickerView(
+//                        blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
+//                        redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
+//                    ), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+//                self.removeFromSuperview()
             })
         })
     }

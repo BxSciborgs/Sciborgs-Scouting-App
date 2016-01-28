@@ -266,11 +266,11 @@
 		095045DF1C49BE8D00852B8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */,
 				8659E5A91C57DB6C0070F6BB /* HomeView.swift */,
+				09BA4D041C57FF2400FA56D1 /* RoundsView.swift */,
+				8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */,
 				0967FAD81C49BCC800093700 /* ScoutView.swift */,
 				095045E01C49BEB500852B8E /* ViewTeamView.swift */,
-				09BA4D041C57FF2400FA56D1 /* RoundsView.swift */,
 				09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */,
 				09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */,
 			);

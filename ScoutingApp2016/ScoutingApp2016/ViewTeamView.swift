@@ -22,18 +22,8 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         self.backgroundColor = UIColor.whiteColor()
         
-        // Create a navigation item with a title
-        let navigationItem = UINavigationItem()
-        
-        // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: "Back", style:   UIBarButtonItemStyle.Done, target: self, action: "back")
-        
-        // Create two buttons for the navigation item
-        navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItem = nil
-        
-        // Assign the navigation item to the navigation bar
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = [navigationItem]
+        // Premade code that adds a back button and calls  a "back" method
+        self.addBackButton()
     
         cells = []
         
@@ -56,12 +46,15 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
             })
         })
         
+        // centering the table view
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
 
+        //adding them
         self.addSubview(tableView)
         self.addSubview(title)
     }
     
+    // Creates a cell for the tableview
     func makeCell(name: String , number: Int){
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
         let nameText = UILabel(frame: cell.frame)
@@ -82,7 +75,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         let numberText = UILabel(frame: cell.frame)
         numberText.text = String(number)
         numberText.textAlignment = NSTextAlignment.Right
-        numberText.center = CGPoint(x: numberText.center.x + Screen.width * 0.08, y: numberText.center.y)
+        numberText.center = CGPoint(x: numberText.center.x - Screen.width * 0.05, y: numberText.center.y)
         
         cell.contentView.addSubview(nameText)
         cell.contentView.addSubview(numberText)
@@ -92,9 +85,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func back(){
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.addSubview(HomeView())
-        self.removeFromSuperview()
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+        self.launchView(HomeView())
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

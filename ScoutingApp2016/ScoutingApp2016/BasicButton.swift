@@ -20,8 +20,6 @@ class BasicButton: UIButton{
         //let width = UIScreen.mainScreen().bounds.width
         //let height = UIScreen.mainScreen().bounds.height
         
-        let yellowColor = UIColor(red: 0.98, green: 0.95, blue: 0.55, alpha: 1)
-
         self.frame = size
         self.center = location
         self.setTitle(title, forState: UIControlState.Normal)
@@ -37,6 +35,10 @@ class BasicButton: UIButton{
         self.contentEdgeInsets = UIEdgeInsets(top: self.titleLabel!.intrinsicContentSize().height/4, left: 0, bottom: 0, right: 0)
     }
 
+    func setColor(color: UIColor){
+        self.layer.borderColor = color.CGColor
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

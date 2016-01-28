@@ -13,6 +13,7 @@ class TeamPickerView: UIView {
     
     var blueTeams: [Int]!
     var redTeams: [Int]!
+    var teams: [Int]!
     
     var blueTeamsLabel: UILabel!
     var redTeamsLabel: UILabel!
@@ -23,29 +24,52 @@ class TeamPickerView: UIView {
         self.blueTeams = blueTeams
         self.redTeams = redTeams
         
-        // Create a navigation item with a title
-        let navigationItem = UINavigationItem()
+        self.backgroundColor = UIColor.whiteColor()
         
-        // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: "Back", style:   UIBarButtonItemStyle.Done, target: self, action: "back")
-        
-        // Create two buttons for the navigation item
-        navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItem = nil
-        
-        // Assign the navigation item to the navigation bar
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = [navigationItem]
+        self.addBackButton()
         
         blueTeamsLabel = BasicLabel(frame: frame, text: "BLUE", fontSize: 75, color: UIColor(red: 0.6, green: 0.83, blue: 0.96, alpha: 1.0), position: CGPoint(x: (frame.width/2) - (frame.width/5), y: frame.height/15))
         redTeamsLabel = BasicLabel(frame: frame, text: "RED", fontSize: 75, color: UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1.0), position: CGPoint(x: (frame.width/2) + (frame.width/5), y: frame.height/15))
         
-        for team in blueTeams {
-            let teamButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor(red: 0.6, green: 0.83, blue: 0.96, alpha: 1.0), size: CGRect(x: 0,y: 0,width: self.frame.width/CGFloat(3), height:self.frame.width/CGFloat(3)), location: CGPoint(x: (frame.width/2) - (frame.width/5), y: CGFloat(blueTeams.indexOf(team)! + 1) * (self.frame.height/4) + CGFloat(self.frame.height/15)), title: "\(team)", titleSize: 50)
-            self.addSubview(teamButton)
-        }
+        // created to keep track of the team button also for which button is being made
+        var teamButtonTag = 0
         
-        for team in redTeams {
-            let teamButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1.0), size: CGRect(x: 0,y: 0,width: self.frame.width/CGFloat(3), height:self.frame.width/CGFloat(3)), location: CGPoint(x: (frame.width/2) + (frame.width/5), y: CGFloat(redTeams.indexOf(team)! + 1) * (self.frame.height/4) + CGFloat(self.frame.height/15)), title: "\(team)", titleSize: 50)
+        let allTeams = blueTeams + redTeams
+
+        for team in allTeams{
+            var red : CGFloat, green : CGFloat, blue : CGFloat
+            var index : Int
+            var sign : CGFloat
+            
+            if (teamButtonTag <= 2) {
+                red = 0.6; green = 0.83; blue = 0.96
+                index = blueTeams.indexOf(team)!
+                sign = -1
+            } else {
+                red = 1; green = 0.63; blue = 0.6
+                index = redTeams.indexOf(team)!
+                sign = 1
+            }
+            
+            let teamButton = BasicButton(
+                type: UIButtonType.RoundedRect,
+                color: UIColor(red: red, green: green, blue: blue, alpha: 1.0),
+                size: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: self.frame.width/CGFloat(3),
+                    height:self.frame.width/CGFloat(3)),
+                location: CGPoint(
+                    x: (frame.width/2) + sign * (frame.width/5),
+                    y: CGFloat(index + 1) * (self.frame.height/4) + CGFloat(self.frame.height/15)),
+                title: "\(team)",
+                titleSize: 50
+            )
+            
+            teamButton.addTarget(nil, action: "onClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            teamButton.tag = teamButtonTag
+            teamButtonTag += 1
+            
             self.addSubview(teamButton)
         }
         
@@ -53,10 +77,13 @@ class TeamPickerView: UIView {
         self.addSubview(redTeamsLabel)
     }
     
+    func onClick(sender: UIButton){
+        //self.removeNavBar()
+        self.launchView(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!))
+    }
+    
     func back(){
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.addSubview(HomeView())
-        self.removeFromSuperview()
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+        self.launchViewOnTop(ViewTeamView())
     }
     
     required init?(coder aDecoder: NSCoder) {

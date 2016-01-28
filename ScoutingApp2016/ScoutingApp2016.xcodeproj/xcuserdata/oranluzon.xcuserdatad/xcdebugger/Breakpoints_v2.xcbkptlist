@@ -71,13 +71,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ScoutingApp2016/HomeView.swift"
-            timestampString = "475537902.110663"
+            filePath = "ScoutingApp2016/TeamPickerView.swift"
+            timestampString = "475713390.974367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewTeams()"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "init(blueTeams:redTeams:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScoutingApp2016/TeamPickerView.swift"
+            timestampString = "475713390.974367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "init(blueTeams:redTeams:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,7 +18,6 @@ public struct Screen{
 class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDelegate {
 
     var button: GIDSignInButton!
-    //var pickMode: PickModeView!
     var navBar: UINavigationBar!
     
     override func viewDidLoad() {

@@ -14,6 +14,7 @@ enum CompetitionCode: String {
     case Rochester = "nyro"
 }
 
+// Made for fetching information from TheBlueAlliance
 class BlueAlliance{
     static func sendRequestMatches(competitionCode: CompetitionCode,  completion:(matches: [JSON])->Void){
         do {
