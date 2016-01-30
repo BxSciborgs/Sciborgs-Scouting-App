@@ -25,7 +25,7 @@ class DBManager {
             }
         }
     }
-        
+    
     static func push(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, object: [String: AnyObject]) {
         let query = PFQuery(className: className)
         query.whereKey(rowKey, equalTo: rowValue)

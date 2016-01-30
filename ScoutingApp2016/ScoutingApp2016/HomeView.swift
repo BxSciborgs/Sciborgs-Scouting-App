@@ -36,6 +36,7 @@ class HomeView: UIView {
         
         scoutButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: 3*frame.height/4), title: "SCOUT", titleSize: 80)
         scoutButton.addTarget(self, action: "scoutView", forControlEvents: UIControlEvents.TouchUpInside)
+        scoutButton.name = "asdkfjh"
         
         banner = UIImageView(image: UIImage(named: "Banner"))
         let newImage = banner.image!.scaleUIImageToSize(banner.image!, size: CGSize(width: self.frame.width,height: self.frame.height/3.5))

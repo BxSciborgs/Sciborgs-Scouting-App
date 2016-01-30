@@ -1,33 +1,34 @@
 {
-	"roundNumber" : null,
-	
-	"autoPoints" : {
-		"movedToDefense" : false,
-		"passedDefense" : false,
-		"lowGoal" : false,
-		"highGoal" : false,
-	},
-	
-	"telePoints" : {
-		"defenses" : {
-			"numTimesCrossedPortcullis" : 0,
-			"numTimesCrossedChevalDeFrise" : 0,
-			"numTimesCrossedMoat" : 0,
-			"numTimesCrossedRamparts" : 0,
-			"numTimesCrossedDrawbridge" : 0,
-			"numTimesCrossedSallyPort" : 0,
-			"numTimesCrossedRockWall" : 0,
-			"numTimesCrossedRoughTerrain" : 0,
-			"numTimesCrossedLowBar" : 0
-		},
-		"goals" : {
-			"low" : 0,
-			"high" : 0
-		},
-		"scaling" : false
-	},
-	
-	"finalScore" : 0,
-
-	"comments" : ""
+    "roundNumber" : null,
+    
+    "autoPoints" : {
+        "movedToDefense" : false,
+        "passedDefense" : false,
+        "lowGoal" : false,
+        "highGoal" : false
+    },
+    
+    "telePoints" : {
+        "defenses" : {
+            "numTimesCrossedPortcullis" : 0,
+            "numTimesCrossedChevalDeFrise" : 0,
+            "numTimesCrossedMoat" : 0,
+            "numTimesCrossedRamparts" : 0,
+            "numTimesCrossedDrawbridge" : 0,
+            "numTimesCrossedSallyPort" : 0,
+            "numTimesCrossedRockWall" : 0,
+            "numTimesCrossedRoughTerrain" : 0,
+            "numTimesCrossedLowBar" : 0
+        },
+        "goals" : {
+            "low" : 0,
+            "high" : 0
+        },
+        "challenge" : false,
+        "scale" : false
+    },
+    
+    "finalScore" : 0,
+    
+    "comments" : ""
 }

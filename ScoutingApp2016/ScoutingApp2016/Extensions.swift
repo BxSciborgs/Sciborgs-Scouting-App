@@ -87,4 +87,19 @@ extension UIView{
         launchViewOnTop(view)
         self.removeFromSuperview()
     }
+    
+    private struct AssociatedKeys {
+        static var DescriptiveName = "nsh_DescriptiveName"
+    }
+    
+    var name: String! {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.DescriptiveName)! as! String
+        }
+        set (newValue) {
+            objc_setAssociatedObject(self, &AssociatedKeys.DescriptiveName, newValue as NSString?,.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
 }
+
+

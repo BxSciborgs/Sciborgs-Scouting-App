@@ -18,6 +18,7 @@ class TeamAssignmentView: UIView {
     var blueTeamsLabel: UILabel!
     var redTeamsLabel: UILabel!
     
+    
     init(blueTeams: [Int], redTeams: [Int]) {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
@@ -78,8 +79,15 @@ class TeamAssignmentView: UIView {
     }
     
     func onClick(sender: UIButton){
-        //self.removeNavBar()
-        self.launchView(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!))
+        
+        var buttonColor: UIColor
+        
+        if (sender.tag <= 2) {
+            buttonColor = UIColor(red: 0.6, green: 0.83, blue: 0.96, alpha: 1)
+        } else {
+            buttonColor = UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1)
+        }
+        self.launchView(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, color: buttonColor))
     }
     
     func back(){

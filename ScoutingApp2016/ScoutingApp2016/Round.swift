@@ -28,30 +28,6 @@ class Round {
         })
     }
     
-    func crossedDefense(defenseName: String) { // Will be changed eventually depending on how buttons works
-        template!["telePoints"]["defenses"]["numTimesCrossed\(defenseName)"].int = template!["telePoints"]["defenses"]["numTimesCrossed\(defenseName)"].int! + 1
-    }
-    
-    func updateAutoInfo(autoName: String, value: Bool) { //Will also change depending on how buttons works
-        template![autoName].bool = value
-    }
-    
-    func gotGoal(goal: String) {
-        template!["telePoints"]["goals"][goal].int = template!["telePoints"]["goals"][goal].int! + 1
-    }
-    
-    func canScale(canScale: Bool!) {
-        template!["telePoints"]["scaling"].bool = canScale
-    }
-    
-    func finalScore(score: Int) {
-        template!["finalScore"].int = score
-    }
-    
-    func addComment(comment: String) {
-        template!["comments"].string = comment
-    }
-    
     func getRound() -> [String: AnyObject] {
         return template!.dictionaryObject!
     }
