@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
+class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var title: UILabel!
     var tableView: UITableView!
@@ -34,8 +34,14 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         BlueAlliance.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: [JSON]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 for match in matches {
-                    let info = self.getCellInfo(match)
-                    self.makeCell(info.type, matchNumber: info.matchNum)
+                    var matchNum = String(match["match_number"].int!)
+                    if(matchNum.characters.count != 2) {
+                        matchNum = "0\(matchNum)"
+                    }
+                    
+                    if(match["comp_level"] == "qm") {
+                        self.makeCell("Qualifying Match", matchNumber: matchNum)
+                    }
                     self.tableView.reloadData()
                 }
             })
@@ -73,33 +79,6 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.insertSubview(cell, atIndex: cells.count-1)
     }
     
-    func getCellInfo(match: JSON) -> (type: String, matchNum: String)  {
-        var type: String!
-        
-        switch(match["comp_level"]) {
-            case "qf":
-                type = "Quarter Final"
-                break
-            case "f":
-                type = "Final"
-                break
-            case "qm":
-                type = "Qualifying"
-                break
-            case "sf":
-                type = "Semi Final"
-                break
-            default:
-                type = "Unrecognized"
-                break
-        }
-        var matchNum = String(match["match_number"].int!)
-        if(matchNum.characters.count != 2) {
-            matchNum = "0\(matchNum)"
-        }
-        return (type, matchNum)
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
         
@@ -116,7 +95,7 @@ class RoundsView: UIView, UITableViewDelegate, UITableViewDataSource{
         print(indexPath.row)
         BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
-                self.launchViewOnTop(TeamPickerView(
+                self.launchViewOnTop(TeamAssignmentView(
                     blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
                     redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
                     ))

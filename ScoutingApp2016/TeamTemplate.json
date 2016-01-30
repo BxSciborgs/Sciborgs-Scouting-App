@@ -1,8 +1,7 @@
 {
-	"number" : null,
-	"rounds" : [],
-	"stats" : {
-		"avgRoundScore" : null,
-		"avgDefenseScore" : null
-	}
+    "rounds" : [],
+    "stats" : {
+        "avgRoundScore" : null,
+        "avgDefenseScore" : null
+    }
 }

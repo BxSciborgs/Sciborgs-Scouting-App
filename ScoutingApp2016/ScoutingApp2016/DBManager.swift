@@ -12,29 +12,32 @@ import Bolts
 
 class DBManager {
     
-    static func query(className: String, key: String, completion:(result:JSON)->Void) {
+    static func pull(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, completion:(result:JSON)->Void) {
         let query = PFQuery(className: className)
-        
-        query.orderByDescending("createdAt")
-        query.whereKeyExists(key)
+        query.whereKey(rowKey, equalTo: rowValue)
         
         query.getFirstObjectInBackgroundWithBlock {(obj: PFObject?, error: NSError?) -> Void in
             if error == nil {
-                print("Found \(key)")
-                completion(result: JSON(obj!.objectForKey(key)!))
+                let jsonObject = JSON(obj!.objectForKey(finalKey)!)
+                completion(result: jsonObject)
             } else {
-                print("\(key) not found, adding team to Parse")
-                let teamNumber = key.stringByReplacingOccurrencesOfString("Team", withString: "")
-                let teamProfile = Team(teamNumber: Int(teamNumber))
-                teamProfile.sendSkeleton()
+                
             }
         }
     }
-    
-    static func push(className: String, key: String, object: [String: AnyObject]) {
-        let pfObject = PFObject(className: className)
-        pfObject[key] = object
-        pfObject.saveInBackground()
+        
+    static func push(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, object: [String: AnyObject]) {
+        let query = PFQuery(className: className)
+        query.whereKey(rowKey, equalTo: rowValue)
+        
+        query.getFirstObjectInBackgroundWithBlock {(obj: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                obj?.setObject(object, forKey: finalKey)
+                obj?.saveInBackground()
+            } else {
+                
+            }
+        }
     }
         
     static func getJSON(fileName: String!) -> [String:AnyObject] {

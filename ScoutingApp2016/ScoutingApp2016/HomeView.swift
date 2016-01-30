@@ -31,7 +31,7 @@ class HomeView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
 
-        viewButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: frame.height/2), title: "VIEW", titleSize: 80)
+        viewButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: frame.height/2), title: "REVIEW", titleSize: 80)
         viewButton.addTarget(self, action: "viewTeams", forControlEvents: UIControlEvents.TouchUpInside)
         
         scoutButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: 3*frame.height/4), title: "SCOUT", titleSize: 80)
@@ -42,7 +42,6 @@ class HomeView: UIView {
         let imageView = UIImageView(image: newImage)
         imageView.center = CGPoint(x: self.frame.width/2,y: self.frame.height/5)
 
-        
         self.addSubview(viewButton)
         self.addSubview(scoutButton)
         self.addSubview(imageView)
@@ -52,15 +51,15 @@ class HomeView: UIView {
     
     // Adds the ViewTeams View
     func viewTeams(){
-        self.launchViewOnTop(ViewTeamView())
-//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(ViewTeamView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+        self.launchViewOnTop(TeamSelectionView())
+//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamSelectionView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
 //        self.removeFromSuperview()
     }
     
     // Adds the Scouting View
     func scoutView(){
-        self.launchViewOnTop(RoundsView())
-//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundsView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+        self.launchViewOnTop(RoundSelectionView())
+//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundSelectionView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
 //
 //        self.removeFromSuperview()
     }

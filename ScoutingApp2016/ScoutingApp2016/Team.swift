@@ -22,14 +22,12 @@ class Team {
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber
-        
     }
     
     func sendSkeleton() { //sends empty teamtemplate (must be done initially when creating each team)
-        DBManager.query("Templates", key: "TeamTemplate", completion: {(result)->Void in
+        DBManager.pull("Templates", rowKey: "templateType", rowValue: "TeamTemplate", finalKey: "templateJSON", completion: {(result)->Void in
             var teamJSON = result
-            teamJSON["number"].int = self.teamNumber
-            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: teamJSON.dictionaryObject!)
+            DBManager.push("Teams", rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
         })
     }
     
@@ -38,10 +36,10 @@ class Team {
     }
     
     func submitCurrentRound() {
-        DBManager.query("Teams", key: "Team\(teamNumber)", completion: {(result)->Void in
+        DBManager.pull("Teams", rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
             var teamJSON = result
             teamJSON["rounds"].arrayObject?.append(self.currentRound.getRound()) //appends current round being edited
-            DBManager.push("Teams", key: "Team\(self.teamNumber)", object: teamJSON.dictionaryObject!)
+            DBManager.push("Teams", rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
         })
     }
 }

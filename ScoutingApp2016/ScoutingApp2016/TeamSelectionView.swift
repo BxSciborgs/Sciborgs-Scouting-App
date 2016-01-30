@@ -1,5 +1,5 @@
 //
-//  ViewTeamView.swift
+//  TeamSelectionView.swift
 //  ScoutingApp2016
 //
 //  Created by Oran Luzon on 1/15/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
+class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var title: BasicLabel!
     var tableView: UITableView!
@@ -23,7 +23,6 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         self.backgroundColor = UIColor.whiteColor()
         
         // Premade code that adds a back button and calls  a "back" method
-        self.addBackButton()
     
         cells = []
         
@@ -52,6 +51,8 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         //adding them
         self.addSubview(tableView)
         self.addSubview(title)
+        self.addBackButton()
+
     }
     
     // Creates a cell for the tableview
@@ -75,7 +76,7 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
         let numberText = UILabel(frame: cell.frame)
         numberText.text = String(number)
         numberText.textAlignment = NSTextAlignment.Right
-        numberText.center = CGPoint(x: numberText.center.x - Screen.width * 0.05, y: numberText.center.y)
+        numberText.center = CGPoint(x: numberText.center.x - (Screen.width * 0.05), y: numberText.center.y)
         
         cell.contentView.addSubview(nameText)
         cell.contentView.addSubview(numberText)
@@ -91,9 +92,9 @@ class ViewTeamView: UIView, UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
         print("Team\(teamNumbersArray[indexPath.row])")
-        DBManager.query("Teams", key: "Team\(teamNumbersArray[indexPath.row])", completion: {(result: JSON) -> Void in
+        DBManager.pull("Teams", rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
             //print(result)
-            UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamProfileView(teamName: "Team\(self.teamNumbersArray[indexPath.row])", json: result), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+            UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
             self.removeFromSuperview()
         })
         

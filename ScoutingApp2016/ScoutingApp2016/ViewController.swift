@@ -39,7 +39,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: Screen.width, height: 44))
         navBar.delegate = self;
         
-        
+        DBManager.addAllTeams()
+
         if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){
             view.addSubview(button)
         }
@@ -71,4 +72,5 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
 
     }
 }
+
 

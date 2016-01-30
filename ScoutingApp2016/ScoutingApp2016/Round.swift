@@ -13,21 +13,23 @@ import Bolts
 class Round {
     
     var roundNumber: Int!
-    public var template: JSON!
+    var template: JSON!
     
     init(roundNumber: Int!) {
+        print("Round\(roundNumber) created")
         self.roundNumber = roundNumber
         
-        DBManager.query("Templates", key: "RoundTemplate", completion: {(result)->Void in
+        DBManager.pull("Templates", rowKey: "templateType", rowValue: "RoundTemplate", finalKey: "templateJSON", completion: {(result: JSON)->Void in
             self.template = result
+            print(self.template)
             print("Got round template")
             
             self.template!["roundNumber"].int = roundNumber
         })
     }
     
-    func crossedDefence(defenceName: String) { // Will be changed eventually depending on how buttons works
-        template!["telePoints"]["defenses"]["numTimesCrossed\(defenceName)"].int = template!["telePoints"]["defenses"]["numTimesCrossed\(defenceName)"].int! + 1
+    func crossedDefense(defenseName: String) { // Will be changed eventually depending on how buttons works
+        template!["telePoints"]["defenses"]["numTimesCrossed\(defenseName)"].int = template!["telePoints"]["defenses"]["numTimesCrossed\(defenseName)"].int! + 1
     }
     
     func updateAutoInfo(autoName: String, value: Bool) { //Will also change depending on how buttons works

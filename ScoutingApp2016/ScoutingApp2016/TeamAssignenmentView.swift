@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TeamPickerView: UIView {
+class TeamAssignmentView: UIView {
     
     var blueTeams: [Int]!
     var redTeams: [Int]!
@@ -83,7 +83,7 @@ class TeamPickerView: UIView {
     }
     
     func back(){
-        self.launchViewOnTop(ViewTeamView())
+        self.launchViewOnTop(TeamSelectionView())
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091337801C49A9C6004A38B7 /* BasicButton.swift */; };
 		092A16821C57F26100BAE349 /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 092A16741C57F23F00BAE349 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* ViewTeamView.swift */; };
+		095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* TeamSelectionView.swift */; };
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
 		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
 		0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967FAD81C49BCC800093700 /* ScoutView.swift */; };
 		09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A09D041C499FA000B7BD60 /* Extensions.swift */; };
-		09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D041C57FF2400FA56D1 /* RoundsView.swift */; };
-		09BA4D0D1C57FF9400FA56D1 /* TableViewMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */; };
+		09BA4D051C57FF2400FA56D1 /* RoundSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D041C57FF2400FA56D1 /* RoundSelectionView.swift */; };
 		09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */; };
 		09C567621C46F82200873387 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567611C46F82200873387 /* AppDelegate.swift */; };
 		09C567641C46F82200873387 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C567631C46F82200873387 /* ViewController.swift */; };
@@ -27,7 +26,7 @@
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
 		8659E5AA1C57DB6C0070F6BB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5A91C57DB6C0070F6BB /* HomeView.swift */; };
-		8659E5AE1C57FB830070F6BB /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */; };
+		8659E5AE1C57FB830070F6BB /* TeamAssignenmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5AD1C57FB830070F6BB /* TeamAssignenmentView.swift */; };
 		8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5B51C57FC330070F6BB /* BasicLabel.swift */; };
 		865FD64B1C5181CF00C83D4A /* RoundTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDB1C503CDF00660B44 /* RoundTemplate.json */; };
 		865FD64C1C5181D200C83D4A /* TeamTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = 86565CDC1C503CDF00660B44 /* TeamTemplate.json */; };
@@ -172,15 +171,14 @@
 /* Begin PBXFileReference section */
 		091337801C49A9C6004A38B7 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		092A16691C57F23F00BAE349 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master (1)/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
-		095045E01C49BEB500852B8E /* ViewTeamView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTeamView.swift; sourceTree = "<group>"; };
+		095045E01C49BEB500852B8E /* TeamSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
 		095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0967FAD81C49BCC800093700 /* ScoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutView.swift; sourceTree = "<group>"; };
 		09A09D041C499FA000B7BD60 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		09AAAC9D1C481C1D0039168A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		09BA4D041C57FF2400FA56D1 /* RoundsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundsView.swift; sourceTree = "<group>"; };
-		09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewMaker.swift; sourceTree = "<group>"; };
+		09BA4D041C57FF2400FA56D1 /* RoundSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSelectionView.swift; sourceTree = "<group>"; };
 		09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamProfileView.swift; sourceTree = "<group>"; };
 		09C5675E1C46F82200873387 /* ScoutingApp2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoutingApp2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C567611C46F82200873387 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,7 +193,7 @@
 		86565CDB1C503CDF00660B44 /* RoundTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoundTemplate.json; sourceTree = "<group>"; };
 		86565CDC1C503CDF00660B44 /* TeamTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TeamTemplate.json; sourceTree = "<group>"; };
 		8659E5A91C57DB6C0070F6BB /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamPickerView.swift; sourceTree = "<group>"; };
+		8659E5AD1C57FB830070F6BB /* TeamAssignenmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamAssignenmentView.swift; sourceTree = "<group>"; };
 		8659E5B51C57FC330070F6BB /* BasicLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLabel.swift; sourceTree = "<group>"; };
 		865FD62E1C517E9900C83D4A /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../../../Downloads/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 		866DC1F21C4B1AE40073BED7 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
@@ -267,12 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				8659E5A91C57DB6C0070F6BB /* HomeView.swift */,
-				09BA4D041C57FF2400FA56D1 /* RoundsView.swift */,
-				8659E5AD1C57FB830070F6BB /* TeamPickerView.swift */,
-				0967FAD81C49BCC800093700 /* ScoutView.swift */,
-				095045E01C49BEB500852B8E /* ViewTeamView.swift */,
-				09BA4D0C1C57FF9400FA56D1 /* TableViewMaker.swift */,
-				09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */,
+				8659E5D81C5C14390070F6BB /* Review */,
+				8659E5D71C5C142E0070F6BB /* Scout */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -307,6 +301,25 @@
 				866DC1F41C4B1B0F0073BED7 /* Extras */,
 			);
 			path = ScoutingApp2016;
+			sourceTree = "<group>";
+		};
+		8659E5D71C5C142E0070F6BB /* Scout */ = {
+			isa = PBXGroup;
+			children = (
+				09BA4D041C57FF2400FA56D1 /* RoundSelectionView.swift */,
+				8659E5AD1C57FB830070F6BB /* TeamAssignenmentView.swift */,
+				0967FAD81C49BCC800093700 /* ScoutView.swift */,
+			);
+			name = Scout;
+			sourceTree = "<group>";
+		};
+		8659E5D81C5C14390070F6BB /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				095045E01C49BEB500852B8E /* TeamSelectionView.swift */,
+				09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */,
+			);
+			name = Review;
 			sourceTree = "<group>";
 		};
 		865FD62F1C517E9900C83D4A /* Products */ = {
@@ -568,15 +581,14 @@
 				8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */,
 				86565CD61C50392300660B44 /* Team.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
-				8659E5AE1C57FB830070F6BB /* TeamPickerView.swift in Sources */,
+				8659E5AE1C57FB830070F6BB /* TeamAssignenmentView.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
-				095045E11C49BEB500852B8E /* ViewTeamView.swift in Sources */,
+				095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */,
 				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
 				09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */,
 				09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */,
-				09BA4D051C57FF2400FA56D1 /* RoundsView.swift in Sources */,
+				09BA4D051C57FF2400FA56D1 /* RoundSelectionView.swift in Sources */,
 				866DC1F31C4B1AE40073BED7 /* SwiftyJSON.swift in Sources */,
-				09BA4D0D1C57FF9400FA56D1 /* TableViewMaker.swift in Sources */,
 				86DF2AC41C499259009500A1 /* Round.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
