@@ -29,6 +29,8 @@ class ScoutView: UIView, UIScrollViewDelegate{
     var autoInput: [UISegmentedControl!]!
     
     var teleView: UIView!
+    var teleLabels: [BasicLabel]!
+    var teleSteppers: [UIStepper]!
     
     var segmentedColor: UIColor!
     
@@ -68,6 +70,16 @@ class ScoutView: UIView, UIScrollViewDelegate{
         scrollView.indicatorStyle = UIScrollViewIndicatorStyle.Black
         scrollView.contentSize = CGSize(width: self.frame.width * 2, height: self.frame.height-svh)
         scrollView.alpha = 1
+        
+        
+        let pjl = 3/32 * self.frame.height
+        
+        let teleVerticalScroller = UIScrollView(frame: CGRect(x: 0, y: pjl, width: self.frame.width, height: self.frame.height-(pjl+svh)))
+        teleVerticalScroller.delegate = self
+        teleVerticalScroller.directionalLockEnabled = true
+        teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
+        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
+        teleVerticalScroller.alpha = 1
         
         //AUTO PANE OF SCROLLVIEW
         autoView = UIView(
@@ -143,24 +155,37 @@ class ScoutView: UIView, UIScrollViewDelegate{
             )
         )
         
-        let pjl = 3/32 * self.frame.height
+        let teleLabels: [String] = ["Crossed Portcullis",
+            "Crossed Cheval DeFrise",
+            "Crossed Moat",
+            "Crossed Ramparts",
+            "Crossed Drawbridge",
+            "Crossed SallyPort",
+            "Crossed RockWall",
+            "Crossed RoughTerrain",
+            "Crossed LowBar",
+            "Low Goal",
+            "High Goal"]
+        let teleNames: [String] = ["numTimesCrossedPortcullis",
+            "numTimesCrossedChevalDeFrise",
+            "numTimesCrossedMoat",
+            "numTimesCrossedRamparts",
+            "numTimesCrossedDrawbridge",
+            "numTimesCrossedSallyPort",
+            "numTimesCrossedRockWall",
+            "numTimesCrossedRoughTerrain",
+            "numTimesCrossedLowBar",
+            "low",
+            "high"]
         
-        print("Screen Height: \(self.frame.height) \(Screen.height) \n height: " + String(self.frame.height-pjl))
-        
-        let teleVerticalScroller = UIScrollView(frame: CGRect(x: 0, y: pjl, width: self.frame.width, height: self.frame.height-(pjl+svh)))
-        teleVerticalScroller.delegate = self
-        teleVerticalScroller.directionalLockEnabled = true
-        teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
-        teleVerticalScroller.alpha = 1
+        for i in 0..<teleLabels.count {
+            let yPos = CGFloat(((0.5+(Double(1.2)*Double(i)))/10))
+            let label = BasicLabel(frame: self.frame, text: teleLabels[i], fontSize: 30, color: UIColor.darkGrayColor(), position: CGPoint(x: 1.7/5*self.frame.width, y: yPos*self.frame.height))
+            teleVerticalScroller.addSubview(label)
+        }
         
         teleView.addSubview(teleLabel)
         teleView.addSubview(teleVerticalScroller)
-//        
-//        movedToDefenceControl = UISegmentedControl(items: ["True"])
-//        movedToDefenceControl.frame = CGRectMake(1/2*self.frame.width - (movedToDefenceControl.frame.width/2), self.frame.height/2, self.frame.width/2, self.frame.height/10)
-//        movedToDefenceControl.setWidth(self.frame.width/3, forSegmentAtIndex: 0)
-//        movedToDefenceControl.setWidth(self.frame.width/3, forSegmentAtIndex: 1)
         
         scrollView.addSubview(autoView)
         scrollView.addSubview(teleView)
