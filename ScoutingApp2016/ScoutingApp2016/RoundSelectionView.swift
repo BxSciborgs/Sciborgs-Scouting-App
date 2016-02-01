@@ -14,6 +14,8 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     var tableView: UITableView!
     var cells: [UITableViewCell!]!
     
+    var matches: [JSON]!
+    
     init(){
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
@@ -21,6 +23,7 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         self.addBackButton()
         
+        matches = []
         cells = []
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "Matches", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
@@ -33,6 +36,7 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         BlueAlliance.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: [JSON]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
+                self.matches = matches
                 for match in matches {
                     var matchNum = String(match["match_number"].int!)
                     if(matchNum.characters.count != 2) {
@@ -90,15 +94,19 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
-        print(indexPath.row)
-        BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
-            dispatch_async(dispatch_get_main_queue(), {
-                self.launchViewOnTop(TeamAssignmentView(
-                    blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
-                    redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
-                    ))
-            })
-        })
+        self.launchViewOnTop(TeamAssignmentView(
+                blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
+                redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red")
+            ))
+            
+//        BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
+//            dispatch_async(dispatch_get_main_queue(), {
+//                self.launchViewOnTop(TeamAssignmentView(
+//                    blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
+//                    redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
+//                    ))
+//            })
+//        })
     }
     
     required init?(coder aDecoder: NSCoder) {
