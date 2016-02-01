@@ -79,6 +79,8 @@ class ScoutView: UIView, UIScrollViewDelegate{
             )
         )
         
+        autoView.addSubview(autoLabel)
+        
         let names: [String] = ["movedToDefense", "passedDefense", "lowGoal", "highGoal"]
         let labels: [String] = ["Moved to Defense", "Passed Defense", "Low Goal", "High Goal"]
         
@@ -114,8 +116,6 @@ class ScoutView: UIView, UIScrollViewDelegate{
             autoView.addSubview(label)
         }
         
-
-        
         //TELEOP PANE OF SCROLLVIEW
         teleView = UIView(
             frame: CGRectMake(
@@ -135,14 +135,15 @@ class ScoutView: UIView, UIScrollViewDelegate{
             )
         )
         
-        //teleLabel.frame.y
+        let pjl = 3/32 * self.frame.height
         
-        let teleVerticalScroller = UIScrollView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        print("Screen Height: \(self.frame.height) \(Screen.height) \n height: " + String(self.frame.height-pjl))
+        
+        let teleVerticalScroller = UIScrollView(frame: CGRect(x: 0, y: pjl, width: self.frame.width, height: self.frame.height-(pjl+svh)))
         teleVerticalScroller.delegate = self
         teleVerticalScroller.directionalLockEnabled = true
-        teleVerticalScroller.pagingEnabled = true
         teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*self.frame.height)
+        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
         teleVerticalScroller.alpha = 1
         
         teleView.addSubview(teleLabel)
