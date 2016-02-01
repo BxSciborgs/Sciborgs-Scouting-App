@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090062551C6001C000E365CE /* AutoSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090062541C6001C000E365CE /* AutoSubview.swift */; };
+		090062581C60066800E365CE /* TeleOpSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090062571C60066800E365CE /* TeleOpSubview.swift */; };
 		091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091337801C49A9C6004A38B7 /* BasicButton.swift */; };
 		092A16821C57F26100BAE349 /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 092A16741C57F23F00BAE349 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* TeamSelectionView.swift */; };
@@ -169,6 +171,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		090062541C6001C000E365CE /* AutoSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSubview.swift; sourceTree = "<group>"; };
+		090062571C60066800E365CE /* TeleOpSubview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeleOpSubview.swift; sourceTree = "<group>"; };
 		091337801C49A9C6004A38B7 /* BasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		092A16691C57F23F00BAE349 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master (1)/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 		095045E01C49BEB500852B8E /* TeamSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 				09BA4D041C57FF2400FA56D1 /* RoundSelectionView.swift */,
 				8659E5AD1C57FB830070F6BB /* TeamAssignenmentView.swift */,
 				0967FAD81C49BCC800093700 /* ScoutView.swift */,
+				090062541C6001C000E365CE /* AutoSubview.swift */,
+				090062571C60066800E365CE /* TeleOpSubview.swift */,
 			);
 			name = Scout;
 			sourceTree = "<group>";
@@ -578,12 +584,14 @@
 				09C567621C46F82200873387 /* AppDelegate.swift in Sources */,
 				8659E5AA1C57DB6C0070F6BB /* HomeView.swift in Sources */,
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
+				090062581C60066800E365CE /* TeleOpSubview.swift in Sources */,
 				8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */,
 				86565CD61C50392300660B44 /* Team.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
 				8659E5AE1C57FB830070F6BB /* TeamAssignenmentView.swift in Sources */,
 				09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */,
 				095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */,
+				090062551C6001C000E365CE /* AutoSubview.swift in Sources */,
 				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
 				09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */,
 				09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */,
