@@ -23,7 +23,8 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         self.backgroundColor = UIColor.whiteColor()
         
         // Premade code that adds a back button and calls  a "back" method
-    
+        self.addBackButton()
+        
         cells = []
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "TEAMS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
@@ -51,8 +52,6 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         //adding them
         self.addSubview(tableView)
         self.addSubview(title)
-        self.addBackButton()
-
     }
     
     // Creates a cell for the tableview
@@ -86,16 +85,15 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func back(){
-        self.launchView(HomeView())
+        self.goBack()
+        self.removeNavBar()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
         print("Team\(teamNumbersArray[indexPath.row])")
         DBManager.pull("Teams", rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-            //print(result)
-            UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-            self.removeFromSuperview()
+            self.launchViewOnTop(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result))
         })
         
         

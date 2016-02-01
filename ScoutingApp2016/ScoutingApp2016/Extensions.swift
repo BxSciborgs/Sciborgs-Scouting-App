@@ -74,9 +74,16 @@ extension UIView{
     
     // Doesnt remove the current View
     func launchViewOnTop(view: UIView){
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.setItems(nil, animated: false)
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+        //(UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.setItems(nil, animated: false)
+        //(UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+        
         UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(view, belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+        //view.addBackButton()
+    }
+    
+    func goBack(){
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews[(UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews.count)!-3].addBackButton()
+        self.removeFromSuperview()
     }
     
     func removeNavBar(){
@@ -84,7 +91,8 @@ extension UIView{
     }
     
     func launchView(view: UIView){
-        launchViewOnTop(view)
+        //(UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items = nil
+       UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(view, belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
         self.removeFromSuperview()
     }
     

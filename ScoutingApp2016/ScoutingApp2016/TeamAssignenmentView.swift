@@ -87,11 +87,11 @@ class TeamAssignmentView: UIView {
         } else {
             buttonColor = UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1)
         }
-        self.launchView(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, color: buttonColor))
+        self.launchViewOnTop(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, color: buttonColor))
     }
     
     func back(){
-        self.launchViewOnTop(TeamSelectionView())
+        self.goBack()
     }
     
     required init?(coder aDecoder: NSCoder) {

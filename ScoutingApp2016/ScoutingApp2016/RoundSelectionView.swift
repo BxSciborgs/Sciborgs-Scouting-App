@@ -54,8 +54,8 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func back(){
-        removeFromSuperview()
-        //self.launchViewOnTop(HomeView())
+        self.goBack()
+        self.removeNavBar()
     }
     
     func makeCell(type: String, matchNumber: String){
@@ -99,12 +99,6 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
                     blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
                     redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
                     ))
-//                UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(
-//                    TeamPickerView(
-//                        blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
-//                        redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
-//                    ), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-//                self.removeFromSuperview()
             })
         })
     }

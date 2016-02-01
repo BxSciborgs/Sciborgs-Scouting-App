@@ -26,6 +26,8 @@ class ScoutView: UIView, UIScrollViewDelegate{
     var scrollView: UIScrollView!
     
     var autoView: UIView!
+    var autoInput: [UISegmentedControl!]!
+    
     var teleView: UIView!
     
     var segmentedColor: UIColor!
@@ -34,6 +36,8 @@ class ScoutView: UIView, UIScrollViewDelegate{
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         segmentedColor = color
+        
+        autoInput = []
         
         scoutLabel = BasicLabel(
             frame: self.frame,
@@ -75,10 +79,11 @@ class ScoutView: UIView, UIScrollViewDelegate{
             )
         )
         
-        let names: [String] = ["movedToDefence", "passedDefence", "lowGoal", "highGoal"]
-        let labels: [String] = ["Moved to Defence", "Passed Defense", "Low Goal", "High Goal"]
+        let names: [String] = ["movedToDefense", "passedDefense", "lowGoal", "highGoal"]
+        let labels: [String] = ["Moved to Defense", "Passed Defense", "Low Goal", "High Goal"]
         
-        for i in 0..<4 {
+        var controlTag = 0
+        for i in 0..<names.count {
             let segmentedControl = UISegmentedControl(items: ["True", "False"])
             segmentedControl.selectedSegmentIndex = 1
             
@@ -88,12 +93,23 @@ class ScoutView: UIView, UIScrollViewDelegate{
             segmentedControl.subviews[0].tintColor = segmentedColor
             segmentedControl.subviews[1].tintColor = segmentedColor
             
-            segmentedControl.frame = CGRectMake(3/5*self.frame.width, CGFloat(((1+(Double(1.7)*Double(i)))/10))*self.frame.height, 1/3*self.frame.width, self.frame.width/5)
+            segmentedControl.frame = CGRectMake(
+                3/5*self.frame.width,
+                CGFloat(((1+(Double(1.7)*Double(i)))/10))*self.frame.height,
+                1/3*self.frame.width,
+                self.frame.width/5
+            )
+            
             segmentedControl.name = names[i]
             
             let yPos = CGFloat(((1.4+(Double(1.7)*Double(i)))/10))
-            var label = BasicLabel(frame: self.frame, text: labels[i], fontSize: 30, color: UIColor.darkGrayColor(), position: CGPoint(x: 1.5/5*self.frame.width, y: yPos*self.frame.height))
+            let label = BasicLabel(frame: self.frame, text: labels[i], fontSize: 30, color: UIColor.darkGrayColor(), position: CGPoint(x: 1.5/5*self.frame.width, y: yPos*self.frame.height))
             
+            segmentedControl.addTarget(self, action: "controlFix:", forControlEvents: .ValueChanged)
+            segmentedControl.tag = controlTag
+            controlTag += 1
+            
+            autoInput.append(segmentedControl)
             autoView.addSubview(segmentedControl)
             autoView.addSubview(label)
         }
@@ -138,11 +154,33 @@ class ScoutView: UIView, UIScrollViewDelegate{
         self.addSubview(scrollView)
         self.addSubview(scoutLabel)
     }
-
+    
+    func controlFix(sender: UISegmentedControl){
+        if (sender.selectedSegmentIndex == 0) {
+            if (sender.tag == 2 || sender.tag == 3) {
+                autoInput[0].selectedSegmentIndex = 0
+                autoInput[1].selectedSegmentIndex = 0
+                
+                autoInput[0].userInteractionEnabled = false
+                autoInput[1].userInteractionEnabled = false
+                if (sender.tag == 2){
+                    autoInput[3].selectedSegmentIndex = 1
+                }
+                else {
+                    autoInput[2].selectedSegmentIndex = 1
+                }
+            } else if (sender.tag == 1) {
+                autoInput[0].selectedSegmentIndex = 0
+                autoInput[0].userInteractionEnabled = false
+            }
+        } else {
+            autoInput[0].userInteractionEnabled = true
+            autoInput[1].userInteractionEnabled = true
+        }
+    }
+    
     func back(){
-        
-        removeFromSuperview()
-        //self.lauchView(TeamPickerView(blueTeams: <#T##[Int]#>, redTeams: <#T##[Int]#>))
+        self.goBack()
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -50,19 +50,18 @@ class HomeView: UIView {
         //self.addSubview(sciborgsLabelBottom)
     }
     
+    func back(){
+        
+    }
+    
     // Adds the ViewTeams View
     func viewTeams(){
         self.launchViewOnTop(TeamSelectionView())
-//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(TeamSelectionView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-//        self.removeFromSuperview()
     }
     
     // Adds the Scouting View
     func scoutView(){
         self.launchViewOnTop(RoundSelectionView())
-//        UIApplication.sharedApplication().keyWindow?.rootViewController!.view.insertSubview(RoundSelectionView(), belowSubview: (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
-//
-//        self.removeFromSuperview()
     }
 
     required init?(coder aDecoder: NSCoder) {
