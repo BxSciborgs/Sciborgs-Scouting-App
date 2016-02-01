@@ -18,7 +18,7 @@ class Team {
     var roundTemplate: JSON?
     var teamJSON: JSON?
     
-    public var currentRound: Round!
+    var currentRound: Round!
     
     init(teamNumber: Int!) {
         self.teamNumber = teamNumber

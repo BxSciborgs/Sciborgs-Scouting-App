@@ -34,42 +34,49 @@ class BlueAlliance{
                 
                 let matchesJSON: JSON = JSON(data: response.data)
                 var matches: [JSON] = []
-
+                
                 for i in 0..<matchesJSON.count {
-                    matches.append(matchesJSON[i])
+                    if (matchesJSON[i]["comp_level"] == "qm") {
+                        matches.append(matchesJSON[i])
+                    }
                 }
-    
+                
+                func compareMatchNum(m1: JSON, _ m2: JSON) -> Bool {
+                    return m1["match_number"] < m2["match_number"]
+                }
+                
+                matches.sortInPlace(compareMatchNum)
+                
                 completion(matches: matches)
             }
         } catch let error {
             print("couldn't serialize the paraemeters: \(error)")
         }
-        
     }
     
-    static func getMatch(competitionCode: CompetitionCode, match: Int!, completion:(match: JSON)->Void){
-        do {
-            let opt = try HTTP.GET("http://www.thebluealliance.com/api/v2/event/2015\(competitionCode.rawValue)/matches", parameters: ["X-TBA-App-Id": "frc1155:scouting-app:v1"])
-            
-            opt.start { response in
-                if let err = response.error {
-                    if (err.localizedDescription == "The Internet connection appears to be offline."){
-                        print("No Wifi")
-                        return
-                    }
-                    print("error: \(err.localizedDescription)")
-                    return //also notify app of failure as needed
-                }
-                
-                print("Request Recieved")
-                
-                let json = JSON(data: response.data)
-                completion(match: json[match-1])
-            }
-        } catch let error {
-            print("couldn't serialize the paraemeters: \(error)")
-        }
-    }
+//    static func getMatch(competitionCode: CompetitionCode, match: Int!, completion:(match: JSON)->Void){
+//        do {
+//            let opt = try HTTP.GET("http://www.thebluealliance.com/api/v2/event/2015\(competitionCode.rawValue)/matches", parameters: ["X-TBA-App-Id": "frc1155:scouting-app:v1"])
+//            
+//            opt.start { response in
+//                if let err = response.error {
+//                    if (err.localizedDescription == "The Internet connection appears to be offline."){
+//                        print("No Wifi")
+//                        return
+//                    }
+//                    print("error: \(err.localizedDescription)")
+//                    return //also notify app of failure as needed
+//                }
+//                
+//                print("Request Recieved")
+//                
+//                let json = JSON(data: response.data)
+//                completion(match: json[match-1])
+//            }
+//        } catch let error {
+//            print("couldn't serialize the paraemeters: \(error)")
+//        }
+//    }
     
     static func sendRequestTeams(competitionCode: CompetitionCode, completion:(teamNames: [String], teamNumbers: [Int])->Void){
         var allTeamNumbers: [Int]!

@@ -114,7 +114,6 @@ class ScoutView: UIView, UIScrollViewDelegate{
             autoView.addSubview(label)
         }
         
-        autoView.addSubview(autoLabel)
 
         
         //TELEOP PANE OF SCROLLVIEW
@@ -136,7 +135,18 @@ class ScoutView: UIView, UIScrollViewDelegate{
             )
         )
         
+        //teleLabel.frame.y
+        
+        let teleVerticalScroller = UIScrollView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        teleVerticalScroller.delegate = self
+        teleVerticalScroller.directionalLockEnabled = true
+        teleVerticalScroller.pagingEnabled = true
+        teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
+        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*self.frame.height)
+        teleVerticalScroller.alpha = 1
+        
         teleView.addSubview(teleLabel)
+        teleView.addSubview(teleVerticalScroller)
 //        
 //        movedToDefenceControl = UISegmentedControl(items: ["True"])
 //        movedToDefenceControl.frame = CGRectMake(1/2*self.frame.width - (movedToDefenceControl.frame.width/2), self.frame.height/2, self.frame.width/2, self.frame.height/10)

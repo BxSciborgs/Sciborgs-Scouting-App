@@ -39,9 +39,7 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
                         matchNum = "0\(matchNum)"
                     }
                     
-                    if(match["comp_level"] == "qm") {
-                        self.makeCell("Qualifying Match", matchNumber: matchNum)
-                    }
+                    self.makeCell("Qualifying Match", matchNumber: matchNum)
                     self.tableView.reloadData()
                 }
             })
