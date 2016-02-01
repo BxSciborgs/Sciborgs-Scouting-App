@@ -96,17 +96,9 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         // Link to team profile
         self.launchViewOnTop(TeamAssignmentView(
                 blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
-                redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red")
+                redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
+                roundNumber:  indexPath.row+1
             ))
-            
-//        BlueAlliance.getMatch(CompetitionCode.Javits, match: indexPath.row + 1, completion: {(match: JSON) -> Void in
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.launchViewOnTop(TeamAssignmentView(
-//                    blueTeams: BlueAlliance.getTeamsFromMatch(match, color: "blue"),
-//                    redTeams: BlueAlliance.getTeamsFromMatch(match, color: "red")
-//                    ))
-//            })
-//        })
     }
     
     required init?(coder aDecoder: NSCoder) {
