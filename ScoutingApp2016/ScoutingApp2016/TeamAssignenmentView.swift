@@ -18,12 +18,15 @@ class TeamAssignmentView: UIView {
     var blueTeamsLabel: UILabel!
     var redTeamsLabel: UILabel!
     
+    var roundNumber: Int!
     
-    init(blueTeams: [Int], redTeams: [Int]) {
+    init(blueTeams: [Int], redTeams: [Int], roundNumber: Int!) {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.blueTeams = blueTeams
         self.redTeams = redTeams
+        
+        self.roundNumber = roundNumber
         
         self.backgroundColor = UIColor.whiteColor()
         
@@ -87,7 +90,7 @@ class TeamAssignmentView: UIView {
         } else {
             buttonColor = UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1)
         }
-        self.launchViewOnTop(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, color: buttonColor))
+        self.launchViewOnTop(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, roundNumber: self.roundNumber, color: buttonColor))
     }
     
     func back(){

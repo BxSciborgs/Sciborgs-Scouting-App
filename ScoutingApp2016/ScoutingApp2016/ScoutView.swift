@@ -32,8 +32,16 @@ class ScoutView: UIView, UIScrollViewDelegate{
     
     var segmentedColor: UIColor!
     
-    init(teamNumber: Int, color: UIColor){
+    var teamNumber: Int!
+    var roundNumber: Int!
+    
+    init(teamNumber: Int, roundNumber: Int!, color: UIColor){
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
+        
+        self.teamNumber = teamNumber
+        self.roundNumber = roundNumber
+        
+        print("Scouting Round\(self.roundNumber)")
         
         segmentedColor = color
         
