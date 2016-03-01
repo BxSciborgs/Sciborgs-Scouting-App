@@ -133,6 +133,10 @@ class ScoutView: UIView, UIScrollViewDelegate{
         finalizeAutoView()
         
         currentTeamProfile.submitCurrentRound()
+        for view in (UIApplication.sharedApplication().keyWindow?.rootViewController!.view.subviews)! {
+                view.removeFromSuperview()
+        }
+        self.launchView(HomeView())
     }
     
     func back(){

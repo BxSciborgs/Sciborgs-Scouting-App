@@ -47,6 +47,9 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
         teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
         teleVerticalScroller.alpha = 1
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.addGestureRecognizer(tap)
+        
         teleLabels = [
             "Comments",
             "Crossed Portcullis",
@@ -144,5 +147,15 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
         }
         let newLength = currentCharacterCount + string.characters.count - range.length
         return newLength <= 50
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return false
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.endEditing(true)
     }
 }
