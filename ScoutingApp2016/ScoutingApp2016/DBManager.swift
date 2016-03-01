@@ -32,6 +32,7 @@ class DBManager {
         
         query.getFirstObjectInBackgroundWithBlock {(obj: PFObject?, error: NSError?) -> Void in
             if error == nil {
+                print("Pushed round succesfully")
                 obj?.setObject(object, forKey: finalKey)
                 obj?.saveInBackground()
             } else {

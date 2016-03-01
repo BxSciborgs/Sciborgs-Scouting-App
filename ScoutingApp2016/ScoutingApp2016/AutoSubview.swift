@@ -12,6 +12,9 @@ class AutoSubview: UIView{
     
     var autoInput: [UISegmentedControl!]!
     
+    var segmentedControls: [UISegmentedControl]! = []
+    var segmentedNames: [String]! = []
+    
     init(segmentedColor: UIColor) {
         super.init(frame:
             CGRectMake(
@@ -37,11 +40,11 @@ class AutoSubview: UIView{
         
         self.addSubview(autoLabel)
         
-        let names: [String] = ["movedToDefense", "passedDefense", "lowGoal", "highGoal"]
+        segmentedNames = ["movedToDefense", "passedDefense", "lowGoal", "highGoal"]
         let labels: [String] = ["Moved to Defense", "Passed Defense", "Low Goal", "High Goal"]
         
         var controlTag = 0
-        for i in 0..<names.count {
+        for i in 0..<segmentedNames.count {
             let segmentedControl = UISegmentedControl(items: ["True", "False"])
             segmentedControl.selectedSegmentIndex = 1
 
@@ -58,8 +61,7 @@ class AutoSubview: UIView{
                 Screen.width/5
             )
             
-
-            segmentedControl.name = names[i]
+            segmentedControl.name = segmentedNames[i]
 
             let yPos = CGFloat(((1.4+(Double(1.7)*Double(i)))/10))
             let label = BasicLabel(frame: Screen.frame, text: labels[i], fontSize: 30, color: UIColor.darkGrayColor(), position: CGPoint(x: 1.5/5*Screen.width, y: yPos*Screen.height))
@@ -67,15 +69,14 @@ class AutoSubview: UIView{
             segmentedControl.addTarget(self, action: "controlFix:", forControlEvents: .ValueChanged)
             segmentedControl.tag = controlTag
             controlTag += 1
-            print("IRght here")
+            
+            segmentedControls.append(segmentedControl)
 
             autoInput.append(segmentedControl)
             
             self.addSubview(segmentedControl)
             self.addSubview(label)
-            print("NOT HERE")
         }
-        print("1.75")
     }
     
     func controlFix(sender: UISegmentedControl){

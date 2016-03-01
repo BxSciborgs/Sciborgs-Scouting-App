@@ -21,7 +21,6 @@ class Round {
         
         DBManager.pull("Templates", rowKey: "templateType", rowValue: "RoundTemplate", finalKey: "templateJSON", completion: {(result: JSON)->Void in
             self.template = result
-            print(self.template)
             print("Got round template")
             
             self.template!["roundNumber"].int = roundNumber
