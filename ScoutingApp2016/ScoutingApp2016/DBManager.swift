@@ -10,6 +10,10 @@ import Foundation
 import Parse
 import Bolts
 
+public enum ParseClass: String {
+    case Teams = "Teams"
+    case TeamsTest = "TeamsTEST"
+}
 class DBManager {
     
     static func pull(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, completion:(result:JSON)->Void) {
@@ -53,6 +57,18 @@ class DBManager {
             for teamNum in teamNumbers {
                 let teamProfile = Team(teamNumber: teamNum)
                 teamProfile.sendSkeleton()
+            }
+        })
+    }
+    
+    static func createNewClass(className: String) {
+        BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int])->Void in
+            for i in 0..<teamNames.count {
+                let object = PFObject(className: className)
+                object["teamNumber"] = teamNumbers[i]
+                object["teamKey"] = "frc\(teamNumbers[i])"
+                object["teamNickname"] = teamNames[i]
+                object.saveInBackground()
             }
         })
     }

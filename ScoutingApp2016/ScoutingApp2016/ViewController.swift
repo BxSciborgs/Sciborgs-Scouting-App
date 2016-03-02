@@ -40,7 +40,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         navBar.delegate = self;
         
         //RESETS PARSE COMPLETELY, DON'T UNCOMMENT
-        DBManager.addAllTeams()
+        //DBManager.addAllTeams()
 
         if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){
             view.addSubview(button)
