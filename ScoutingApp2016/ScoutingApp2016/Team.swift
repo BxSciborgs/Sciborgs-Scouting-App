@@ -43,4 +43,12 @@ class Team {
             DBManager.push(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
         })
     }
+    
+    func getAllRounds(completion:(result:[JSON])->Void) {
+        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
+            var teamJSON = result
+            completion(result: teamJSON["rounds"].array!)
+        })
+        print("No rounds found")
+    }
 }

@@ -87,7 +87,6 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         return cells[indexPath.row]
     }
     
