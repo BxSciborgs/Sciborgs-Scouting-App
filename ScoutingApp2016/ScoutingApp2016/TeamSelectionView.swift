@@ -27,11 +27,16 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "TEAMS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
     
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/4), style: UITableViewStyle.Plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height*0.6), style: UITableViewStyle.Plain)
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        
+        let ourTeamsButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/4.5), location: CGPoint(x: frame.width/2,y: 1.15*frame.height/4), title: "OUR ROUNDS", titleSize: 50)
+        ourTeamsButton.addTarget(self, action: "openOurTeams", forControlEvents: UIControlEvents.TouchUpInside)
+
+        self.addSubview(ourTeamsButton)
         
         //Create list of teams
         BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
@@ -45,7 +50,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         })
         
         // centering the table view
-        tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
+        tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/5.7)
 
         //adding them
         self.addSubview(tableView)
@@ -85,6 +90,16 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     func back(){
         self.goBack()
         self.removeNavBar()
+    }
+    
+    func openOurTeams() {
+        let sciBorgsTeamProfile: Team  = Team(teamNumber: 1155)
+        sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
+            for match in matches {
+                print("Alliance \(sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(match).allianceTeams)")
+                print("Enemy \(sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(match).enemyTeams)")
+            }
+        })
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

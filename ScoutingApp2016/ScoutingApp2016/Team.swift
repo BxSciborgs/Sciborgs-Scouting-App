@@ -51,4 +51,47 @@ class Team {
         })
         print("No rounds found")
     }
+    
+    func getAllParticipatingMatches(completion: (result: [JSON]) -> Void) {
+        BlueAlliance.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: [JSON]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                var participatedMatches: [JSON] = []
+                for match in matches {
+                    if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(1155) {
+                        participatedMatches.append(match)
+                    }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(1155){
+                        participatedMatches.append(match)
+                    }
+                }
+                completion(result: participatedMatches)
+            })
+        })
+    }
+    
+    func getAllianceAndEnemyTeamsFromMatch(match: JSON) -> (allianceTeams: [Int], enemyTeams: [Int]) {
+        var allianceTeams: [Int] = []
+        var enemyTeams: [Int] = []
+
+        if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(1155) {
+            for team in BlueAlliance.getTeamsFromMatch(match, color: "blue") {
+                if (team != 1155) {
+                    allianceTeams.append(team)
+                }
+            }
+            for team in BlueAlliance.getTeamsFromMatch(match, color: "red") {
+                enemyTeams.append(team)
+            }
+        }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(1155){
+            for team in BlueAlliance.getTeamsFromMatch(match, color: "red") {
+                if (team != 1155) {
+                    allianceTeams.append(team)
+                }
+            }
+            for team in BlueAlliance.getTeamsFromMatch(match, color: "blue") {
+                enemyTeams.append(team)
+            }
+        }
+        
+        return (allianceTeams, enemyTeams)
+    }
 }

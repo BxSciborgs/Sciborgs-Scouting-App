@@ -82,7 +82,6 @@ class TeamAssignmentView: UIView {
     }
     
     func onClick(sender: UIButton){
-        
         var buttonColor: UIColor
         
         if (sender.tag <= 2) {

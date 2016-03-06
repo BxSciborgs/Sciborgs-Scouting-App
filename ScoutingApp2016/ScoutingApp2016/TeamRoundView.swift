@@ -153,7 +153,7 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             }
             teleVerticalScroller.addSubview(labelName)
         }
-        
+    
         self.addSubview(colorView)
         self.addSubview(teamNumberLabel)
         self.addSubview(teleVerticalScroller)
