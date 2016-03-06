@@ -20,9 +20,7 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
-        
-        self.addBackButton()
-        
+                
         matches = []
         cells = []
         

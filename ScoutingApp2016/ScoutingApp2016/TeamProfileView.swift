@@ -26,6 +26,8 @@ class TeamProfileView: UIView, UIScrollViewDelegate{
         self.backgroundColor = UIColor.whiteColor()
         self.teamNumber = teamNumber
         
+        self.addBackButton()
+
         currentTeamProfile = Team(teamNumber: self.teamNumber)
         
         teamJSON = json
@@ -46,7 +48,7 @@ class TeamProfileView: UIView, UIScrollViewDelegate{
         
         //OFFSET SCROLLVIEW
         
-        scrollView = UIScrollView(frame: CGRectMake(0, bsConstants.svh, self.frame.width, self.frame.height-bsConstants.svh))
+        scrollView = UIScrollView(frame: CGRectMake(0, bsConstants.svh, self.frame.width, self.frame.height))
         scrollView.delegate = self
         scrollView.directionalLockEnabled = true
         scrollView.pagingEnabled = true

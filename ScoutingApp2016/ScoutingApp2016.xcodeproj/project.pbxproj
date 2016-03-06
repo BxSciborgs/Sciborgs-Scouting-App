@@ -48,6 +48,7 @@
 		86A7CCB21C48529C0006DD22 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 86A7CC9C1C484FBF0006DD22 /* GoogleSignIn.bundle */; };
 		86AAFBC71C8B841300564076 /* TeamSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAFBC61C8B841300564076 /* TeamSummaryView.swift */; };
 		86AAFBD01C8B858400564076 /* TeamSummaryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */; };
+		86DAE50A1C8BA35200B97568 /* TeamRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DAE5091C8BA35200B97568 /* TeamRoundView.swift */; };
 		86DF2AC41C499259009500A1 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC31C499259009500A1 /* Round.swift */; };
 /* End PBXBuildFile section */
 
@@ -220,6 +221,7 @@
 		86A7CCB31C4853050006DD22 /* ScoutingApp2016-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScoutingApp2016-Bridging-Header.h"; sourceTree = "<group>"; };
 		86AAFBC61C8B841300564076 /* TeamSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSummaryView.swift; sourceTree = "<group>"; };
 		86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSummaryRoundView.swift; sourceTree = "<group>"; };
+		86DAE5091C8BA35200B97568 /* TeamRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamRoundView.swift; sourceTree = "<group>"; };
 		86DF2AC31C499259009500A1 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +335,7 @@
 				09BA4D161C5823F200FA56D1 /* TeamProfileView.swift */,
 				86AAFBC61C8B841300564076 /* TeamSummaryView.swift */,
 				86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */,
+				86DAE5091C8BA35200B97568 /* TeamRoundView.swift */,
 			);
 			name = Review;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */,
 				090062551C6001C000E365CE /* AutoSubview.swift in Sources */,
 				860B50DC1C52E96100D3641A /* DBManager.swift in Sources */,
+				86DAE50A1C8BA35200B97568 /* TeamRoundView.swift in Sources */,
 				09BA4D171C5823F200FA56D1 /* TeamProfileView.swift in Sources */,
 				09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */,
 				09BA4D051C57FF2400FA56D1 /* RoundSelectionView.swift in Sources */,

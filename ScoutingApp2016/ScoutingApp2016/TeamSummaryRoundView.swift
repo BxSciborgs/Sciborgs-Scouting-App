@@ -38,7 +38,7 @@ class TeamSummaryRoundView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         cells = []
 
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), style: UITableViewStyle.Plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/3.2), style: UITableViewStyle.Plain)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,7 +53,7 @@ class TeamSummaryRoundView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         self.tableView.reloadData()
         
-        tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
+        tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 - Screen.height/16)
 
         self.addSubview(tableView)
     }
@@ -75,6 +75,8 @@ class TeamSummaryRoundView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
         print("Found Round\(self.rounds[indexPath.row])")
+        self.removeFromSuperview()
+        self.launchViewOnTop(TeamRoundView(json: self.rounds[indexPath.row]))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +87,6 @@ class TeamSummaryRoundView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         return cells[indexPath.row]
     }
-
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
