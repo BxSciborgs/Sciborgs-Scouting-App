@@ -49,6 +49,7 @@
 		86AAFBC71C8B841300564076 /* TeamSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAFBC61C8B841300564076 /* TeamSummaryView.swift */; };
 		86AAFBD01C8B858400564076 /* TeamSummaryRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */; };
 		86DAE50A1C8BA35200B97568 /* TeamRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DAE5091C8BA35200B97568 /* TeamRoundView.swift */; };
+		86DB71B31C8CFBF700A7760C /* OurRoundsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DB71B21C8CFBF700A7760C /* OurRoundsView.swift */; };
 		86DF2AC41C499259009500A1 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF2AC31C499259009500A1 /* Round.swift */; };
 /* End PBXBuildFile section */
 
@@ -222,6 +223,7 @@
 		86AAFBC61C8B841300564076 /* TeamSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSummaryView.swift; sourceTree = "<group>"; };
 		86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSummaryRoundView.swift; sourceTree = "<group>"; };
 		86DAE5091C8BA35200B97568 /* TeamRoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamRoundView.swift; sourceTree = "<group>"; };
+		86DB71B21C8CFBF700A7760C /* OurRoundsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurRoundsView.swift; sourceTree = "<group>"; };
 		86DF2AC31C499259009500A1 /* Round.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -336,6 +338,7 @@
 				86AAFBC61C8B841300564076 /* TeamSummaryView.swift */,
 				86AAFBCF1C8B858400564076 /* TeamSummaryRoundView.swift */,
 				86DAE5091C8BA35200B97568 /* TeamRoundView.swift */,
+				86DB71B21C8CFBF700A7760C /* OurRoundsView.swift */,
 			);
 			name = Review;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				09C567621C46F82200873387 /* AppDelegate.swift in Sources */,
 				86109A961C78F8BF0086DD04 /* ReviewView.swift in Sources */,
 				8659E5AA1C57DB6C0070F6BB /* HomeView.swift in Sources */,
+				86DB71B31C8CFBF700A7760C /* OurRoundsView.swift in Sources */,
 				091337811C49A9C6004A38B7 /* BasicButton.swift in Sources */,
 				090062581C60066800E365CE /* TeleOpSubview.swift in Sources */,
 				86AAFBD01C8B858400564076 /* TeamSummaryRoundView.swift in Sources */,

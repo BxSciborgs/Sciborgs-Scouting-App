@@ -95,10 +95,8 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     func openOurTeams() {
         let sciBorgsTeamProfile: Team  = Team(teamNumber: 1155)
         sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
-            for match in matches {
-                print("Alliance \(sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(match).allianceTeams)")
-                print("Enemy \(sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(match).enemyTeams)")
-            }
+            let sciBorgsMatches = matches
+            self.launchViewOnTop(OurRoundsView())
         })
     }
     

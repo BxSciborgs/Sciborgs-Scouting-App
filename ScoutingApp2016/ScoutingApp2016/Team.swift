@@ -57,9 +57,9 @@ class Team {
             dispatch_async(dispatch_get_main_queue(), {
                 var participatedMatches: [JSON] = []
                 for match in matches {
-                    if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(1155) {
+                    if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(self.teamNumber) {
                         participatedMatches.append(match)
-                    }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(1155){
+                    }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(self.teamNumber){
                         participatedMatches.append(match)
                     }
                 }
@@ -72,7 +72,7 @@ class Team {
         var allianceTeams: [Int] = []
         var enemyTeams: [Int] = []
 
-        if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(1155) {
+        if BlueAlliance.getTeamsFromMatch(match, color: "blue").contains(self.teamNumber) {
             for team in BlueAlliance.getTeamsFromMatch(match, color: "blue") {
                 if (team != 1155) {
                     allianceTeams.append(team)
@@ -81,7 +81,7 @@ class Team {
             for team in BlueAlliance.getTeamsFromMatch(match, color: "red") {
                 enemyTeams.append(team)
             }
-        }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(1155){
+        }else if BlueAlliance.getTeamsFromMatch(match, color: "red").contains(self.teamNumber){
             for team in BlueAlliance.getTeamsFromMatch(match, color: "red") {
                 if (team != 1155) {
                     allianceTeams.append(team)
