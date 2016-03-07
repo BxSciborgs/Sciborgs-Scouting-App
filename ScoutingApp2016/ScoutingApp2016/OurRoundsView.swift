@@ -13,6 +13,9 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView!
     var cells: [UITableViewCell!]!
     
+    var matchNumbers: [Int]! = []
+    var matches: [JSON]! = []
+    
     init() {
         super.init(frame:
             CGRectMake(
@@ -60,6 +63,9 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func makeCell(match: JSON, teamName: String){
+        matchNumbers.append(match["match_number"].int!)
+        matches.append(match)
+        
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
         
         let roundNum = UILabel(frame: cell.frame)
@@ -75,7 +81,13 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Link to team profile
+        let teamView = TeamAssignmentView(
+            blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
+            redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
+            roundNumber:  indexPath.row+1,
+            mode: AssignmentMode.REVIEW
+        )
+        self.launchViewOnTop(teamView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,6 +97,10 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         return cells[indexPath.row]
+    }
+    
+    func onClick() {
+        print("Hello")
     }
     
     required init?(coder aDecoder: NSCoder) {

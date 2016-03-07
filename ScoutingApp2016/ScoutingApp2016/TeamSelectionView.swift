@@ -67,8 +67,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         //checks to make sure the name isnt too long
         if (name.characters.count >= maxLength){
             nameText.text = name.substring(0, end: maxLength-3) + "..."
-        }
-        else{
+        } else{
             nameText.text = name
         }
         

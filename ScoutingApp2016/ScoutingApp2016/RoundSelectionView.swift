@@ -94,7 +94,8 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         self.launchViewOnTop(TeamAssignmentView(
                 blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
                 redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
-                roundNumber:  indexPath.row+1
+                roundNumber:  indexPath.row+1,
+                mode: AssignmentMode.SCOUT
             ))
     }
     

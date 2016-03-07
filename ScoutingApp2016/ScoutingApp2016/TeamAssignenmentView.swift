@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum AssignmentMode {
+    case SCOUT
+    case REVIEW
+}
+
 class TeamAssignmentView: UIView {
     
     var blueTeams: [Int]!
@@ -20,7 +25,9 @@ class TeamAssignmentView: UIView {
     
     var roundNumber: Int!
     
-    init(blueTeams: [Int], redTeams: [Int], roundNumber: Int!) {
+    var teamButton: BasicButton!
+    
+    init(blueTeams: [Int], redTeams: [Int], roundNumber: Int!, mode: AssignmentMode) {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.blueTeams = blueTeams
@@ -55,7 +62,7 @@ class TeamAssignmentView: UIView {
                 sign = 1
             }
             
-            let teamButton = BasicButton(
+            teamButton = BasicButton(
                 type: UIButtonType.RoundedRect,
                 color: UIColor(red: red, green: green, blue: blue, alpha: 1.0),
                 size: CGRect(
@@ -70,7 +77,11 @@ class TeamAssignmentView: UIView {
                 titleSize: 50
             )
             
-            teamButton.addTarget(nil, action: "onClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            if(mode == AssignmentMode.SCOUT) {
+                teamButton.addTarget(nil, action: "onScoutClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            }else {
+                teamButton.addTarget(nil, action: "onReviewClick:", forControlEvents: UIControlEvents.TouchUpInside)
+            }
             teamButton.tag = teamButtonTag
             teamButtonTag += 1
             
@@ -81,7 +92,7 @@ class TeamAssignmentView: UIView {
         self.addSubview(redTeamsLabel)
     }
     
-    func onClick(sender: UIButton){
+    func onScoutClick(sender: UIButton){
         var buttonColor: UIColor
         
         if (sender.tag <= 2) {
@@ -90,6 +101,12 @@ class TeamAssignmentView: UIView {
             buttonColor = UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1)
         }
         self.launchViewOnTop(ScoutView(teamNumber: Int((sender.titleLabel?.text)!)!, roundNumber: self.roundNumber, color: buttonColor))
+    }
+    
+    func onReviewClick(sender: UIButton){
+        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: Int((sender.titleLabel?.text)!)!, finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+            self.launchViewOnTop(TeamProfileView(teamNumber: Int((sender.titleLabel?.text)!)!, json: result))
+        })
     }
     
     func back(){
