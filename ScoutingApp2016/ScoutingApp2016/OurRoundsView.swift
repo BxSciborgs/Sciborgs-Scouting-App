@@ -16,6 +16,11 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     var matchNumbers: [Int]! = []
     var matches: [JSON]! = []
     
+    var teamOrder: [String]! = []
+    
+    var sciBorgsTeamProfile: Team!
+    var feMaidensTeamProfile: Team!
+    
     init() {
         super.init(frame:
             CGRectMake(
@@ -37,7 +42,7 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.reloadData()
         
-        let sciBorgsTeamProfile: Team = Team(teamNumber: 1155)
+        sciBorgsTeamProfile = Team(teamNumber: 1155)
         sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
             if matches.count > 0 {
                 for x in 0..<matches.count{
@@ -47,7 +52,7 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
             }
         })
         
-        let feMaidensTeamProfile: Team = Team(teamNumber: 2265)
+        feMaidensTeamProfile = Team(teamNumber: 2265)
         feMaidensTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
             if matches.count > 0 {
                 for x in 0..<matches.count{
@@ -66,6 +71,8 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         matchNumbers.append(match["match_number"].int!)
         matches.append(match)
         
+        teamOrder.append(teamName)
+        
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
         
         let roundNum = UILabel(frame: cell.frame)
@@ -81,13 +88,26 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let blueTeams = BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue")
+        let redTeams = BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red")
+        
         let teamView = TeamAssignmentView(
-            blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
-            redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
+            blueTeams: blueTeams,
+            redTeams: redTeams,
             roundNumber:  indexPath.row+1,
             mode: AssignmentMode.REVIEW
         )
-        self.launchViewOnTop(teamView)
+        
+        var selectedEnemyTeams: [Int] = []
+        if(teamOrder[indexPath.row] == "SciBorgs") {
+            selectedEnemyTeams = sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(matches[indexPath.row]).enemyTeams
+        }else if (teamOrder[indexPath.row] == "FeMaidens") {
+            selectedEnemyTeams = feMaidensTeamProfile.getAllianceAndEnemyTeamsFromMatch(matches[indexPath.row]).enemyTeams
+        }
+        let  roundSummaryView = RoundSummaryView(teamAssignmentView: teamView, enemyTeams: selectedEnemyTeams)
+        
+        self.launchViewOnTop(roundSummaryView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
