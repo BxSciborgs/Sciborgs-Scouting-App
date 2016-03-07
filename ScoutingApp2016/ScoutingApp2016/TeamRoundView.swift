@@ -60,8 +60,8 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             "numTimesCrossedRockWall",
             "numTimesCrossedRoughTerrain",
             "numTimesCrossedLowBar",
-            "low",
             "high",
+            "low",
             "challenge",
             "scale"
         ]
@@ -132,7 +132,7 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             )
             
             if(i == 0) {
-                let commentTextBox = UITextField(frame: CGRectMake((3.1/5)*self.frame.width,
+                let commentTextBox = UITextField(frame: CGRectMake((3.2/5)*self.frame.width,
                     yPos*self.frame.height - (self.frame.height/200), self.frame.width/3, self.frame.height/20))
                 commentTextBox.text = "\(keyLabelsDictionary![jsonKeyLabels[i]]!)"
                 commentTextBox.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
