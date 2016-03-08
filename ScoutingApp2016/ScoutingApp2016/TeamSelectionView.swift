@@ -100,7 +100,6 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // Link to team profile
         print("Team\(teamNumbersArray[indexPath.row])")
         DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
             self.launchViewOnTop(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result))

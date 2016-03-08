@@ -41,11 +41,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         
         //RESETS PARSE COMPLETELY, DON'T UNCOMMENT
         //DBManager.addAllTeams()
-
+        
         if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){
             view.addSubview(button)
         }
-        
         
         self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navBar.shadowImage = UIImage()

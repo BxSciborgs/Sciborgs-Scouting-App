@@ -16,6 +16,44 @@ public enum ParseClass: String {
 }
 class DBManager {
     
+    static var allJSONKeys = [
+        "comments",
+        "movedToDefense",
+        "passedDefense",
+        "lowGoal",
+        "highGoal",
+        "numTimesCrossedPortcullis",
+        "numTimesCrossedChevalDeFrise",
+        "numTimesCrossedMoat",
+        "numTimesCrossedRamparts",
+        "numTimesCrossedDrawbridge",
+        "numTimesCrossedSallyPort",
+        "numTimesCrossedRockWall",
+        "numTimesCrossedRoughTerrain",
+        "numTimesCrossedLowBar",
+        "high",
+        "low",
+        "challenge",
+        "scale"
+    ]
+    
+    
+
+    static var defensesJSONKeys = Array(allJSONKeys[5...13])
+    
+    static var goalJSONKeys = Array(allJSONKeys[14...15])
+    
+    static var integerJSONKeys = Array(defensesJSONKeys + goalJSONKeys)
+    
+    static var autoBooleanJSONKeys = Array(allJSONKeys[1...4])
+    
+    static var endBooleanJSONKeys = Array(allJSONKeys[16...17])
+    
+    static var booleanJSONKeys = Array(autoBooleanJSONKeys + endBooleanJSONKeys)
+    
+    static var averageJSONKeys =  Array(allJSONKeys[1...17])
+    
+    
     static func pull(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, completion:(result:JSON)->Void) {
         let query = PFQuery(className: className)
         query.whereKey(rowKey, equalTo: rowValue)

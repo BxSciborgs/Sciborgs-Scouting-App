@@ -77,21 +77,49 @@ class SuggestedDefencesView: UIView {
     }
     
     func calculateAverageValues() {
-        print(self.totalRounds)
         calculatedAverages = true
+        
         for i in 0..<avgLabels.count {
             var avgValue: Double = 0
+            var appearances: Double = 0
             
             for j in 0..<2 {
-                avgValue = avgValue + (individualAvgValues[j][avgLabels[i]]?.doubleValue)!
+                if((individualAvgValues[j][avgLabels[i]]?.doubleValue)! != -1) {
+                    avgValue = avgValue + (individualAvgValues[j][avgLabels[i]]?.doubleValue)!
+                    appearances++
+                }
             }
             
-            avgValue = avgValue/self.totalRounds
+            if(appearances == 0) {
+                avgValue = -1
+            } else {
+                avgValue = avgValue/appearances
+            }
             totalAvgValues[avgLabels[i]] = avgValue
         }
         print("Average Values \(totalAvgValues)")
+        //getWorstFourDefenses()
+    }
+    
+    func getWorstFourDefenses() {
+        var values = [Double]()
         
-        print(getWorstThreeDefenses())
+        for i in 0..<avgLabels.count {
+            let value: Double = self.totalAvgValues[avgLabels[i]]!.doubleValue
+            values.append(value)
+        }
+        
+        func sortFunc(num1: Int, num2: Int) -> Bool {
+            return num1 < num2
+        }
+
+        let sortedValues = values.sort {
+            return $0 < $1
+
+        }
+        
+        print(sortedValues)
+
     }
 
     required init?(coder aDecoder: NSCoder) {

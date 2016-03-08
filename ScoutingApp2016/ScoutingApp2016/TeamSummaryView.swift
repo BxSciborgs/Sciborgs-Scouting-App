@@ -44,26 +44,6 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             )
         )
         
-        jsonKeys = [
-            "movedToDefense",
-            "passedDefense",
-            "lowGoal",
-            "highGoal",
-            "numTimesCrossedPortcullis",
-            "numTimesCrossedChevalDeFrise",
-            "numTimesCrossedMoat",
-            "numTimesCrossedRamparts",
-            "numTimesCrossedDrawbridge",
-            "numTimesCrossedSallyPort",
-            "numTimesCrossedRockWall",
-            "numTimesCrossedRoughTerrain",
-            "numTimesCrossedLowBar",
-            "high",
-            "low",
-            "challenge",
-            "scale"
-        ]
-        
         jsonKeyLabels = [
             "Moved To Defense: ",
             "Passed Defense: ",
@@ -84,13 +64,15 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             "Scale: "
         ]
         
-        for i in 0..<jsonKeys.count {
+        print(DBManager.averageJSONKeys[1])
+        
+        for i in 0..<DBManager.averageJSONKeys.count {
             if(i < 4) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = getAvgBooleanValue(jsonKeys[i])
+                keyLabelsDictionary[jsonKeyLabels[i]] = getAvgBooleanValue(DBManager.averageJSONKeys[i])
             }else if (i < 15) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = Double(round(10*getAvgNumberValue(jsonKeys[i]))/10)
+                keyLabelsDictionary[jsonKeyLabels[i]] = Double(round(10*getAvgNumberValue(Array(DBManager.averageJSONKeys)[i]))/10)
             }else if (i < 17) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = getAvgBooleanValue(jsonKeys[i])
+                keyLabelsDictionary[jsonKeyLabels[i]] = getAvgBooleanValue(Array(DBManager.averageJSONKeys)[i])
             }
         }
         
@@ -123,6 +105,9 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
                     y: yPos*self.frame.height
                 )
             )
+            if(keyLabelsDictionary![jsonKeyLabels[i]]!.intValue == -1) {
+                labelKey.text = "-"
+            }
             teleVerticalScroller.addSubview(labelKey)
             teleVerticalScroller.addSubview(labelName)
         }
@@ -135,17 +120,14 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         var numberOfTrueValues = 0
         var numberOfFalseValues = 0
         
-        var autoPointsKeys = ["movedToDefense", "passedDefense", "lowGoal", "highGoal"]
-        var telePointsKeys = ["challenge", "scale"]
-        
         for round in allRounds {
-            if(autoPointsKeys.contains(key)) {
+            if(DBManager.autoBooleanJSONKeys.contains(key)) {
                 if(round["autoPoints"][key].boolValue == true) {
                     numberOfTrueValues = numberOfTrueValues + 1
                 }else {
                     numberOfFalseValues = numberOfTrueValues + 1
                 }
-            }else if(telePointsKeys.contains(key)) {
+            }else if(DBManager.endBooleanJSONKeys.contains(key)) {
                 if(round["telePoints"][key].boolValue == true) {
                     numberOfTrueValues = numberOfTrueValues + 1
                 }else {
@@ -154,32 +136,31 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             }
         }
         
-        return (numberOfTrueValues >= numberOfFalseValues ? "True" : "False")
+        return (numberOfTrueValues > numberOfFalseValues ? "True" : "False")
     }
     
     func getAvgNumberValue(key: String) -> Double {
         var avgValue: Double = 0
         
-        var defenses = ["numTimesCrossedPortcullis",
-            "numTimesCrossedChevalDeFrise",
-            "numTimesCrossedMoat",
-            "numTimesCrossedRamparts",
-            "numTimesCrossedDrawbridge",
-            "numTimesCrossedSallyPort",
-            "numTimesCrossedRockWall",
-            "numTimesCrossedRoughTerrain",
-            "numTimesCrossedLowBar"]
-        
-        var goals = ["low", "high"]
-        
-        for round in allRounds {
-            if(defenses.contains(key)) {
-                avgValue = avgValue + round["telePoints"]["defenses"][key].doubleValue
-            }else if(goals.contains(key)) {
-                avgValue = avgValue + round["telePoints"]["goals"][key].doubleValue
+        var appearances: Double = 0
+
+        for i in 0..<allRounds.count {
+            if(DBManager.defensesJSONKeys.contains(key)) {
+                if(allRounds[i]["telePoints"]["defenses"][key].doubleValue != -1) {
+                    appearances++
+                    avgValue += allRounds[i]["telePoints"]["defenses"][key].doubleValue
+                }
+            }else if(DBManager.goalJSONKeys.contains(key)) {
+                appearances++
+                avgValue += allRounds[i]["telePoints"]["goals"][key].doubleValue
             }
         }
-        return (avgValue/numberOfRounds)
+
+        if(appearances == 0) {
+            return -1 as Double
+        }else {
+            return (avgValue/appearances)
+        }
     }
     
     func back(){

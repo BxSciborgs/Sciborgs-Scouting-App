@@ -33,6 +33,7 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         let title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "OUR ROUNDS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
         
         self.addSubview(title)
+        self.addBackButton()
         
         cells = []
         
