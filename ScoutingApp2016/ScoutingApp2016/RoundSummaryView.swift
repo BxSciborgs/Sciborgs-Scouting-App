@@ -15,7 +15,7 @@ class RoundSummaryView: UIView, UIScrollViewDelegate{
         
         self.backgroundColor = UIColor.whiteColor()
         
-        let scrollView = UIScrollView(frame: CGRectMake(0, bsConstants.svh, self.frame.width, self.frame.height))
+        let scrollView = UIScrollView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
         scrollView.delegate = self
         scrollView.directionalLockEnabled = true
         scrollView.pagingEnabled = true
@@ -23,6 +23,7 @@ class RoundSummaryView: UIView, UIScrollViewDelegate{
         scrollView.contentSize = CGSize(width: self.frame.width * 2, height: self.frame.height-bsConstants.svh)
         scrollView.alpha = 1
         
+        scrollView.addSubview(teamAssignmentView)
         scrollView.addSubview(SuggestedDefencesView(teams: enemyTeams))
         self.addSubview(scrollView)
     }
