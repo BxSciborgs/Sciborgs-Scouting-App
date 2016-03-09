@@ -135,7 +135,7 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
     
     func changeLabelValue(sender: UIStepper) {
         if(Int(sender.value) == -1) {
-            stepperLabels[sender.tag].text = ""
+            stepperLabels[sender.tag].text = "-"
         }else {
             stepperLabels[sender.tag].text = "\(Int(sender.value))"
         }

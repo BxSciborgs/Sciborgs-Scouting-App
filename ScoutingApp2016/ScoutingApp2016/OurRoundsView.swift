@@ -94,7 +94,10 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
             roundNumber:  indexPath.row+1,
             mode: AssignmentMode.REVIEW
         )
-        self.launchViewOnTop(teamView)
+        
+        let teamProfile = Team(teamNumber: NSUserDefaults().integerForKey("TeamNumber"))
+        let enemyTeams = teamProfile.getAllianceAndEnemyTeamsFromMatch(matches[indexPath.row]).enemyTeams
+        self.launchViewOnTop(RoundSummaryView(teamAssignmentView: teamView, enemyTeams: enemyTeams))
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

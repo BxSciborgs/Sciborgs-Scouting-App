@@ -11,15 +11,14 @@ import Foundation
 class SuggestedDefencesView: UIView {
     
     var individualAvgValues: [[String: AnyObject]]! = [[:]]
-    
-    var totalRounds: Double! = 0
-    
-    var avgKeys: [String] = []
-    var avgLabels: [String] = []
-    
     var totalAvgValues: [String: AnyObject] = [:]
     
-    var calculatedAverages: Bool! = false
+    var worstValues: [Double]! = []
+    var worstNames: [String]! = []
+
+    var totalRounds: Double! = 0
+    
+    var avgLabels: [String] = []
     
     init(teams: [Int]) {
         super.init(frame:
@@ -59,13 +58,33 @@ class SuggestedDefencesView: UIView {
                     self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
                     
                     if(self.individualAvgValues.count == 3) {
-                        self.calculateAverageValues()
+                        self.postCompletionMethod()
                     }
                 })
             })
         })
-    
         
+    }
+    
+    func postCompletionMethod() {
+        self.worstValues = self.getWorstFourDefenses().values
+        self.worstNames = self.getWorstFourDefenses().names
+        
+        print(self.worstValues)
+        print(self.worstNames)
+        
+        let teamNumberLabel = BasicLabel(
+            frame: self.frame,
+            text: "Suggestions",
+            fontSize: 50,
+            color: UIColor.darkGrayColor(),
+            position: CGPoint(
+                x: Screen.width/2,
+                y: Screen.height/12
+            )
+        )
+        
+        self.addSubview(teamNumberLabel)
     }
     
     func calculateAverageValues() {
@@ -87,15 +106,15 @@ class SuggestedDefencesView: UIView {
                 totalAvgValues[avgLabels[i]] = -1
             }
         }
-        
-        print("Average Values \(totalAvgValues)")
-        print(getWorstFourDefenses())
     }
     
-    func getWorstFourDefenses() -> [String] {
+    func getWorstFourDefenses() -> (values: [Double], names: [String]) {
+        calculateAverageValues()
         
         var values = [Double]()
-        var worstDefenses = [String]()
+        
+        var worstValues = [Double]()
+        var worstNames = [String]()
         
         for i in 0..<avgLabels.count {
             let value: Double = self.totalAvgValues[avgLabels[i]]!.doubleValue
@@ -112,12 +131,22 @@ class SuggestedDefencesView: UIView {
         }
         
         for i in 0..<sortedValues.count {
-            if(self.totalAvgValues[avgLabels[i]]!.doubleValue == sortedValues[i]) {
-                worstDefenses.append(avgLabels[i])
+            if(sortedValues[i] != -1) {
+                for j in 0..<avgLabels.count {
+                    if(self.totalAvgValues[avgLabels[j]]!.doubleValue == sortedValues[i]) {
+                        worstValues.append(self.totalAvgValues[avgLabels[j]]!.doubleValue)
+                        worstNames.append(avgLabels[j].substring(8, end: avgLabels[j].characters.count-1))
+                    }
+                }
+            }else {
+                if(self.totalAvgValues[avgLabels[i]]!.doubleValue == sortedValues[i]) {
+                    worstValues.append(self.totalAvgValues[avgLabels[i]]!.doubleValue)
+                    worstNames.append(avgLabels[i].substring(8, end: avgLabels[i].characters.count-1))
+                }
             }
         }
         
-        return worstDefenses
+        return (worstValues, worstNames)
     }
     
 

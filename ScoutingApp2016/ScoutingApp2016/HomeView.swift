@@ -57,7 +57,7 @@ class HomeView: UIView {
         //self.addSubview(sciborgsLabelBottom)
         
         //TESTING
-        NSUserDefaults().setObject(nil, forKey: "TeamNumber")
+        //NSUserDefaults().setObject(nil, forKey: "TeamNumber")
         
         if (NSUserDefaults().objectForKey("TeamNumber") == nil) {
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")

@@ -134,11 +134,13 @@ class ScoutView: UIView, UIScrollViewDelegate{
         
         currentTeamProfile.submitCurrentRound()
         for view in (UIApplication.sharedApplication().keyWindow?.rootViewController!.view.subviews)! {
+            if let vTest = view as? HomeView {
+                print(vTest)
+            }else {
                 view.removeFromSuperview()
+            }
         }
-        let homeView = HomeView()
-        homeView.addBackButton()
-        self.launchView(homeView)
+      
     }
     
     func back(){
