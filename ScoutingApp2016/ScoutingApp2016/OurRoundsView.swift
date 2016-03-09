@@ -124,6 +124,11 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         print("Hello")
     }
     
+    func back() {
+        self.goBack()
+        //self.removeNavBar()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

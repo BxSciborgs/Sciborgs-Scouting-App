@@ -69,6 +69,7 @@ class TeamProfileView: UIView, UIScrollViewDelegate{
     
     func back(){
         self.goBack()
+        //self.removeNavBar()
     }
 
     required init?(coder aDecoder: NSCoder) {

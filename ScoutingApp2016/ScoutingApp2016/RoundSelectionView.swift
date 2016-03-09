@@ -32,6 +32,8 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.dataSource = self
         tableView.reloadData()
         
+        self.addBackButton()
+        
         BlueAlliance.sendRequestMatches(CompetitionCode.Javits, completion: {(matches: [JSON]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 self.matches = matches

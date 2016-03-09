@@ -144,6 +144,7 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
 
     func back(){
         self.goBack()
+        //self.removeNavBar()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

@@ -15,6 +15,8 @@ class RoundSummaryView: UIView, UIScrollViewDelegate{
         
         self.backgroundColor = UIColor.whiteColor()
         
+        self.addBackButton()
+        
         let scrollView = UIScrollView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
         scrollView.delegate = self
         scrollView.directionalLockEnabled = true
@@ -26,6 +28,11 @@ class RoundSummaryView: UIView, UIScrollViewDelegate{
         scrollView.addSubview(teamAssignmentView)
         scrollView.addSubview(SuggestedDefencesView(teams: enemyTeams))
         self.addSubview(scrollView)
+    }
+    
+    func back() {
+        self.goBack()
+        ///self.removeNavBar()
     }
 
     required init?(coder aDecoder: NSCoder) {

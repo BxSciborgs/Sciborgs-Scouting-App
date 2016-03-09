@@ -111,6 +111,7 @@ class TeamAssignmentView: UIView {
     
     func back(){
         self.goBack()
+        self.removeNavBar()
     }
     
     required init?(coder aDecoder: NSCoder) {

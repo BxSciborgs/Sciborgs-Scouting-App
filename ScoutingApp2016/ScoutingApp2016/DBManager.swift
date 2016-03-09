@@ -82,6 +82,20 @@ class DBManager {
             }
         }
     }
+    
+    
+    static func pullMultipleTeams(teamNumbers: [Int], JSONArray: [JSON]) -> [JSON] {
+        if(JSONArray.count == teamNumbers.count) {
+            return JSONArray
+        }else {
+            DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teamNumbers[JSONArray.count], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                var newArray = JSONArray
+                newArray.append(result)
+                pullMultipleTeams(teamNumbers, JSONArray: newArray)
+            })
+        }
+        return [JSON]()
+    }
         
     static func getJSON(fileName: String!) -> [String:AnyObject] {
         var jsonData: NSData!

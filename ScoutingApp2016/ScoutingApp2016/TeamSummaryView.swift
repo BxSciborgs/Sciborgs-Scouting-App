@@ -23,7 +23,6 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.backgroundColor = UIColor.whiteColor()
-        self.addBackButton()
         
         if(allRounds.count != 0) {
             self.numberOfRounds = Double(allRounds.count)
@@ -161,10 +160,6 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         }else {
             return (avgValue/appearances)
         }
-    }
-    
-    func back(){
-        self.goBack()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

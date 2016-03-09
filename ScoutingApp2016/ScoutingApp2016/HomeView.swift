@@ -41,16 +41,14 @@ class HomeView: UIView {
         let newImage = banner.image!.scaleUIImageToSize(banner.image!, size: CGSize(width: self.frame.width,height: self.frame.height/3.5))
         let imageView = UIImageView(image: newImage)
         imageView.center = CGPoint(x: self.frame.width/2,y: self.frame.height/5)
-
+        
+        //self.addBackButton()
+        
         self.addSubview(viewButton)
         self.addSubview(scoutButton)
         self.addSubview(imageView)
         //self.addSubview(sciborgsLabelTop)
         //self.addSubview(sciborgsLabelBottom)
-    }
-    
-    func back(){
-        
     }
     
     // Adds the ViewTeams View

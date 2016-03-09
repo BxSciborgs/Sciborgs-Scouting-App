@@ -136,11 +136,14 @@ class ScoutView: UIView, UIScrollViewDelegate{
         for view in (UIApplication.sharedApplication().keyWindow?.rootViewController!.view.subviews)! {
                 view.removeFromSuperview()
         }
-        self.launchView(HomeView())
+        let homeView = HomeView()
+        homeView.addBackButton()
+        self.launchView(homeView)
     }
     
     func back(){
         self.goBack()
+        //self.removeNavBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
