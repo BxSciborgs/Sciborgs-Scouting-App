@@ -56,7 +56,7 @@ class TeamProfileView: UIView, UIScrollViewDelegate{
         scrollView.contentSize = CGSize(width: self.frame.width * 2, height: self.frame.height-bsConstants.svh)
         scrollView.alpha = 1
                 
-        let teamSummaryView = TeamSummaryView()
+        let teamSummaryView = TeamSummaryView(allRounds: allRounds)
         let teamSummaryRoundView = TeamSummaryRoundView(rounds: allRounds)
         
         scrollView.addSubview(teamSummaryView)
@@ -69,6 +69,7 @@ class TeamProfileView: UIView, UIScrollViewDelegate{
     
     func back(){
         self.goBack()
+        //self.removeNavBar()
     }
 
     required init?(coder aDecoder: NSCoder) {

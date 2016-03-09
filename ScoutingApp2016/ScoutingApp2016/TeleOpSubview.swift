@@ -101,7 +101,7 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             }else {
                 let labelStepper = UIStepper(frame: CGRectMake(2.75/5*self.frame.width, yPos*self.frame.height - (self.frame.height/100),self.frame.width/4,self.frame.height/10))
                 labelStepper.autorepeat = false
-                labelStepper.minimumValue = 0
+                labelStepper.minimumValue = -1
                 labelStepper.maximumValue = 9
                 labelStepper.tag = i-1
                 labelStepper.tintColor = stepperColor
@@ -134,7 +134,11 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
     }
     
     func changeLabelValue(sender: UIStepper) {
-        stepperLabels[sender.tag].text = "\(Int(sender.value))"
+        if(Int(sender.value) == -1) {
+            stepperLabels[sender.tag].text = ""
+        }else {
+            stepperLabels[sender.tag].text = "\(Int(sender.value))"
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

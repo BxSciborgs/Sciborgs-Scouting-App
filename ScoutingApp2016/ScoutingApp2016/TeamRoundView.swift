@@ -44,27 +44,6 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         teamJSON = json
         
         print(teamJSON["roundNumber"])
-        
-        jsonKeys = [
-            "comments",
-            "movedToDefense",
-            "passedDefense",
-            "lowGoal",
-            "highGoal",
-            "numTimesCrossedPortcullis",
-            "numTimesCrossedChevalDeFrise",
-            "numTimesCrossedMoat",
-            "numTimesCrossedRamparts",
-            "numTimesCrossedDrawbridge",
-            "numTimesCrossedSallyPort",
-            "numTimesCrossedRockWall",
-            "numTimesCrossedRoughTerrain",
-            "numTimesCrossedLowBar",
-            "high",
-            "low",
-            "challenge",
-            "scale"
-        ]
     
         jsonKeyLabels = [
             "Comments: ",
@@ -87,22 +66,26 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             "Scale: "
         ]
         
-        for i in 0..<jsonKeys.count {
+        for i in 0..<DBManager.allJSONKeys.count {
             if(i < 1) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON![jsonKeys[i]].stringValue
+                keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON![DBManager.allJSONKeys[i]].stringValue
             }else if(i < 5) {
-                if(teamJSON!["autoPoints"][jsonKeys[i]].boolValue == true) {
+                if(teamJSON!["autoPoints"][DBManager.allJSONKeys[i]].boolValue == true) {
                     //true
                     keyLabelsDictionary[jsonKeyLabels[i]] = "True"
                 }else {
                     keyLabelsDictionary[jsonKeyLabels[i]] = "False"
                 }
             }else if (i < 14) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON!["telePoints"]["defenses"][jsonKeys[i]].intValue
+                if(teamJSON!["telePoints"]["defenses"][DBManager.allJSONKeys[i]].intValue == -1) {
+                    keyLabelsDictionary[jsonKeyLabels[i]] = "-"
+                }else {
+                    keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON!["telePoints"]["defenses"][DBManager.allJSONKeys[i]].intValue
+                }
             }else if (i < 16) {
-                keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON!["telePoints"]["goals"][jsonKeys[i]].intValue
+                keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON!["telePoints"]["goals"][DBManager.allJSONKeys[i]].intValue
             }else if (i < 18) {
-                if(teamJSON!["telePoints"][jsonKeys[i]].boolValue == true) {
+                if(teamJSON!["telePoints"][DBManager.allJSONKeys[i]].boolValue == true) {
                     //true
                     keyLabelsDictionary[jsonKeyLabels[i]] = "True"
                 }else {
@@ -161,6 +144,7 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
 
     func back(){
         self.goBack()
+        //self.removeNavBar()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

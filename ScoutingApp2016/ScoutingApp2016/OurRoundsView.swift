@@ -16,6 +16,11 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     var matchNumbers: [Int]! = []
     var matches: [JSON]! = []
     
+    var teamOrder: [String]! = []
+    
+    var sciBorgsTeamProfile: Team!
+    var feMaidensTeamProfile: Team!
+    
     init() {
         super.init(frame:
             CGRectMake(
@@ -30,6 +35,7 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         let title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "OUR ROUNDS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
         
         self.addSubview(title)
+        self.addBackButton()
         
         cells = []
         
@@ -39,11 +45,29 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.reloadData()
         
+<<<<<<< HEAD
         let sciBorgsTeamProfile: Team = Team(teamNumber: NSUserDefaults().integerForKey("TeamNumber"))
         sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
             if matches.count > 0 {
                 for x in 0..<matches.count{
                     self.makeCell(matches[x], teamName: "\(NSUserDefaults().integerForKey("TeamNumber"))")
+=======
+        sciBorgsTeamProfile = Team(teamNumber: 1155)
+        sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
+            if matches.count > 0 {
+                for x in 0..<matches.count{
+                    self.makeCell(matches[x], teamName: "SciBorgs")
+                }
+                self.tableView.reloadData()
+            }
+        })
+        
+        feMaidensTeamProfile = Team(teamNumber: 2265)
+        feMaidensTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
+            if matches.count > 0 {
+                for x in 0..<matches.count{
+                    self.makeCell(matches[x], teamName: "FeMaidens")
+>>>>>>> f722d74a59f487f58c9dbe07852893d407b1639f
                 }
                 self.tableView.reloadData()
             }
@@ -68,6 +92,8 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         matchNumbers.append(match["match_number"].int!)
         matches.append(match)
         
+        teamOrder.append(teamName)
+        
         let cell = UITableViewCell(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height - Screen.height/8))
         
         let roundNum = UILabel(frame: cell.frame)
@@ -88,13 +114,26 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let blueTeams = BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue")
+        let redTeams = BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red")
+        
         let teamView = TeamAssignmentView(
-            blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
-            redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
+            blueTeams: blueTeams,
+            redTeams: redTeams,
             roundNumber:  indexPath.row+1,
             mode: AssignmentMode.REVIEW
         )
-        self.launchViewOnTop(teamView)
+        
+        var selectedEnemyTeams: [Int] = []
+        if(teamOrder[indexPath.row] == "SciBorgs") {
+            selectedEnemyTeams = sciBorgsTeamProfile.getAllianceAndEnemyTeamsFromMatch(matches[indexPath.row]).enemyTeams
+        }else if (teamOrder[indexPath.row] == "FeMaidens") {
+            selectedEnemyTeams = feMaidensTeamProfile.getAllianceAndEnemyTeamsFromMatch(matches[indexPath.row]).enemyTeams
+        }
+        let  roundSummaryView = RoundSummaryView(teamAssignmentView: teamView, enemyTeams: selectedEnemyTeams)
+        
+        self.launchViewOnTop(roundSummaryView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,6 +147,11 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func onClick() {
         print("Hello")
+    }
+    
+    func back() {
+        self.goBack()
+        //self.removeNavBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
