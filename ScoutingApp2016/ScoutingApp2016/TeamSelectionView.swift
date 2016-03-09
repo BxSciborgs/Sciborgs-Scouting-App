@@ -17,6 +17,8 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     var teamNumbersArray: [Int]!
     var searchbar: UITextField!
     
+    var tap: UITapGestureRecognizer?
+    
     init(){
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
@@ -57,7 +59,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         searchbar = UITextField(
             frame: CGRect(
                 x: Screen.width/20,
-                y:  1.15*frame.height/4,
+                y:  1.20*frame.height/4,
                 width: Screen.width - Screen.width/4,
                 height: 44
             )
@@ -73,7 +75,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                 height: Screen.height/20),
             location: CGPoint(
                 x: Screen.width - Screen.width/9,
-                y: 1.3*frame.height/4
+                y: 1.35*frame.height/4
             ),
             title: "SEARCH",
             titleSize: 14
@@ -81,11 +83,25 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         
         searchButton.addTarget(self, action: "searchForTeam", forControlEvents: UIControlEvents.TouchUpInside)
         
-        searchbar.placeholder = "Search for Teams..."
+        searchbar.placeholder = "Search by name or number"
         searchbar.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        self.addGestureRecognizer(tap)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardLaunched",
+            name: UIKeyboardDidShowNotification,
+            object: nil
+        )
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "keyboardClosed",
+            name: UIKeyboardDidHideNotification,
+            object: nil
+        )
+        
+        searchbar.keyboardType = UIKeyboardType.Default
         
         searchbar.delegate = self
         
@@ -96,8 +112,32 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/5.7)
 
         //adding them
-        self.addSubview(tableView)
+        
         self.addSubview(title)
+        self.addSubview(tableView)
+    }
+    
+    func addAllTeams(){
+        //Create list of teams
+        BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.teamNumbersArray = teamNumbers
+                self.teamNamesArray = teamNames
+                for x in 0..<teamNumbers.count{
+                    self.makeCell(teamNames[x], number: teamNumbers[x])
+                }
+                self.tableView.reloadData()
+            })
+        })
+    }
+    
+    func keyboardLaunched(){
+        tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.addGestureRecognizer(tap!)
+    }
+    
+    func keyboardClosed(){
+        self.removeGestureRecognizer(tap!)
     }
     
     func clearTableView(){
@@ -113,7 +153,16 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     // Search method
     func searchForTeam(){
         
+        self.dismissKeyboard()
+        
         if (searchbar.text! == ""){
+            
+            //print(UIKeyboardDidShowNotification)
+            
+            clearTableView()
+            
+            addAllTeams()
+            
             return
         }
         
@@ -142,6 +191,10 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                 
                 // Sorting in the correct order
                 // TODO
+                
+                if (searchResultName.count == 0){
+                    self.makeCell("No Teams Found", number: 0)
+                }
         
                 // Adding the cells
                 for i in 0..<searchResultName.count{
@@ -214,12 +267,14 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     func openOurTeams() {
+        self.dismissKeyboard()
         self.launchViewOnTop(OurRoundsView())
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Team\(teamNumbersArray[indexPath.row])")
         DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+            self.dismissKeyboard()
             self.launchViewOnTop(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result))
         })
     }
