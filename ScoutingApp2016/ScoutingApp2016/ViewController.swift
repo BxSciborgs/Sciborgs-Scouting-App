@@ -46,7 +46,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
             view.addSubview(button)
         }
         
-        
         self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navBar.shadowImage = UIImage()
         self.navBar.translucent = true

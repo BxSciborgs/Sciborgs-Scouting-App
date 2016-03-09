@@ -25,6 +25,8 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         )
         self.backgroundColor = UIColor.whiteColor()
         
+        self.addBackButton()
+        
         let title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "OUR ROUNDS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/8))
         
         self.addSubview(title)
@@ -37,25 +39,25 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.reloadData()
         
-        let sciBorgsTeamProfile: Team = Team(teamNumber: 1155)
+        let sciBorgsTeamProfile: Team = Team(teamNumber: NSUserDefaults().integerForKey("TeamNumber"))
         sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
             if matches.count > 0 {
                 for x in 0..<matches.count{
-                    self.makeCell(matches[x], teamName: "SciBorgs")
+                    self.makeCell(matches[x], teamName: "\(NSUserDefaults().integerForKey("TeamNumber"))")
                 }
                 self.tableView.reloadData()
             }
         })
-        
-        let feMaidensTeamProfile: Team = Team(teamNumber: 2265)
-        feMaidensTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
-            if matches.count > 0 {
-                for x in 0..<matches.count{
-                    self.makeCell(matches[x], teamName: "FeMaidens")
-                }
-                self.tableView.reloadData()
-            }
-        })
+//        
+//        let feMaidensTeamProfile: Team = Team(teamNumber: 2265)
+//        feMaidensTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
+//            if matches.count > 0 {
+//                for x in 0..<matches.count{
+//                    self.makeCell(matches[x], teamName: "FeMaidens")
+//                }
+//                self.tableView.reloadData()
+//            }
+//        })
         
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/10)
         
@@ -79,6 +81,11 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.insertSubview(cell, atIndex: cells.count-1)
         self.tableView.reloadData()
     }
+    
+    func back(){
+        self.goBack()
+    }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let teamView = TeamAssignmentView(
