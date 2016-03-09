@@ -214,10 +214,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     func openOurTeams() {
-        let sciBorgsTeamProfile: Team  = Team(teamNumber: 1155)
-        sciBorgsTeamProfile.getAllParticipatingMatches({(matches: [JSON]) -> Void in
-            self.launchViewOnTop(OurRoundsView())
-        })
+        self.launchViewOnTop(OurRoundsView())
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

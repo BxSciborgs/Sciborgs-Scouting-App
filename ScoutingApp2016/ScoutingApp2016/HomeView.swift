@@ -57,7 +57,7 @@ class HomeView: UIView {
         //self.addSubview(sciborgsLabelBottom)
         
         //TESTING
-        //NSUserDefaults().setObject(nil, forKey: "TeamNumber")
+        NSUserDefaults().setObject(nil, forKey: "TeamNumber")
         
         if (NSUserDefaults().objectForKey("TeamNumber") == nil) {
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -89,7 +89,6 @@ class HomeView: UIView {
         
     }
     
-<<<<<<< HEAD
     func back(){
         
     }
@@ -99,8 +98,6 @@ class HomeView: UIView {
         self.endEditing(true)
     }
     
-=======
->>>>>>> f722d74a59f487f58c9dbe07852893d407b1639f
     // Adds the ViewTeams View
     func viewTeams(){
         self.launchViewOnTop(TeamSelectionView())
