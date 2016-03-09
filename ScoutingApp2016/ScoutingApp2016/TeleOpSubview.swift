@@ -62,7 +62,8 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             "Crossed RoughTerrain",
             "Crossed LowBar",
             "Low Goal",
-            "High Goal"]
+            "High Goal"
+        ]
         teleNames = [
             "comments",
             "numTimesCrossedPortcullis",
@@ -75,7 +76,8 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             "numTimesCrossedRoughTerrain",
             "numTimesCrossedLowBar",
             "low",
-            "high"]
+            "high"
+        ]
         
         for i in 0..<teleLabels.count {
             let yPos = CGFloat(((0.5+(Double(1.2)*Double(i)))/10))

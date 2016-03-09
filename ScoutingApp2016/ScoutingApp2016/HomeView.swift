@@ -27,10 +27,16 @@ class HomeView: UIView {
     var viewButton: BasicButton!
     var scoutButton: BasicButton!
     
+    var teamNumberButton: BasicButton?
+    
+    var teamNumberField: UITextField?
+    
+    var addTeamView: UIView?
+    
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
-
+        
         viewButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: frame.height/2), title: "REVIEW", titleSize: 80)
         viewButton.addTarget(self, action: "viewTeams", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -49,6 +55,47 @@ class HomeView: UIView {
         self.addSubview(imageView)
         //self.addSubview(sciborgsLabelTop)
         //self.addSubview(sciborgsLabelBottom)
+        
+        //TESTING
+        NSUserDefaults().setObject(nil, forKey: "TeamNumber")
+        
+        if (NSUserDefaults().objectForKey("TeamNumber") == nil) {
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+            self.addGestureRecognizer(tap)
+            
+            print("Creating")
+            addTeamView = UIView(frame: CGRect(x: 0, y: Screen.height/2-55, width: Screen.width, height: Screen.height/2+55))
+            addTeamView!.backgroundColor = UIColor.whiteColor()
+            
+            teamNumberField = UITextField(
+                frame: CGRectMake(
+                    Screen.width/2-100,
+                    Screen.height/2,
+                    500,
+                    44
+                )
+            )
+            
+            teamNumberButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: 3*frame.height/4), title: "ENTER", titleSize: 80)
+            teamNumberButton!.addTarget(self, action: "teamNumEnter", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            teamNumberField!.placeholder = "Team number here..."
+            teamNumberField!.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+            
+            self.addSubview(addTeamView!)
+            self.addSubview(teamNumberField!)
+            self.addSubview(teamNumberButton!)
+        }
+        
+    }
+    
+    func back(){
+        
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status
+        self.endEditing(true)
     }
     
     // Adds the ViewTeams View
@@ -59,6 +106,17 @@ class HomeView: UIView {
     // Adds the Scouting View
     func scoutView(){
         self.launchViewOnTop(RoundSelectionView())
+    }
+    
+    func teamNumEnter() {
+        if (teamNumberField!.text != "") {
+            let n = Int(teamNumberField!.text!)
+            NSUserDefaults().setInteger(n!, forKey: "TeamNumber")
+            addTeamView!.removeFromSuperview()
+            teamNumberField!.removeFromSuperview()
+            teamNumberButton!.removeFromSuperview()
+            print(n)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
