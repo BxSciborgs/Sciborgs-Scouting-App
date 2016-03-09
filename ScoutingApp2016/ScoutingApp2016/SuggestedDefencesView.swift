@@ -43,67 +43,59 @@ class SuggestedDefencesView: UIView {
             "Crossed LowBar: "
         ]
         
-        print(DBManager.pullMultipleTeams(teams, JSONArray: [JSON]()))
+        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[0],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+            let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
+            self.individualAvgValues[0] = (teamSummary.keyLabelsDictionary)
+            self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
+            
+            DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[1],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
+                self.individualAvgValues.append(teamSummary.keyLabelsDictionary)
+                self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
+                
+                DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[2],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                    let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
+                    self.individualAvgValues.append(teamSummary.keyLabelsDictionary)
+                    self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
+                    
+                    if(self.individualAvgValues.count == 3) {
+                        self.calculateAverageValues()
+                    }
+                })
+            })
+        })
     
-//        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[0],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-//            let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
-//            self.individualAvgValues[0] = (teamSummary.keyLabelsDictionary)
-//            self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
-//            
-//            if(self.individualAvgValues.count == 3) {
-//                self.calculateAverageValues()
-//            }
-//        })
-//        
-//        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[1],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-//            let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
-//            self.individualAvgValues.append(teamSummary.keyLabelsDictionary)
-//            self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
-//
-//            if(self.individualAvgValues.count == 3) {
-//                self.calculateAverageValues()
-//            }
-//        })
-//        
-//        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teams[2],finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-//            let teamSummary = TeamSummaryView(allRounds: result["rounds"].arrayValue)
-//            self.individualAvgValues.append(teamSummary.keyLabelsDictionary)
-//            self.totalRounds =  self.totalRounds + Double(result["rounds"].arrayValue.count)
-//            
-//            if(self.individualAvgValues.count == 3) {
-//                self.calculateAverageValues()
-//            }
-//        })
         
     }
     
     func calculateAverageValues() {
-        calculatedAverages = true
-        
         for i in 0..<avgLabels.count {
-            var avgValue: Double = 0
-            var appearances: Double = 0
+            
+            var value: Double = 0
+            var appearances = 0
             
             for j in 0..<2 {
                 if((individualAvgValues[j][avgLabels[i]]!.doubleValue)! != -1) {
-                    avgValue = avgValue + (individualAvgValues[j][avgLabels[i]]?.doubleValue)!
+                    value += (individualAvgValues[j][avgLabels[i]]?.doubleValue)!
                     appearances++
                 }
             }
-            
-            if(appearances == 0) {
-                avgValue = -1
-            } else {
-                avgValue = avgValue/appearances
+
+            if(appearances > 0) {
+                totalAvgValues[avgLabels[i]] = value
+            }else {
+                totalAvgValues[avgLabels[i]] = -1
             }
-            totalAvgValues[avgLabels[i]] = avgValue
         }
+        
         print("Average Values \(totalAvgValues)")
-        //getWorstFourDefenses()
+        print(getWorstFourDefenses())
     }
     
-    func getWorstFourDefenses() {
+    func getWorstFourDefenses() -> [String] {
+        
         var values = [Double]()
+        var worstDefenses = [String]()
         
         for i in 0..<avgLabels.count {
             let value: Double = self.totalAvgValues[avgLabels[i]]!.doubleValue
@@ -119,8 +111,13 @@ class SuggestedDefencesView: UIView {
 
         }
         
-        print(sortedValues)
-
+        for i in 0..<sortedValues.count {
+            if(self.totalAvgValues[avgLabels[i]]!.doubleValue == sortedValues[i]) {
+                worstDefenses.append(avgLabels[i])
+            }
+        }
+        
+        return worstDefenses
     }
     
 
