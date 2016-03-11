@@ -64,15 +64,15 @@ class HomeView: UIView {
             self.addGestureRecognizer(tap)
             
             print("Creating")
-            addTeamView = UIView(frame: CGRect(x: 0, y: Screen.height/2-55, width: Screen.width, height: Screen.height/2+55))
+            addTeamView = UIView(frame: CGRect(x: 0, y: Screen.height/2 - Screen.height/10, width: Screen.width, height: Screen.height/2))
             addTeamView!.backgroundColor = UIColor.whiteColor()
             
             teamNumberField = UITextField(
                 frame: CGRectMake(
-                    Screen.width/2-100,
+                    Screen.width/2 - Screen.width/4,
                     Screen.height/2,
-                    500,
-                    44
+                    Screen.width/2,
+                    Screen.height/10
                 )
             )
             

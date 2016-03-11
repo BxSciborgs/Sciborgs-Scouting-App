@@ -141,12 +141,9 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     }
     
     func clearTableView(){
-
         cells = []
         
         tableView.reloadData()
-        
-
     }
     
     
@@ -251,8 +248,13 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         
         let numberText = UILabel(frame: cell.frame)
         numberText.text = String(number)
-        numberText.textAlignment = NSTextAlignment.Right
-        numberText.center = CGPoint(x: numberText.center.x - (Screen.width * 0.05), y: numberText.center.y)
+        numberText.textAlignment = NSTextAlignment.Center
+        
+        if(UIDevice.currentDevice().modelName == "iPhone 5s" || UIDevice.currentDevice().modelName == "iPhone 5c" || UIDevice.currentDevice().modelName == "iPhone 5" || UIDevice.currentDevice().modelName == "iPhone 4") {
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.5), y: numberText.center.y)
+        }else {
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.1), y: numberText.center.y)
+        }
         
         cell.contentView.addSubview(nameText)
         cell.contentView.addSubview(numberText)

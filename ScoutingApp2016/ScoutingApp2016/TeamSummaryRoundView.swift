@@ -75,7 +75,6 @@ class TeamSummaryRoundView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
         print("Found Round\(self.rounds[indexPath.row])")
-        self.removeFromSuperview()
         self.launchViewOnTop(TeamRoundView(json: self.rounds[indexPath.row]))
     }
     

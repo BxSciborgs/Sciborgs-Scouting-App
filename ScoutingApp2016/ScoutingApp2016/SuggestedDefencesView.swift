@@ -70,6 +70,9 @@ class SuggestedDefencesView: UIView {
         self.worstValues = self.getWorstFourDefenses().values
         self.worstNames = self.getWorstFourDefenses().names
         
+        self.worstValues.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
+        self.worstNames.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
+        
         print(self.worstValues)
         print(self.worstNames)
         
@@ -85,6 +88,32 @@ class SuggestedDefencesView: UIView {
         )
         
         self.addSubview(teamNumberLabel)
+        
+        for i in 0..<worstNames.count {
+            let yPos = CGFloat(((2+(Double(1)*Double(i)))/10))
+            let labelName = BasicLabel(
+                frame: self.frame,
+                text: worstNames[i],
+                fontSize: 30,
+                color: UIColor.darkGrayColor(),
+                position: CGPoint(
+                    x: 2/5*self.frame.width,
+                    y: yPos*self.frame.height
+                )
+            )
+            let labelKey = BasicLabel(
+                frame: self.frame,
+                text: "\(worstValues[i])",
+                fontSize: 30,
+                color: UIColor.darkGrayColor(),
+                position: CGPoint(
+                    x: (self.frame.width/2) + 1.15/5*self.frame.width,
+                    y: yPos*self.frame.height
+                )
+            )
+            self.addSubview(labelName)
+            self.addSubview(labelKey)
+        }
     }
     
     func calculateAverageValues() {
