@@ -36,9 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(application: UIApplication,
         openURL url: NSURL,  options: [String: AnyObject]) -> Bool {
-            return GIDSignIn.sharedInstance().handleURL(url,
-                sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
-                annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+            if #available(iOS 9.0, *) {
+                return GIDSignIn.sharedInstance().handleURL(url,
+                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String,
+                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+            } else {
+                return false
+            }
     }
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!, withError error: NSError!) {

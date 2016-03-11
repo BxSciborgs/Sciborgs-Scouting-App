@@ -252,7 +252,16 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         
         if(UIDevice.currentDevice().modelName == "iPhone 5s" || UIDevice.currentDevice().modelName == "iPhone 5c" || UIDevice.currentDevice().modelName == "iPhone 5" || UIDevice.currentDevice().modelName == "iPhone 4") {
             numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.5), y: numberText.center.y)
-        }else {
+        }else if (UIDevice.currentDevice().modelName == "iPhone 6" || UIDevice.currentDevice().modelName == "iPhone 6s"){
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.1), y: numberText.center.y)
+        }else if (UIDevice.currentDevice().modelName == "iPhone 6 Plus" || UIDevice.currentDevice().modelName == "iPhone 6s Plus") {
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/1.9), y: numberText.center.y)
+        }else if (UIDevice.currentDevice().modelName == "iPad 2" || UIDevice.currentDevice().modelName == "iPad 3" || UIDevice.currentDevice().modelName == "iPad 4" || UIDevice.currentDevice().modelName == "iPad Air" || UIDevice.currentDevice().modelName == "iPad Air 2") {
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.7), y: numberText.center.y)
+        }else if (UIDevice.currentDevice().modelName.containsString("iPad")) {
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.7), y: numberText.center.y)
+        }
+        else {
             numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.1), y: numberText.center.y)
         }
         

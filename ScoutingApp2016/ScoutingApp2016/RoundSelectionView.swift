@@ -73,8 +73,21 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
         matchType.textAlignment = NSTextAlignment.Left
         matchType.center = CGPoint(x: matchType.center.x + Screen.width * 0.05, y: matchType.center.y)
         
-        matchNum.textAlignment = NSTextAlignment.Right
-        matchNum.center = CGPoint(x: matchNum.center.x - Screen.width * 0.05, y: matchNum.center.y)
+        matchNum.textAlignment = NSTextAlignment.Center
+        if(UIDevice.currentDevice().modelName == "iPhone 5s" || UIDevice.currentDevice().modelName == "iPhone 5c" || UIDevice.currentDevice().modelName == "iPhone 5" || UIDevice.currentDevice().modelName == "iPhone 4") {
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/2.5), y: matchNum.center.y)
+        }else if (UIDevice.currentDevice().modelName == "iPhone 6" || UIDevice.currentDevice().modelName == "iPhone 6s"){
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/2.1), y: matchNum.center.y)
+        }else if (UIDevice.currentDevice().modelName == "iPhone 6 Plus" || UIDevice.currentDevice().modelName == "iPhone 6s Plus") {
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/1.9), y: matchNum.center.y)
+        }else if (UIDevice.currentDevice().modelName == "iPad 2" || UIDevice.currentDevice().modelName == "iPad 3" || UIDevice.currentDevice().modelName == "iPad 4" || UIDevice.currentDevice().modelName == "iPad Air" || UIDevice.currentDevice().modelName == "iPad Air 2") {
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/2.7), y: matchNum.center.y)
+        }else if (UIDevice.currentDevice().modelName.containsString("iPad")) {
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/2.7), y: matchNum.center.y)
+        }else {
+            matchNum.center = CGPoint(x: matchNum.center.x + (Screen.width/2.1), y: matchNum.center.y)
+        }
+        
 
         cell.contentView.addSubview(matchType)
         cell.contentView.addSubview(matchNum)
