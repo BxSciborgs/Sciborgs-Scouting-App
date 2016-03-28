@@ -37,6 +37,7 @@ class HomeView: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         
+        
         viewButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/3), location: CGPoint(x: frame.width/2,y: frame.height/2), title: "REVIEW", titleSize: 80)
         viewButton.addTarget(self, action: "viewTeams", forControlEvents: UIControlEvents.TouchUpInside)
         
@@ -85,6 +86,10 @@ class HomeView: UIView {
             self.addSubview(addTeamView!)
             self.addSubview(teamNumberField!)
             self.addSubview(teamNumberButton!)
+        }else {
+            let teamNumber = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/5), text: NSUserDefaults().stringForKey("TeamNumber")!, fontSize: 20, color: UIColor.lightGrayColor(), position: CGPoint(x: Screen.width/10, y: Screen.height/40))
+            self.addSubview(teamNumber)
+            
         }
         
     }
@@ -92,6 +97,8 @@ class HomeView: UIView {
     func back(){
         
     }
+    
+    
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status

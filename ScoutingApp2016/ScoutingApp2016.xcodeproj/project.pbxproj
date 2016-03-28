@@ -13,7 +13,6 @@
 		092A16821C57F26100BAE349 /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 092A16741C57F23F00BAE349 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		095045E11C49BEB500852B8E /* TeamSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095045E01C49BEB500852B8E /* TeamSelectionView.swift */; };
 		095CDB0E1C47ED4100ED33C8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */; };
-		095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */; };
 		095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */; };
 		0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967FAD81C49BCC800093700 /* ScoutView.swift */; };
 		09A09D051C499FA000B7BD60 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A09D041C499FA000B7BD60 /* Extensions.swift */; };
@@ -26,6 +25,7 @@
 		09DBFA401C50316C00511FA4 /* BlueAlliance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBFA3F1C50316C00511FA4 /* BlueAlliance.swift */; };
 		860B50DC1C52E96100D3641A /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B50DB1C52E96100D3641A /* DBManager.swift */; };
 		86109A961C78F8BF0086DD04 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109A951C78F8BF0086DD04 /* ReviewView.swift */; };
+		863934B61C94CF44007FC1A4 /* newSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863934B51C94CF44007FC1A4 /* newSuggestionView.swift */; };
 		86565CD61C50392300660B44 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86565CD51C50392300660B44 /* Team.swift */; };
 		86565CDF1C503DBB00660B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C5676A1C46F82200873387 /* LaunchScreen.storyboard */; };
 		8659E5AA1C57DB6C0070F6BB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8659E5A91C57DB6C0070F6BB /* HomeView.swift */; };
@@ -184,7 +184,6 @@
 		092A16691C57F23F00BAE349 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master (1)/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 		095045E01C49BEB500852B8E /* TeamSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamSelectionView.swift; sourceTree = "<group>"; };
 		095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0967FAD81C49BCC800093700 /* ScoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutView.swift; sourceTree = "<group>"; };
 		09A09D041C499FA000B7BD60 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -201,6 +200,7 @@
 		09DBFA3F1C50316C00511FA4 /* BlueAlliance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueAlliance.swift; sourceTree = "<group>"; };
 		860B50DB1C52E96100D3641A /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		86109A951C78F8BF0086DD04 /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		863934B51C94CF44007FC1A4 /* newSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newSuggestionView.swift; sourceTree = "<group>"; };
 		86565CD51C50392300660B44 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		86565CDB1C503CDF00660B44 /* RoundTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RoundTemplate.json; sourceTree = "<group>"; };
 		86565CDC1C503CDF00660B44 /* TeamTemplate.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TeamTemplate.json; sourceTree = "<group>"; };
@@ -239,7 +239,6 @@
 				86A7CCB11C4850870006DD22 /* libsqlite3.tbd in Frameworks */,
 				86A7CCAF1C48507E0006DD22 /* libz.tbd in Frameworks */,
 				095CDB121C47ED5C00ED33C8 /* SystemConfiguration.framework in Frameworks */,
-				095CDB101C47ED5200ED33C8 /* StoreKit.framework in Frameworks */,
 				86A7CCAD1C4850650006DD22 /* Security.framework in Frameworks */,
 				86A7CCAB1C4850610006DD22 /* QuartzCore.framework in Frameworks */,
 				86A7CCA91C48505B0006DD22 /* CoreLocation.framework in Frameworks */,
@@ -344,6 +343,7 @@
 				86DAE5091C8BA35200B97568 /* TeamRoundView.swift */,
 				86DB71B21C8CFBF700A7760C /* OurRoundsView.swift */,
 				86EA126E1C8E2D3D0002539E /* SuggestedDefencesView.swift */,
+				863934B51C94CF44007FC1A4 /* newSuggestionView.swift */,
 				86EA12771C8E38AC0002539E /* RoundSummaryView.swift */,
 			);
 			name = Review;
@@ -394,7 +394,6 @@
 				86A7CC991C484F340006DD22 /* Parse.framework */,
 				86A7CC971C484F2B0006DD22 /* Bolts.framework */,
 				095CDB111C47ED5C00ED33C8 /* SystemConfiguration.framework */,
-				095CDB0F1C47ED5200ED33C8 /* StoreKit.framework */,
 				095CDB0D1C47ED4100ED33C8 /* AddressBook.framework */,
 			);
 			name = Frameworks;
@@ -448,6 +447,11 @@
 					09C5675D1C46F82200873387 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = VEFXGBBZ5N;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -612,6 +616,7 @@
 				090062581C60066800E365CE /* TeleOpSubview.swift in Sources */,
 				86AAFBD01C8B858400564076 /* TeamSummaryRoundView.swift in Sources */,
 				8659E5B61C57FC330070F6BB /* BasicLabel.swift in Sources */,
+				863934B61C94CF44007FC1A4 /* newSuggestionView.swift in Sources */,
 				86565CD61C50392300660B44 /* Team.swift in Sources */,
 				0967FAD91C49BCC800093700 /* ScoutView.swift in Sources */,
 				8659E5AE1C57FB830070F6BB /* TeamAssignenmentView.swift in Sources */,
@@ -676,8 +681,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Oran Luzon (VEFXGBBZ5N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Oran Luzon (VEFXGBBZ5N)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Oran Luzon (F5KMNFUEL4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oran Luzon (F5KMNFUEL4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -725,8 +730,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Oran Luzon (VEFXGBBZ5N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Oran Luzon (VEFXGBBZ5N)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Oran Luzon (F5KMNFUEL4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Oran Luzon (F5KMNFUEL4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

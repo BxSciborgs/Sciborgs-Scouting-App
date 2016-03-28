@@ -30,5 +30,8 @@
     
     "finalScore" : 0,
     
+    "disabled": false,
+    "driverScore": 0,
+    
     "comments" : ""
 }

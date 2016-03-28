@@ -10,7 +10,6 @@ import Foundation
 import Parse
 import Bolts
 
-
 class Team {
     
     var teamNumber: Int!
@@ -25,10 +24,10 @@ class Team {
         self.teamNumber = teamNumber
     }
     
-    func sendSkeleton() { //sends empty teamtemplate (must be done initially when creating each team)
+    func sendSkeleton() {
         DBManager.pull("Templates", rowKey: "templateType", rowValue: "TeamTemplate", finalKey: "templateJSON", completion: {(result)->Void in
             var teamJSON = result
-            DBManager.push(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
+            DBManager.push(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
         })
     }
     
@@ -37,15 +36,15 @@ class Team {
     }
     
     func submitCurrentRound() {
-        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
+        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
             var teamJSON = result
             teamJSON["rounds"].arrayObject?.append(self.currentRound.getRound()) //appends current round being edited
-            DBManager.push(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
+            DBManager.push(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", object: teamJSON.dictionaryObject!)
         })
     }
     
     func getAllRounds(completion:(result:[JSON])->Void) {
-        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
+        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: self.teamNumber, finalKey: "TeamInfo", completion: {(result)->Void in
             var teamJSON = result
             completion(result: teamJSON["rounds"].array!)
         })
