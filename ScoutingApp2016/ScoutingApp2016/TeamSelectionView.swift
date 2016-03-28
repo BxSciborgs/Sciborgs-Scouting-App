@@ -176,7 +176,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                 //self.tableView.beginUpdates()
                 for x in 0..<teamNumbers.count{
                     
-                    if ((self.teamNamesArray[x].containsString(self.searchbar.text!) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
+                    if ((self.teamNamesArray[x].uppercaseString.containsString(self.searchbar.text!.uppercaseString) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
                         print("found \(teamNames[x])")
                         searchResultName.append(teamNames[x])
                         searchResultNumber.append(teamNumbers[x])

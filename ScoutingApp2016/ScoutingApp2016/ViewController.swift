@@ -47,9 +47,10 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         }
         
         print(UIDevice.currentDevice().modelName)
-        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navBar.shadowImage = UIImage()
-        self.navBar.translucent = true
+        //self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        //self.navBar.shadowImage = UIImage()
+        self.navBar.backgroundColor = UIColor.blueColor()
+        self.navBar.translucent = false
         view.addSubview(navBar)
     }
     
