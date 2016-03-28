@@ -20,6 +20,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
     var button: GIDSignInButton!
     var navBar: UINavigationBar!
     
+    let image = UIImage(imageLiteral: "yoli")
+    var picture: UIImageView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,12 +43,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         navBar.delegate = self;
         
         //RESETS PARSE COMPLETELY, DON'T UNCOMMENT
-        //DBManager.addAllTeams()
+        DBManager.addAllTeams()
         
+        picture = UIImageView(image: image)
         if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){
             view.addSubview(button)
         }
-        
+
         print(UIDevice.currentDevice().modelName)
         self.navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         self.navBar.shadowImage = UIImage()
@@ -72,6 +76,23 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
 
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            picture.frame = CGRect(x: Screen.width/2 - (image.size.width/2), y: Screen.height/2 - (image.size.height/2), width: image.size.width, height: image.size.height)
+            self.view.addSubview(picture)
+            
+            var timer = NSTimer.scheduledTimerWithTimeInterval(0.3, target: self, selector: "removePicture", userInfo: nil, repeats: false)
+        }
+    }
+    
+    func removePicture() {
+        picture.removeFromSuperview()
     }
 }
 

@@ -19,6 +19,8 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
     var teleLabels: [String]!
     var teleNames: [String]!
     
+    var segmentedControls: [UISegmentedControl]! = []
+    
     init(stepperColor: UIColor){
         super.init(frame:
             CGRectMake(
@@ -40,7 +42,7 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             )
         )
     
-        let teleVerticalScroller = UIScrollView(frame: CGRect(x: 0, y: bsConstants.pjl, width: self.frame.width, height: self.frame.height-(self.frame.height/5)))
+        let teleVerticalScroller = UIScrollView(frame: CGRect(x: 0, y: bsConstants.pjl, width: self.frame.width, height: self.frame.height + CGFloat(self.frame.height/4)))
         teleVerticalScroller.delegate = self
         teleVerticalScroller.directionalLockEnabled = true
         teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
@@ -62,7 +64,11 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             "Crossed RoughTerrain",
             "Crossed LowBar",
             "Low Goal",
-            "High Goal"
+            "High Goal",
+            "Disabled",
+            "Driver Score",
+            "Challenge",
+            "Scale"
         ]
         teleNames = [
             "comments",
@@ -76,7 +82,11 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
             "numTimesCrossedRoughTerrain",
             "numTimesCrossedLowBar",
             "low",
-            "high"
+            "high",
+            "disabled",
+            "driverScore",
+            "challenge",
+            "scale"
         ]
         
         for i in 0..<teleLabels.count {
@@ -98,7 +108,7 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
                 commentTextBox.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
                 commentTextBox.delegate = self
                 teleVerticalScroller.addSubview(commentTextBox)
-            }else {
+            }else if (i < 14) {
                 let labelStepper = UIStepper(frame: CGRectMake(2.75/5*self.frame.width, yPos*self.frame.height - (self.frame.height/100),self.frame.width/4,self.frame.height/10))
                 labelStepper.autorepeat = false
                 labelStepper.minimumValue = -1
@@ -124,6 +134,26 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
                 
                 teleVerticalScroller.addSubview(labelStepper)
                 teleVerticalScroller.addSubview(stepperLabel)
+            }else {
+                let segmentedControl = UISegmentedControl(items: ["True", "False"])
+                segmentedControl.selectedSegmentIndex = 1
+                
+                let attr = NSDictionary(object: UIFont(name: "DINCondensed-Bold", size: 25 * ScreenRatios.screenWidthRatio)!, forKey: NSFontAttributeName)
+                UISegmentedControl.appearance().setTitleTextAttributes(attr as [NSObject : AnyObject], forState: .Normal)
+                
+                segmentedControl.subviews[0].tintColor = stepperColor
+                segmentedControl.subviews[1].tintColor = stepperColor
+                
+                segmentedControl.frame = CGRectMake(
+                    3/5.8*Screen.width,
+                    yPos*self.frame.height - 1/30*Screen.width,
+                    1/3*Screen.width,
+                    Screen.width/10
+                )
+                
+                segmentedControls.append(segmentedControl)
+                
+                teleVerticalScroller.addSubview(segmentedControl)
             }
         
             teleVerticalScroller.addSubview(label)

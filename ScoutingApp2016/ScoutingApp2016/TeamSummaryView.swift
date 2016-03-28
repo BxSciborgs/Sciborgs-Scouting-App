@@ -60,7 +60,9 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             "Tele High Goal: ",
             "Tele Low Goal: ",
             "Challenge: ",
-            "Scale: "
+            "Scale: ",
+            "Disabled: ",
+            "Driver Score: "
         ]
         
         print(DBManager.averageJSONKeys[1])
@@ -72,6 +74,8 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
                 keyLabelsDictionary[jsonKeyLabels[i]] = Double(round(10*getAvgNumberValue(Array(DBManager.averageJSONKeys)[i]))/10)
             }else if (i < 17) {
                 keyLabelsDictionary[jsonKeyLabels[i]] = getAvgBooleanValue(Array(DBManager.averageJSONKeys)[i])
+            }else {
+                keyLabelsDictionary[jsonKeyLabels[i]] = Double(round(10*getAvgNumberValue(Array(DBManager.averageJSONKeys)[i]))/10)
             }
         }
         
@@ -79,7 +83,7 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         teleVerticalScroller.delegate = self
         teleVerticalScroller.directionalLockEnabled = true
         teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
+        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2.25*teleVerticalScroller.frame.height)
         teleVerticalScroller.alpha = 1
         
         for i in 0..<jsonKeyLabels.count {
@@ -152,11 +156,16 @@ class TeamSummaryView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             }else if(DBManager.goalJSONKeys.contains(key)) {
                 appearances++
                 avgValue += allRounds[i]["telePoints"]["goals"][key].doubleValue
+            }else if(DBManager.endJSONKeys.contains(key)) {
+                appearances++
+                avgValue += allRounds[i][key].doubleValue
             }
         }
 
         if(appearances == 0) {
             return -1 as Double
+        }else if (key == "disabled") {
+            return avgValue
         }else {
             return (avgValue/appearances)
         }

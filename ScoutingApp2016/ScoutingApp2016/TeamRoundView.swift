@@ -63,7 +63,9 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
             "Tele High Goal: ",
             "Tele Low Goal: ",
             "Challenge: ",
-            "Scale: "
+            "Scale: ",
+            "Disabled: ",
+            "Driver Score"
         ]
         
         for i in 0..<DBManager.allJSONKeys.count {
@@ -91,6 +93,12 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
                 }else {
                     keyLabelsDictionary[jsonKeyLabels[i]] = "False"
                 }
+            }else if (i < 20) {
+                if(teamJSON![DBManager.allJSONKeys[i]].intValue == -1) {
+                    keyLabelsDictionary[jsonKeyLabels[i]] = "-"
+                }else {
+                    keyLabelsDictionary[jsonKeyLabels[i]] = teamJSON![DBManager.allJSONKeys[i]].intValue
+                }
             }
         }
         
@@ -98,7 +106,7 @@ class TeamRoundView: UIView, UIScrollViewDelegate, UITextFieldDelegate {
         teleVerticalScroller.delegate = self
         teleVerticalScroller.directionalLockEnabled = true
         teleVerticalScroller.indicatorStyle = UIScrollViewIndicatorStyle.Black
-        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2*teleVerticalScroller.frame.height)
+        teleVerticalScroller.contentSize = CGSize(width: self.frame.width, height: 2.25*teleVerticalScroller.frame.height)
         teleVerticalScroller.alpha = 1
         
         for i in 0..<jsonKeyLabels.count {

@@ -11,8 +11,9 @@ import Parse
 import Bolts
 
 public enum ParseClass: String {
-    case Teams = "Teams"
+    case Teams = "SouthFlorida"
     case TeamsTest = "TeamsTEST"
+    case SouthFlorida = "SouthFloridaTeams"
 }
 class DBManager {
     
@@ -34,16 +35,18 @@ class DBManager {
         "high",
         "low",
         "challenge",
-        "scale"
+        "scale",
+        "disabled",
+        "driverScore"
     ]
     
-    
-
     static var defensesJSONKeys = Array(allJSONKeys[5...13])
-    
+
     static var goalJSONKeys = Array(allJSONKeys[14...15])
     
-    static var integerJSONKeys = Array(defensesJSONKeys + goalJSONKeys)
+    static var endJSONKeys = Array(allJSONKeys[17...19])
+    
+    static var integerJSONKeys = Array(defensesJSONKeys + goalJSONKeys + endJSONKeys)
     
     static var autoBooleanJSONKeys = Array(allJSONKeys[1...4])
     
@@ -51,7 +54,7 @@ class DBManager {
     
     static var booleanJSONKeys = Array(autoBooleanJSONKeys + endBooleanJSONKeys)
     
-    static var averageJSONKeys =  Array(allJSONKeys[1...17])
+    static var averageJSONKeys =  Array(allJSONKeys[1...19])
     
     
     static func pull(className: String, rowKey: String, rowValue: AnyObject, finalKey: String, completion:(result:JSON)->Void) {
@@ -78,7 +81,6 @@ class DBManager {
                 obj?.setObject(object, forKey: finalKey)
                 obj?.saveInBackground()
             } else {
-                
             }
         }
     }
@@ -109,6 +111,18 @@ class DBManager {
                 object.saveInBackground()
             }
         })
+    }
+    
+    static func getEventInfo(completion: (year: String, event: String)->Void) {
+        let query = PFQuery(className: "Event")
+        
+        query.getFirstObjectInBackgroundWithBlock {(obj: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                completion(year: obj!.objectForKey("Year")! as! String, event: obj!.objectForKey("EventCode")! as! String)
+            } else {
+                
+            }
+        }
     }
     
 }

@@ -78,9 +78,9 @@ class TeamAssignmentView: UIView {
             )
             
             if(mode == AssignmentMode.SCOUT) {
-                teamButton.addTarget(nil, action: "onScoutClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                teamButton.addTarget(self, action: "onScoutClick:", forControlEvents: UIControlEvents.TouchUpInside)
             }else {
-                teamButton.addTarget(nil, action: "onReviewClick:", forControlEvents: UIControlEvents.TouchUpInside)
+                teamButton.addTarget(self, action: "onReviewClick:", forControlEvents: UIControlEvents.TouchUpInside)
             }
             teamButton.tag = teamButtonTag
             teamButtonTag += 1
@@ -91,10 +91,9 @@ class TeamAssignmentView: UIView {
         self.addSubview(blueTeamsLabel)
         self.addSubview(redTeamsLabel)
     }
-    
+
     func onScoutClick(sender: UIButton){
         var buttonColor: UIColor
-        
         if (sender.tag <= 2) {
             buttonColor = UIColor(red: 0.6, green: 0.83, blue: 0.96, alpha: 1)
         } else {
@@ -104,7 +103,7 @@ class TeamAssignmentView: UIView {
     }
     
     func onReviewClick(sender: UIButton){
-        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: Int((sender.titleLabel?.text)!)!, finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: Int((sender.titleLabel?.text)!)!, finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
             self.launchViewOnTop(TeamProfileView(teamNumber: Int((sender.titleLabel?.text)!)!, json: result))
         })
     }

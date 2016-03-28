@@ -122,8 +122,18 @@ class ScoutView: UIView, UIScrollViewDelegate{
                 currentTeamProfile.currentRound.template![teleView.teleNames[i]].string = teleView.commentTextBox.text!
             }else if (i < 10) {
                 currentTeamProfile.currentRound.template!["telePoints"]["defenses"][teleView.teleNames[i]].int = Int(teleView.steppers[i-1].value)
-            }else {
+            }else if (i < 12) {
                 currentTeamProfile.currentRound.template!["telePoints"]["goals"][teleView.teleNames[i]].int = Int(teleView.steppers[i-1].value)
+            }else if (i < 14) {
+                currentTeamProfile.currentRound.template![teleView.teleNames[i]].int = Int(teleView.steppers[i-1].value)
+            }
+        }
+        
+        for i in 0..<teleView.segmentedControls.count {
+            if(teleView.segmentedControls[i].selectedSegmentIndex == 0) { //true
+                currentTeamProfile.currentRound.template!["telePoints"][teleView.teleNames[i+14]].bool = true
+            }else { //false
+                currentTeamProfile.currentRound.template!["telePoints"][teleView.teleNames[i+14]].bool = false
             }
         }
     }

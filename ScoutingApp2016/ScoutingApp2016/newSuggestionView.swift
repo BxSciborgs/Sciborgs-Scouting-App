@@ -8,17 +8,19 @@
 
 import Foundation
 
-class SuggestedDefencesView: UIView {
+class newSuggestionView: UIView {
     
     var individualAvgValues: [[String: AnyObject]]! = [[:]]
     var totalAvgValues: [String: AnyObject] = [:]
     
     var worstValues: [Double]! = []
     var worstNames: [String]! = []
-
+    
     var totalRounds: Double! = 0
     
     var avgLabels: [String] = []
+    
+    //var teamAvg: [Double] = []
     
     init(teams: [Int]) {
         super.init(frame:
@@ -70,14 +72,11 @@ class SuggestedDefencesView: UIView {
         self.worstValues = self.getWorstFourDefenses().values
         self.worstNames = self.getWorstFourDefenses().names
         
+        self.worstValues.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
+        self.worstNames.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
         
-        print(self.worstValues)
-        print(self.worstNames)
-        
-        if(worstNames.indexOf("LowBar:") != nil) {
-            self.worstValues.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
-            self.worstNames.removeAtIndex(self.worstNames.indexOf("LowBar:")!)
-        }
+        //print("1:", self.worstValues, "\(self.worstValues.count)" )
+        //print("2:", self.worstNames)
         
         let teamNumberLabel = BasicLabel(
             frame: self.frame,
@@ -119,8 +118,14 @@ class SuggestedDefencesView: UIView {
         }
     }
     
-    func calculateAverageValues() {
+    func calculateAverageValues() -> [Double]{
+        
+        //print(avgLabels.count)
+        
+        var teamAvg: [Double] = []
+        
         for i in 0..<avgLabels.count {
+            
             
             var value: Double = 0
             var appearances = 0
@@ -129,57 +134,92 @@ class SuggestedDefencesView: UIView {
                 if((individualAvgValues[j][avgLabels[i]]!.doubleValue)! != -1) {
                     value += (individualAvgValues[j][avgLabels[i]]?.doubleValue)!
                     appearances++
-                }else {
-                    print("GA")
                 }
+                
             }
-
+            
+            print("i", "\(i)", "Label:", avgLabels[i], "value", "\(value)", "appearances:", appearances)
+            
             if(appearances > 0) {
                 totalAvgValues[avgLabels[i]] = value
             }else {
                 totalAvgValues[avgLabels[i]] = -1
             }
+            
+            
         }
+        
+        print("\n\n")
+        
+        for i in 0..<avgLabels.count{
+            print("i", "\(i)", "Label:", avgLabels[i], "value:", totalAvgValues[avgLabels[i]])
+            
+            teamAvg.append(Double(totalAvgValues[avgLabels[i]]! as! NSNumber)/3)
+        }
+        
+        for i in 0..<avgLabels.count{
+            print("i", "\(i)", "Label:", avgLabels[i], "value:", totalAvgValues[avgLabels[i]])
+            
+            
+        }
+        
+        print ("\n\n\n\n\n TEAM AVG \n\n", teamAvg, "\n\n", totalAvgValues)
+        
+        //print("Labels:", totalAvgValues)
+        return teamAvg
     }
     
     func getWorstFourDefenses() -> (values: [Double], names: [String]) {
-        calculateAverageValues()
+        //calculateAverageValues()
         
-        var values = [Double]()
+        var values: [Double] = []
         
         var worstValues = [Double]()
         var worstNames = [String]()
         
-        for i in 0..<avgLabels.count {
-            let value: Double = self.totalAvgValues[avgLabels[i]]!.doubleValue
-            values.append(value)
-        }
+        print("\n")
+        
+        //        for i in 0..<avgLabels.count {
+        //            let value: Double = self.totalAvgValues[avgLabels[i]]!.doubleValue
+        //
+        //            print("value:", value)
+        //
+        //            values.append(value)
+        //        }
+        
+        values = calculateAverageValues()
+        
+        print("val:", values, "\n", totalAvgValues)
+        
         func sortFunc(num1: Int, num2: Int) -> Bool {
             return num1 < num2
         }
-
+        
         let sortedValues = values.sort {
             return $0 < $1
-
+            
         }
-
-        var alreadyUsed = [String]()
+        
         for i in 0..<sortedValues.count {
-            for j in 0..<avgLabels.count {
-                if(self.totalAvgValues[avgLabels[j]]!.doubleValue == sortedValues[i] && !alreadyUsed.contains(avgLabels[j])) {
-                    worstValues.append(self.totalAvgValues[avgLabels[j]]!.doubleValue)
-                    worstNames.append(avgLabels[j].substring(8, end: avgLabels[j].characters.count-1))
-                    alreadyUsed.append(avgLabels[j])
-                    break
+            if(sortedValues[i] != -1) {
+                for j in 0..<avgLabels.count {
+                    if(self.totalAvgValues[avgLabels[j]]!.doubleValue == sortedValues[i]) {
+                        worstValues.append(self.totalAvgValues[avgLabels[j]]!.doubleValue)
+                        worstNames.append(avgLabels[j].substring(8, end: avgLabels[j].characters.count-1))
+                    }
+                }
+            }else {
+                if(self.totalAvgValues[avgLabels[i]]!.doubleValue == sortedValues[i]) {
+                    worstValues.append(self.totalAvgValues[avgLabels[i]]!.doubleValue)
+                    worstNames.append(avgLabels[i].substring(8, end: avgLabels[i].characters.count-1))
                 }
             }
-
         }
         
         return (worstValues, worstNames)
     }
     
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
