@@ -91,8 +91,25 @@ extension UIView{
         
         for view in (UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews)!{
             
-            if (!view.isMemberOfClass(HomeView)){
-                self.removeFromSuperview()
+            if (
+                view.isMemberOfClass(TeamSelectionView) ||
+                    view.isMemberOfClass(TeamProfileView) ||
+                    view.isMemberOfClass(TeamSummaryView) ||
+                    view.isMemberOfClass(TeamSummaryView) ||
+                    view.isMemberOfClass(TeamRoundView) ||
+                    view.isMemberOfClass(OurRoundsView) ||
+                    view.isMemberOfClass(SuggestedDefencesView) ||
+                    view.isMemberOfClass(RoundSummaryView) ||
+                    view.isMemberOfClass(RoundSelectionView) ||
+                    view.isMemberOfClass(TeamAssignmentView) ||
+                    view.isMemberOfClass(ScoutView) ||
+                    view.isMemberOfClass(AutoSubview) ||
+                    view.isMemberOfClass(TeleOpSubview) ||
+                    view.isMemberOfClass(ReviewView)
+                ){
+                view.removeFromSuperview()
+                //print("removing from superview")
+                //self.addBackButton()
             }
             //view.removeFromSuperview()
         }
