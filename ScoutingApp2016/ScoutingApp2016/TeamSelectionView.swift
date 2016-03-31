@@ -178,6 +178,11 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                     
                     if ((self.teamNamesArray[x].uppercaseString.containsString(self.searchbar.text!.uppercaseString) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
                         print("found \(teamNames[x])")
+<<<<<<< HEAD
+=======
+                    if ((self.teamNamesArray[x].containsString(self.searchbar.text!) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
+                        //print("found \(teamNames[x])")
+>>>>>>> 19cfae07ed62b0bc286762a69b40271f02fcf4ce
                         searchResultName.append(teamNames[x])
                         searchResultNumber.append(teamNumbers[x])
                         //self.makeCell(teamNames[x], number: teamNumbers[x])

@@ -50,6 +50,7 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
                 }
             })
         })
+    
         
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/8)
         
@@ -108,12 +109,51 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
-        self.launchViewOnTop(TeamAssignmentView(
-                blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
-                redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
-                roundNumber:  indexPath.row+1,
-                mode: AssignmentMode.SCOUT
-            ))
+        
+        var allTeamJSONS: [String: JSON] = [:]
+        
+        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue")[0], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+            var teamJSON = result
+            allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[0])"] = teamJSON
+            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[1], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                var teamJSON = result
+                allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[1])"] = teamJSON
+                DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[2], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                    var teamJSON = result
+                    allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[2])"] = teamJSON
+                    DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[0], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                        var teamJSON = result
+                        allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[0])"] = teamJSON
+                        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[1], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                            var teamJSON = result
+                            allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[1])"] = teamJSON
+                            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[2], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                                var teamJSON = result
+                                allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[2])"] = teamJSON
+                                
+                                var scoutedCounter = 0
+                                for (kind,team) in allTeamJSONS {
+                                    for round in team["rounds"].arrayValue {
+                                        if(round["roundNumber"].intValue == indexPath.row+1) {
+                                            scoutedCounter = scoutedCounter + 1
+                                        }
+                                    }
+            
+                                }
+                                self.launchViewOnTop(TeamAssignmentView(
+                                    blueTeams: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue"),
+                                    redTeams: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red"),
+                                    roundNumber:  indexPath.row+1,
+                                    mode: AssignmentMode.SCOUT,
+                                    teamJSON: allTeamJSONS
+                                ))
+                            })
+                        })
+                    })
+                })
+            })
+        })
+
     }
     
     required init?(coder aDecoder: NSCoder) {

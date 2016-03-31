@@ -139,6 +139,9 @@ class ScoutView: UIView, UIScrollViewDelegate{
     }
     
     func finalizeJSON() {
+        
+        currentTeamProfile.currentRound.template!["didScout"].bool = true
+        
         finalizeTeleView()
         finalizeAutoView()
         
