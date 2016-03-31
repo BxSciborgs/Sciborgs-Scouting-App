@@ -16,6 +16,8 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var matches: [JSON]!
     
+    var allJSONS: [String: JSON]! = [:]
+    
     init(){
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
@@ -109,51 +111,32 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
-        
-        var allTeamJSONS: [String: JSON] = [:]
-        
-        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue")[0], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-            var teamJSON = result
-            allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[0])"] = teamJSON
-            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[1], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+        getAllTeamJSONS(indexPath.row, teamIndex: 0)
+    }
+    
+    func getAllTeamJSONS(match: Int, teamIndex: Int) {
+        if(allJSONS.count < 3) {
+            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue")[teamIndex], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
                 var teamJSON = result
-                allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[1])"] = teamJSON
-                DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[2], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-                    var teamJSON = result
-                    allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue")[2])"] = teamJSON
-                    DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[0], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-                        var teamJSON = result
-                        allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[0])"] = teamJSON
-                        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[1], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-                            var teamJSON = result
-                            allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[1])"] = teamJSON
-                            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[2], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-                                var teamJSON = result
-                                allTeamJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red")[2])"] = teamJSON
-                                
-                                var scoutedCounter = 0
-                                for (kind,team) in allTeamJSONS {
-                                    for round in team["rounds"].arrayValue {
-                                        if(round["roundNumber"].intValue == indexPath.row+1) {
-                                            scoutedCounter = scoutedCounter + 1
-                                        }
-                                    }
-            
-                                }
-                                self.launchViewOnTop(TeamAssignmentView(
-                                    blueTeams: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "blue"),
-                                    redTeams: BlueAlliance.getTeamsFromMatch(self.matches[indexPath.row], color: "red"),
-                                    roundNumber:  indexPath.row+1,
-                                    mode: AssignmentMode.SCOUT,
-                                    teamJSON: allTeamJSONS
-                                ))
-                            })
-                        })
-                    })
-                })
+                self.allJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue")[teamIndex])"] = teamJSON
+                self.getAllTeamJSONS(match, teamIndex: teamIndex + 1)
             })
-        })
-
+        }else if(allJSONS.count < 6) {
+            
+            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red")[teamIndex%3], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+                var teamJSON = result
+                self.allJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red")[teamIndex%3])"] = teamJSON
+                self.getAllTeamJSONS(match, teamIndex: teamIndex+1)
+            })
+        }else {
+            //print(self.allJSONS)
+            self.launchViewOnTop(TeamAssignmentView(
+                blueTeams: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue"),
+                redTeams: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red"),
+                roundNumber:  match+1,
+                mode: AssignmentMode.SCOUT,
+                teamJSON: self.allJSONS))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

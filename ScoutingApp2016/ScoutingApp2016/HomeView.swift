@@ -49,7 +49,6 @@ class HomeView: UIView {
         let imageView = UIImageView(image: newImage)
         imageView.center = CGPoint(x: self.frame.width/2,y: self.frame.height/5)
         
-        //self.addBackButton()
         
         self.addSubview(viewButton)
         self.addSubview(scoutButton)
@@ -87,7 +86,11 @@ class HomeView: UIView {
             self.addSubview(teamNumberField!)
             self.addSubview(teamNumberButton!)
         }else {
-            let teamNumber = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/5), text: NSUserDefaults().stringForKey("TeamNumber")!, fontSize: 20, color: UIColor.lightGrayColor(), position: CGPoint(x: Screen.width/10, y: Screen.height/40))
+            let teamNumber = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height/5), text: NSUserDefaults().stringForKey("TeamNumber")!, fontSize: 20, color: UIColor.lightGrayColor(), position: CGPoint(x: Screen.width - Screen.width/10, y: Screen.height/40))
+            
+            let buttonBlocker = UIView(frame: CGRect(x: 0, y: 0, width: Screen.width/2, height: Screen.height/20))
+            buttonBlocker.backgroundColor = UIColor.whiteColor()
+            self.addSubview(buttonBlocker)
             self.addSubview(teamNumber)
             
         }

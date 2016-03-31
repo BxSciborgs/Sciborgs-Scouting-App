@@ -284,7 +284,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Team\(teamNumbersArray[indexPath.row])")
-        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
             self.dismissKeyboard()
             self.launchViewOnTop(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result))
         })
