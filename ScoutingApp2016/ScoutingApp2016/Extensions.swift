@@ -61,7 +61,7 @@ extension UIView{
         let navigationItem = UINavigationItem()
         
         // Create left and right button for navigation item
-        let leftButton =  UIBarButtonItem(title: "Back", style:   UIBarButtonItemStyle.Done, target: self, action: "back")
+        let leftButton =  UIBarButtonItem(title: "Home", style:   UIBarButtonItemStyle.Done, target: self, action: "back")
         
         // Create two buttons for the navigation item
         navigationItem.leftBarButtonItem = leftButton
@@ -82,12 +82,37 @@ extension UIView{
     }
     
     func goBack(){
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews[(UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews.count)!-3].addBackButton()
-        self.removeFromSuperview()
+        
+//        while(UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews[((UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews.count))!-3] != nil){
+//            UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews[(UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews.count)!-3].removeFromSuperview()
+//        }
+        
+        //print((UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.items)
+        
+        for view in (UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews)!{
+            
+            if (!view.isMemberOfClass(HomeView)){
+                self.removeFromSuperview()
+            }
+            //view.removeFromSuperview()
+        }
+        //self.launchViewOnTop(HomeView())
+        //self.addBackButton()
+        //print((UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.subviews)
+        
+//        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.shadowImage = UIImage()
+//        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.translucent = true
+//        self.addSubview((UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar)
+
+        
+        
+        //UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews[(UIApplication.sharedApplication().keyWindow?.rootViewController?.view.subviews.count)!-3].addBackButton()
+        //self.removeFromSuperview()
     }
     
     func removeNavBar(){
-        (UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.setItems(nil, animated: false)
+        //(UIApplication.sharedApplication().keyWindow?.rootViewController as! ViewController).navBar.setItems(nil, animated: false)
     }
     
     func launchView(view: UIView){
