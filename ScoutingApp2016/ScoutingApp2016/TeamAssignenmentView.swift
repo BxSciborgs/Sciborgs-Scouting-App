@@ -27,7 +27,9 @@ class TeamAssignmentView: UIView {
     
     var teamButton: BasicButton!
     
-    init(blueTeams: [Int], redTeams: [Int], roundNumber: Int!, mode: AssignmentMode) {
+    var teamJSON: [String: JSON]!
+    
+    init(blueTeams: [Int], redTeams: [Int], roundNumber: Int!, mode: AssignmentMode, teamJSON: [String: JSON]) {
         super.init(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height))
         
         self.blueTeams = blueTeams
@@ -38,6 +40,8 @@ class TeamAssignmentView: UIView {
         self.backgroundColor = UIColor.whiteColor()
         
         self.addBackButton()
+        
+        self.teamJSON = teamJSON
         
         blueTeamsLabel = BasicLabel(frame: frame, text: "BLUE", fontSize: 75, color: UIColor(red: 0.6, green: 0.83, blue: 0.96, alpha: 1.0), position: CGPoint(x: (frame.width/2) - (frame.width/5), y: frame.height/15))
         redTeamsLabel = BasicLabel(frame: frame, text: "RED", fontSize: 75, color: UIColor(red: 1, green: 0.63, blue: 0.6, alpha: 1.0), position: CGPoint(x: (frame.width/2) + (frame.width/5), y: frame.height/15))
@@ -76,6 +80,15 @@ class TeamAssignmentView: UIView {
                 title: "\(team)",
                 titleSize: 50
             )
+            
+            if(mode == AssignmentMode.SCOUT) {
+                for round in teamJSON["\(team)"]!["rounds"].arrayValue {
+                    if(round["roundNumber"].intValue == roundNumber) {
+                        self.teamButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+                        self.teamButton.enabled = false
+                    }
+                }
+            }
             
             if(mode == AssignmentMode.SCOUT) {
                 teamButton.addTarget(self, action: "onScoutClick:", forControlEvents: UIControlEvents.TouchUpInside)

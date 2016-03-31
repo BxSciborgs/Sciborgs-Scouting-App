@@ -43,7 +43,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, UINavigationBarDele
         navBar.delegate = self;
         
         //RESETS PARSE COMPLETELY, DON'T UNCOMMENT
-        DBManager.addAllTeams()
+        //DBManager.addAllTeams()
         
         picture = UIImageView(image: image)
         if (!GIDSignIn.sharedInstance().hasAuthInKeychain()){

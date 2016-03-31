@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ScoutingApp2016/ScoutView.swift"
-            timestampString = "480886509.548391"
+            timestampString = "481090411.300232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "finalizeJSON()"
             landmarkType = "5">
          </BreakpointContent>
@@ -96,6 +96,22 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "init(json:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ScoutingApp2016/TeamAssignenmentView.swift"
+            timestampString = "481092013.679199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "init(blueTeams:redTeams:roundNumber:mode:teamJSON:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

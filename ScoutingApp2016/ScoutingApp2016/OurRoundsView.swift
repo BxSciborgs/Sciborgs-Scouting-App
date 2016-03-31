@@ -88,11 +88,13 @@ class OurRoundsView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var allTeamJSONS: [String: JSON] = [:]
         let teamView = TeamAssignmentView(
             blueTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "blue"),
             redTeams: BlueAlliance.getTeamsFromMatch(matches[indexPath.row], color: "red"),
             roundNumber:  indexPath.row+1,
-            mode: AssignmentMode.REVIEW
+            mode: AssignmentMode.REVIEW,
+            teamJSON: allTeamJSONS
         )
         
         let teamProfile = Team(teamNumber: NSUserDefaults().integerForKey("TeamNumber"))
