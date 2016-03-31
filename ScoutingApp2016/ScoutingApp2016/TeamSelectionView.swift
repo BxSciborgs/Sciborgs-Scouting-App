@@ -30,16 +30,16 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         cells = []
         
         title = BasicLabel(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height), text: "TEAMS", fontSize: 60, color: UIColor.darkGrayColor(), position: CGPoint(x: Screen.width/2, y: Screen.height/14))
-    
+        
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height*0.6), style: UITableViewStyle.Plain)
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
         
         let ourTeamsButton = BasicButton(type: UIButtonType.RoundedRect, color: UIColor.lightGrayColor(), size: CGRect(x: 0, y: 0, width: frame.width/1.5, height: frame.width/4.5), location: CGPoint(x: frame.width/2,y: 0.9*frame.height/4), title: "OUR ROUNDS", titleSize: 50)
         ourTeamsButton.addTarget(self, action: "openOurTeams", forControlEvents: UIControlEvents.TouchUpInside)
-
+        
         self.addSubview(ourTeamsButton)
         
         //Create list of teams
@@ -110,7 +110,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         
         // centering the table view
         tableView.center = CGPoint(x: Screen.width/2, y: Screen.height/2 + Screen.height/5.7)
-
+        
         //adding them
         
         self.addSubview(title)
@@ -168,11 +168,6 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         var searchResultName: [String] = []
         var searchResultNumber: [Int] = []
         
-        //teamNamesArray = []
-        //teamNumbersArray = []
-        
-        //print(teamNamesArray)
-        
         //Create list of teams
         BlueAlliance.sendRequestTeams(CompetitionCode.Javits, completion: {(teamNames: [String], teamNumbers: [Int]) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
@@ -181,13 +176,8 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                 //self.tableView.beginUpdates()
                 for x in 0..<teamNumbers.count{
                     
-<<<<<<< HEAD
                     if ((self.teamNamesArray[x].uppercaseString.containsString(self.searchbar.text!.uppercaseString) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
                         print("found \(teamNames[x])")
-=======
-                    if ((self.teamNamesArray[x].containsString(self.searchbar.text!) || String(self.teamNumbersArray[x]).containsString(self.searchbar.text!)) && self.searchbar.text! != ""){
-                        //print("found \(teamNames[x])")
->>>>>>> aae56490f7551de8c71e187108c3438b3077e0c0
                         searchResultName.append(teamNames[x])
                         searchResultNumber.append(teamNumbers[x])
                         //self.makeCell(teamNames[x], number: teamNumbers[x])
@@ -200,19 +190,11 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
                 // TODO
                 
                 if (searchResultName.count == 0){
-                    self.makeCell("No SouthFlorida Found", number: 0)
+                    self.makeCell("No Teams Found", number: 0)
                 }
-        
                 
                 // Adding the cells
-                
-                self.cells = []
-                self.teamNumbersArray = []
-                self.teamNamesArray = []
-                
                 for i in 0..<searchResultName.count{
-                    self.teamNamesArray.append(searchResultName[i])
-                    self.teamNumbersArray.append(searchResultNumber[i])
                     self.makeCell(searchResultName[i], number: searchResultNumber[i])
                 }
                 
@@ -273,7 +255,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
         }else if (UIDevice.currentDevice().modelName == "iPhone 6" || UIDevice.currentDevice().modelName == "iPhone 6s"){
             numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.1), y: numberText.center.y)
         }else if (UIDevice.currentDevice().modelName == "iPhone 6 Plus" || UIDevice.currentDevice().modelName == "iPhone 6s Plus") {
-            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/1.8), y: numberText.center.y)
+            numberText.center = CGPoint(x: numberText.center.x + (Screen.width/1.9), y: numberText.center.y)
         }else if (UIDevice.currentDevice().modelName == "iPad 2" || UIDevice.currentDevice().modelName == "iPad 3" || UIDevice.currentDevice().modelName == "iPad 4" || UIDevice.currentDevice().modelName == "iPad Air" || UIDevice.currentDevice().modelName == "iPad Air 2") {
             numberText.center = CGPoint(x: numberText.center.x + (Screen.width/2.7), y: numberText.center.y)
         }else if (UIDevice.currentDevice().modelName.containsString("iPad")) {
@@ -302,14 +284,7 @@ class TeamSelectionView: UIView, UITableViewDelegate, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("Team\(teamNumbersArray[indexPath.row])")
-        
-        //self.dismissKeyboard()
-        //self.launchViewOnTop(cells[indexPath.row])
-        
-        DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-            
-            
-            
+        DBManager.pull(ParseClass.TeamsTest.rawValue, rowKey: "teamNumber", rowValue: teamNumbersArray[indexPath.row], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
             self.dismissKeyboard()
             self.launchViewOnTop(TeamProfileView(teamNumber: self.teamNumbersArray[indexPath.row], json: result))
         })

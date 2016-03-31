@@ -21,6 +21,8 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
     
     var segmentedControls: [UISegmentedControl]! = []
     
+    var counter = 4
+    
     init(stepperColor: UIColor){
         super.init(frame:
             CGRectMake(
@@ -165,8 +167,22 @@ class TeleOpSubview: UIView, UIScrollViewDelegate, UITextFieldDelegate{
     
     func changeLabelValue(sender: UIStepper) {
         if(Int(sender.value) == -1) {
+            
+//            if (counter > 0){
+//                stepperLabels[sender.tag].text = "-"
+//                counter -= 1
+//            }
+//            
             stepperLabels[sender.tag].text = "-"
+            //print("COUNTER: \(counter)")
         }else {
+//            if (Int(sender.value) == 0){
+//                counter += 1
+//                print("COUNETRERERER: \(counter)")
+//            }
+            
+            
+            
             stepperLabels[sender.tag].text = "\(Int(sender.value))"
         }
     }
