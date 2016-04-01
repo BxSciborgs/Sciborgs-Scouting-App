@@ -84,7 +84,6 @@ class TeamAssignmentView: UIView {
             if(mode == AssignmentMode.SCOUT) {
                 for round in teamJSON["\(team)"]!["rounds"].arrayValue {
                     if(round["roundNumber"].intValue == roundNumber) {
-                        print("hello")
                         self.teamButton.layer.borderColor = UIColor.darkGrayColor().CGColor
                         self.teamButton.enabled = false
                     }

@@ -111,25 +111,20 @@ class RoundSelectionView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Link to team profile
-        getAllTeamJSONS(indexPath.row, teamIndex: 0)
+        getAllTeamJSONS(indexPath.row, teamIndex: 0, teamColor: "blue")
     }
     
-    func getAllTeamJSONS(match: Int, teamIndex: Int) {
-        if(allJSONS.count < 3) {
-            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue")[teamIndex], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
+    func getAllTeamJSONS(match: Int, teamIndex: Int, teamColor: String) {
+        var newColor = allJSONS.count < 3 ? "blue" : "red"
+        
+        if(self.allJSONS.count < 6) {
+            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[match], color: teamColor)[teamIndex%3], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
                 var teamJSON = result
-                self.allJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue")[teamIndex])"] = teamJSON
-                self.getAllTeamJSONS(match, teamIndex: teamIndex + 1)
-            })
-        }else if(allJSONS.count < 6) {
-            
-            DBManager.pull(ParseClass.SouthFlorida.rawValue, rowKey: "teamNumber", rowValue: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red")[teamIndex%3], finalKey: "TeamInfo", completion: {(result: JSON) -> Void in
-                var teamJSON = result
-                self.allJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red")[teamIndex%3])"] = teamJSON
-                self.getAllTeamJSONS(match, teamIndex: teamIndex+1)
+                self.allJSONS["\(BlueAlliance.getTeamsFromMatch(self.matches[match], color: teamColor)[teamIndex%3])"] = teamJSON
+                self.getAllTeamJSONS(match, teamIndex: teamIndex + 1, teamColor: newColor)
             })
         }else {
-            //print(self.allJSONS)
+            print(self.allJSONS)
             self.launchViewOnTop(TeamAssignmentView(
                 blueTeams: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "blue"),
                 redTeams: BlueAlliance.getTeamsFromMatch(self.matches[match], color: "red"),
